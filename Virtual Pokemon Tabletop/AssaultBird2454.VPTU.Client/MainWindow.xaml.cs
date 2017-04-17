@@ -39,5 +39,10 @@ namespace AssaultBird2454.VPTU.Client
             }
             #endregion
         }
+
+        private void Menu_Menu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

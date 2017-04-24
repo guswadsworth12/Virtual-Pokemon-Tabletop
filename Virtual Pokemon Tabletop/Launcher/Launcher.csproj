@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Building Dir\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ProjectInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -99,6 +100,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <EmbeddedResource Include="ProjectVariables.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,26 +120,32 @@
     <ProjectReference Include="..\AssaultBird2454.PTU.SoundSystem\SoundSystem.csproj">
       <Project>{85b341bf-b2bc-4fac-9f9d-3ae1e9ea5a83}</Project>
       <Name>SoundSystem</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.BattleManager\BattleManager.csproj">
       <Project>{626acee3-9310-4b55-bb35-ab9c08225797}</Project>
       <Name>BattleManager</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.Client\Client.csproj">
       <Project>{fc5c4a1b-00ee-4082-8473-995425b8d01b}</Project>
       <Name>Client</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.Pokedex\Pokedex.csproj">
       <Project>{7e7c28d4-d92f-4d4a-988c-8086fce625a0}</Project>
       <Name>Pokedex</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.SaveManager\SaveManager.csproj">
       <Project>{0b460ae1-322a-43bd-8f5a-4d383506cb8e}</Project>
       <Name>SaveManager</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.Server\Server.csproj">
       <Project>{1dd97708-079f-47e0-96a7-6b50d1674437}</Project>
       <Name>Server</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Building Dir\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -44,10 +44,13 @@
     <Compile Include="Items\ItemData.cs" />
     <Compile Include="Moves\MoveData.cs" />
     <Compile Include="Pokemon\PokemonData.cs" />
+    <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Save Data\Pokedex.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectVariables.json" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AssaultBird2454.VPTU.BattleManager\BattleManager.csproj">
       <Project>{626acee3-9310-4b55-bb35-ab9c08225797}</Project>

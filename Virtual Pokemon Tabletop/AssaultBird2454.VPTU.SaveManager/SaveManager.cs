@@ -34,7 +34,7 @@ namespace AssaultBird2454.VPTU.SaveManager
         /// Load save data to save data class ready for use
         /// </summary>
         /// <returns>Save Data</returns>
-        public Data.SaveFile.SaveData LoadSaveData()
+        public Data.SaveFile.PTUSaveData LoadSaveData()
         {
             return null;
         }

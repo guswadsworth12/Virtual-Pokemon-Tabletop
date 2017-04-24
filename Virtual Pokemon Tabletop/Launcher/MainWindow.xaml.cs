@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace Launcher
 {
@@ -22,7 +12,13 @@ namespace Launcher
     public partial class MainWindow : Window
     {
         #region Variables
+        /// <summary>
+        /// Settings Class
+        /// </summary>
         Settings VPTU_Settings;
+        /// <summary>
+        /// Assembly Directory
+        /// </summary>
         public static string AssemblyDirectory
         {
             get
@@ -33,12 +29,54 @@ namespace Launcher
                 return System.IO.Path.GetDirectoryName(path);
             }
         }
+        /// <summary>
+        /// Config Path
+        /// </summary>
         public static string ConfigFile_Directory
         {
             get
             {
                 return AssemblyDirectory + "/Settings.json";
             }
+        }
+        /// <summary>
+        /// Client Path
+        /// </summary>
+        public static string ClientExecutible_Path
+        {
+            get
+            {
+                return AssemblyDirectory + "/Client.exe";
+            }
+        }
+        /// <summary>
+        /// Server Path
+        /// </summary>
+        public static string ServerExecutible_Path
+        {
+            get
+            {
+                return AssemblyDirectory + "/Server.exe";
+            }
+        }
+        #endregion
+
+        #region Settings
+        /// <summary>
+        /// Loads a config file from the root of the executing directory
+        /// </summary>
+        private void Load_Settings()
+        {
+            using(FileStream stream = new FileStream(ConfigFile_Directory, FileMode.Open)){
+                //string configjson =
+            }
+        }
+        /// <summary>
+        /// Loads a config file from the root of the executing directory
+        /// </summary>
+        private void Save_Settings()
+        {
+
         }
         #endregion
 
@@ -58,23 +96,6 @@ namespace Launcher
             VPTU_Settings = new Settings();
         }
 
-        /// <summary>
-        /// Loads a config file from the root of the executing directory
-        /// </summary>
-        private void Load_Settings()
-        {
-            using(FileStream stream = new FileStream(ConfigFile_Directory, FileMode.Open)){
-                string configjson =
-            }
-        }
-        /// <summary>
-        /// Loads a config file from the root of the executing directory
-        /// </summary>
-        private void Save_Settings()
-        {
-
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -90,5 +111,17 @@ namespace Launcher
             SettingsWindow Settings = new SettingsWindow();
             Settings.ShowDialog();
         }
+
+        #region Start Application Buttons
+        Process ClientProcess;
+        private void LaunchClient_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClientProcess = new Process();
+            ClientProcess.StartInfo = new ProcessStartInfo(ClientExecutible_Path);
+            ClientProcess.StartInfo.UseShellExecute = false;
+            ClientProcess.Start();
+        }
+
+        #endregion
     }
 }

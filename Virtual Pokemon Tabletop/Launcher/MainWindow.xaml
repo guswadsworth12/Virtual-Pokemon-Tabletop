@@ -8,10 +8,10 @@
         Title="VPTU Launcher" Height="202.226" Width="341.68" ResizeMode="CanMinimize" Loaded="Window_Loaded" SizeToContent="WidthAndHeight">
     <Grid>
         <Button x:Name="LaunchSaveEditor_Button" Content="Launch VPTU Save Editor" Margin="165,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160.612" IsEnabled="False"/>
-        <Button x:Name="LaunchClient_Button" Content="Launch VPTU Client" Margin="165,34.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160.612" IsEnabled="False"/>
+        <Button x:Name="LaunchClient_Button" Content="Launch VPTU Client" Margin="165,34.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160.612" Click="LaunchClient_Button_Click"/>
         <Button x:Name="LaunchServer_Button" Content="Launch VPTU Server" Margin="165,59.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160.612" IsEnabled="False"/>
         <Grid x:Name="VPTU_Logo" Margin="10,10,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150">
-            <Image Source="\Resources\VPTU Logo.png" Width="Auto" Height="Auto" d:IsLocked="True"/>
+            <Image Source="\Resources\VPTU Logo.png" Width="Auto" Height="Auto"/>
         </Grid>
         <Button x:Name="Settings_Button" Content="Launch Settings and Info" Margin="165,140.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160.612" Click="Settings_Button_Click"/>
 

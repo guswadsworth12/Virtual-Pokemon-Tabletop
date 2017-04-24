@@ -14,7 +14,7 @@
                 <MenuItem Header="Save File As"/>
             </MenuItem>
         </Menu>
-        <TabControl x:Name="SaveEditor_TabPanel" Margin="0,17.96,0,21.96" IsEnabled="False">
+        <TabControl x:Name="SaveEditor_TabPanel" Margin="0,17.96,0,21.96">
             <TabItem Header="Overview">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label_Copy2" Content="This Tab is in Development...&#xA;Try again latter" Foreground="Red" FontSize="72"/>
@@ -26,7 +26,48 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Pokedex Manager">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="PokedexManager_List">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <GroupBox x:Name="PokedexManager_AddDex" Grid.Column="1" Header="Add Pokedex Entrys" Margin="10,10,10,0" VerticalAlignment="Top" Height="119.46">
+                        <Grid Margin="0,0,-2,-12.96">
+                            <Button x:Name="PokedexManager_AddDex_Pokemon" Content="Add Pokemon" VerticalAlignment="Top"/>
+                            <Button x:Name="PokedexManager_AddDex_Move" Content="Add Move" VerticalAlignment="Top" Margin="0,24.96,0,0"/>
+                            <Button x:Name="PokedexManager_AddDex_Abilitie" Content="Add Ability" VerticalAlignment="Top" Margin="0,49.92,0,0"/>
+                            <Button x:Name="PokedexManager_AddDex_Items" Content="Add Items" Margin="0,74.88,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="PokedexManager_ManageDex" Grid.Column="1" Header="Edit / Delete" Margin="10,134.46,10,0" VerticalAlignment="Top" Height="71.46">
+                        <Grid Margin="0,0,-2,-12.96">
+                            <Button x:Name="PokedexManager_ManageDex_Edit" Content="Edit" VerticalAlignment="Top"/>
+                            <Button x:Name="PokedexManager_ManageDex_Delete" Content="Delete" VerticalAlignment="Top" Margin="0,24.96,0,0"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="PokedexManager_SearchDex" Grid.Column="1" Header="Search" Margin="10,210.92,10,292.073">
+                        <Grid Margin="0,0,-2,-12.96">
+                            <TextBox x:Name="PokedexManager_SearchDex_Search" Margin="0,0,-2,0" TextWrapping="Wrap" VerticalAlignment="Top" UndoLimit="200"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Pokemon" Content="Search Pokemon" Margin="0,22.96,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Moves" Content="Search Moves" Margin="0,38.058,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Abilities" Content="Search Abilitys" Margin="0,53.156,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Items" Content="Search Items" Margin="0,68.255,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="PokedexManager_SearchDex_Copy" Grid.Column="1" Header="Display Settings" Margin="10,0,10,10" Height="108.127" VerticalAlignment="Bottom">
+                        <Grid Margin="0,0,-2,-12.96">
+                            <RadioButton x:Name="radioButton_Copy" Content="" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="radioButton_Copy1" Content="RadioButton" VerticalAlignment="Top" Margin="0,14.96,0,0"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </TabItem>
             <TabItem Header="Entity Manager">
                 <Grid Background="#FFE5E5E5">

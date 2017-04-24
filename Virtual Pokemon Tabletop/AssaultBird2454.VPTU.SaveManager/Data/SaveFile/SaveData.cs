@@ -35,41 +35,39 @@ namespace AssaultBird2454.VPTU.SaveManager.Data.SaveFile
         {
             if (InitNewSave)
             {
-                Trainers = new List<Data.Entity.Trainer>();
-                NPCs = new List<Data.Entity.NPC>();
-                Pokemon = new List<Data.Entity.Pokemon>();
+                Trainers = new List<BattleManager.Entity.Trainer.EntityTrainerData>();
+                Pokemon = new List<BattleManager.Entity.Pokemon.EntityPokemonData>();
 
-                EntityGroups = new List<Data.Entity.Group>();
+                EntityGroups = new List<BattleManager.Entity.EntityGroup>();
 
-                MapFiles = new List<Resources.MapFileData>();
-                Maps = new List<Resources.MapData>();
+                //MapFiles = new List<Resources.MapFileData>();
+                //Maps = new List<Resources.MapData>();
 
-                AudioResources = new List<Data.Audio.Audio_Data>();
-                ImageResources = new List<Data.Image.Image_Data>();
+                AudioResources = new List<SoundSystem.SaveData.AudioData>();
+                //ImageResources = new List<Data.Image.Image_Data>();
 
-                PokedexData = new Pokedex(true);
+                PokedexData = new Pokedex.Save_Data.Pokedex(true);
             }
         }
 
         #region Data
-        public Pokedex PokedexData;
+        public Pokedex.Save_Data.Pokedex PokedexData;
         #endregion
 
         #region Entity Data
-        public List<Data.Entity.Trainer> Trainers;
-        public List<Data.Entity.NPC> NPCs;
-        public List<Data.Entity.Pokemon> Pokemon;
+        public List<BattleManager.Entity.Trainer.EntityTrainerData> Trainers;
+        public List<BattleManager.Entity.Pokemon.EntityPokemonData> Pokemon;
 
-        public List<Data.Entity.Group> EntityGroups;
+        public List<BattleManager.Entity.EntityGroup> EntityGroups;
         #endregion
 
         #region Tabletop
-        public List<Resources.MapFileData> MapFiles;
-        public List<Resources.MapData> Maps;
+        //public List<Resources.MapFileData> MapFiles;
+        //public List<Resources.MapData> Maps;
         #endregion
         #region Resources
-        public List<Data.Audio.Audio_Data> AudioResources;
-        public List<Data.Image.Image_Data> ImageResources;
+        public List<SoundSystem.SaveData.AudioData> AudioResources;
+        //public List<Data.Image.Image_Data> ImageResources;
         #endregion
     }
 }

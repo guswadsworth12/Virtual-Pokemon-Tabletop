@@ -40,15 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abilities\AbilitieData.cs" />
+    <Compile Include="Items\ItemData.cs" />
+    <Compile Include="Moves\MoveData.cs" />
+    <Compile Include="Pokemon\PokemonData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Save Data\Pokedex.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abilities\" />
-    <Folder Include="Items\" />
-    <Folder Include="Moves\" />
-    <Folder Include="Pokemon\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AssaultBird2454.VPTU.BattleManager\BattleManager.csproj">
       <Project>{626acee3-9310-4b55-bb35-ab9c08225797}</Project>

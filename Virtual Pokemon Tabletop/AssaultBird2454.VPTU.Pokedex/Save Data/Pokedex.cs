@@ -19,16 +19,28 @@ namespace AssaultBird2454.VPTU.Pokedex.Save_Data
         {
             if (InitNewSave)
             {
-                Moves = new List<Data.Pokedex.Moves.Move_Data>();
-                Pokemon = new List<Data.Pokedex.Pokemon.Pokemon_Data>();
-                Abilitys = new List<Data.Pokedex.Abilitys.Ability_Data>();
-                Items = new List<Data.Pokedex.Items.Item_Data>();
+                Moves = new List<Moves.MoveData>();// Initilises the MoveData
+                Pokemon = new List<Pokemon.PokemonData>();// Initilises the PokemonData
+                Abilitys = new List<Abilities.AbilitieData>();// Initilises the AbilityData
+                Items = new List<Items.ItemData>();// Initilises the ItemData
             }
         }
 
-        public List<Data.Pokedex.Moves.Move_Data> Moves;
-        public List<Data.Pokedex.Pokemon.Pokemon_Data> Pokemon;
-        public List<Data.Pokedex.Abilitys.Ability_Data> Abilitys;
-        public List<Data.Pokedex.Items.Item_Data> Items;
+        /// <summary>
+        /// All the Moves in the save file
+        /// </summary>
+        public List<Moves.MoveData> Moves;
+        /// <summary>
+        /// All the Pokemon in the save file
+        /// </summary>
+        public List<Pokemon.PokemonData> Pokemon;
+        /// <summary>
+        /// All the Abilitys in the save file
+        /// </summary>
+        public List<Abilities.AbilitieData> Abilitys;
+        /// <summary>
+        /// All the Items in the save file
+        /// </summary>
+        public List<Items.ItemData> Items;
     }
 }

@@ -55,6 +55,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AssaultBird2454.PTU.SoundSystem\SoundSystem.csproj">
+      <Project>{85b341bf-b2bc-4fac-9f9d-3ae1e9ea5a83}</Project>
+      <Name>SoundSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.BattleManager\BattleManager.csproj">
       <Project>{626acee3-9310-4b55-bb35-ab9c08225797}</Project>
       <Name>BattleManager</Name>

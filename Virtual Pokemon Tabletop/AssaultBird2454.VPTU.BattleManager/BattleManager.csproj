@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleManager.cs" />
+    <Compile Include="Entity\EntityGroup.cs" />
+    <Compile Include="Entity\Pokemon\EntityPokemonData.cs" />
+    <Compile Include="Entity\Trainer\EntityTrainerData.cs" />
     <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

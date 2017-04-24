@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+# Blend for Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "AssaultBird2454.VPTU.Server\Server.csproj", "{1DD97708-079F-47E0-96A7-6B50D1674437}"
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex", "AssaultBird2454.VPTU.Pokedex\Pokedex.csproj", "{7E7C28D4-D92F-4D4A-988C-8086FCE625A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundSystem", "AssaultBird2454.PTU.SoundSystem\SoundSystem.csproj", "{85B341BF-B2BC-4FAC-9F9D-3AE1E9EA5A83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{8905C4F9-AB8D-4C2E-AED0-6C71EAD9E185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{85B341BF-B2BC-4FAC-9F9D-3AE1E9EA5A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85B341BF-B2BC-4FAC-9F9D-3AE1E9EA5A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85B341BF-B2BC-4FAC-9F9D-3AE1E9EA5A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8905C4F9-AB8D-4C2E-AED0-6C71EAD9E185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8905C4F9-AB8D-4C2E-AED0-6C71EAD9E185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8905C4F9-AB8D-4C2E-AED0-6C71EAD9E185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8905C4F9-AB8D-4C2E-AED0-6C71EAD9E185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +68,6 @@ Global
 		{FC5C4A1B-00EE-4082-8473-995425B8D01B} = {1C80FE3C-DC93-4519-9E62-811E3C0864A6}
 		{7E7C28D4-D92F-4D4A-988C-8086FCE625A0} = {C1729FAC-DB65-4179-9817-EDCE648E5D11}
 		{85B341BF-B2BC-4FAC-9F9D-3AE1E9EA5A83} = {C1729FAC-DB65-4179-9817-EDCE648E5D11}
+		{8905C4F9-AB8D-4C2E-AED0-6C71EAD9E185} = {1C80FE3C-DC93-4519-9E62-811E3C0864A6}
 	EndGlobalSection
 EndGlobal

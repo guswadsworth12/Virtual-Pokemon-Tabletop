@@ -7,8 +7,8 @@
     <ProjectGuid>{85B341BF-B2BC-4FAC-9F9D-3AE1E9EA5A83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AssaultBird2454.PTU.SoundSystem</RootNamespace>
-    <AssemblyName>AssaultBird2454.PTU.SoundSystem</AssemblyName>
+    <RootNamespace>AssaultBird2454.VPTU.SoundSystem</RootNamespace>
+    <AssemblyName>AssaultBird2454.VPTU.SoundSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveData\AudioData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectVariables.json" />

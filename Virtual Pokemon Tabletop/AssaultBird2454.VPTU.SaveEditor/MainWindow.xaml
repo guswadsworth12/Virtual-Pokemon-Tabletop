@@ -39,6 +39,7 @@
                                 <GridViewColumn Header="Type 1" Width="80px" DisplayMemberBinding="{Binding Type1}"/>
                                 <GridViewColumn Header="Type 2" Width="80px" DisplayMemberBinding="{Binding Type2}"/>
                                 <GridViewColumn Header="Class" Width="80px" DisplayMemberBinding="{Binding Class}"/>
+                                <GridViewColumn Header="Entry Type" Width="100" DisplayMemberBinding="{Binding EntryType}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

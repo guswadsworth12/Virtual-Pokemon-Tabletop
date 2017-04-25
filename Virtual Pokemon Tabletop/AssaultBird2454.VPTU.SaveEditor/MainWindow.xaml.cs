@@ -156,11 +156,27 @@ namespace AssaultBird2454.VPTU.SaveEditor
                 PokemonDB.Type1 = Pokemon.Species_Type1.ToString();
                 PokemonDB.Type2 = Pokemon.Species_Type2.ToString();
                 PokemonDB.Class = "";
+                PokemonDB.EntryType = "Pokemon";
 
                 PokemonDB.DataType = PokedexList_DataType.Pokemon;
                 PokemonDB.DataTag = Pokemon;
 
                 PokedexManager_List.Items.Add(PokemonDB);
+            }
+            foreach (Pokedex.Moves.MoveData Move in SaveManager.SaveData.PokedexData.Moves)
+            {
+                PokedexList_DataBind MoveDB = new PokedexList_DataBind();
+                MoveDB.Name = Move.Name;
+                MoveDB.ID = (SaveManager.SaveData.PokedexData.Moves.IndexOf(Move) + 1);
+                MoveDB.Type1 = Move.Move_Type.ToString();
+                MoveDB.Type2 = "";
+                MoveDB.Class = Move.Move_Class.ToString();
+                MoveDB.EntryType = "Move";
+
+                MoveDB.DataType = PokedexList_DataType.Move;
+                MoveDB.DataTag = Move;
+
+                PokedexManager_List.Items.Add(MoveDB);
             }
         }
         #endregion
@@ -169,29 +185,12 @@ namespace AssaultBird2454.VPTU.SaveEditor
     /// <summary>
     /// All the types that the pokedex list will display (Used for Pharsing Selections)
     /// </summary>
-    public enum PokedexList_DataType { Pokemon, Moves, Abilitys, Items }
+    public enum PokedexList_DataType { Pokemon, Move, Ability, Item }
     /// <summary>
     /// A Class designed for Data Binding Pokedex Data to the Pokedex List
     /// </summary>
     public class PokedexList_DataBind
     {
-        /// <summary>
-        /// Creates a new instance of the PokedexList DataBind Object
-        /// </summary>
-        /// <param name="_ID"></param>
-        /// <param name="_Name"></param>
-        /// <param name="_EntryType"></param>
-        /// <param name="_Type1"></param>
-        /// <param name="_Type2"></param>
-        /// <param name="_Class"></param>
-        public PokedexList_DataBind(int _ID, string _Name, string _EntryType, string _Type1, string _Type2, string _Class)
-        {
-            ID = _ID;
-            Name = _Name;
-            Type1 = _Type1;
-            Type2 = _Type2;
-            Class = _Class;
-        }
         /// <summary>
         /// Creates a new instance of the PokedexList DataBind Object
         /// </summary>
@@ -211,7 +210,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         /// The Name of the Object
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The Type of the Pokemon or Move
         /// </summary>
@@ -224,6 +223,8 @@ namespace AssaultBird2454.VPTU.SaveEditor
         /// The Class of move
         /// </summary>
         public string Class { get; set; }
+
+        public string EntryType { get; set; }
 
         public PokedexList_DataType DataType { get; set; }
         public object DataTag { get; set; }

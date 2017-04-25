@@ -25,7 +25,6 @@ namespace AssaultBird2454.VPTU.BattleManager.Entity
     /// WC7(200KG + With "Heavy Metal Ability")
     /// </summary>
     public enum WeightClass { WC1 = 1, WC2 = 2, WC3 = 3, WC4 = 4, WC5 = 5, WC6 = 6, WC7 = 7 }
-
     /// <summary>
     /// Defines Skill Ranks
     /// </summary>

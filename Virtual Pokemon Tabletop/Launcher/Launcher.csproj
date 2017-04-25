@@ -127,11 +127,6 @@
       <Name>BattleManager</Name>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\AssaultBird2454.VPTU.Client\Client.csproj">
-      <Project>{fc5c4a1b-00ee-4082-8473-995425b8d01b}</Project>
-      <Name>Client</Name>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\AssaultBird2454.VPTU.Pokedex\Pokedex.csproj">
       <Project>{7e7c28d4-d92f-4d4a-988c-8086fce625a0}</Project>
       <Name>Pokedex</Name>

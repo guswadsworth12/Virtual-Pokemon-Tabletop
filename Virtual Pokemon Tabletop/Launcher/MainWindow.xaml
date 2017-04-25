@@ -13,7 +13,7 @@
         <Button x:Name="Settings_Button" Content="Launch Settings and Info" Margin="165,140.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160.612" Click="Settings_Button_Click"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="10,10,0,0" Width="150" Height="150" VerticalAlignment="Top" d:LayoutOverrides="Height">
             <Border.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/VPTU Logo.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Resources/VPTU Logo.png" Stretch="Uniform"/>
             </Border.Background>
         </Border>
 

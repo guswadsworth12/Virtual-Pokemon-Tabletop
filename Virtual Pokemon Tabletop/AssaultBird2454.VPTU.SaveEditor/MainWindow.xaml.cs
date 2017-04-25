@@ -108,7 +108,13 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Add Pokemon" Button is clicked
         private void PokedexManager_AddDex_Pokemon_Click(object sender, RoutedEventArgs e)
         {
+            UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon();
+            bool? OK = pokemon.ShowDialog();
 
+            if (OK == true)
+            {
+                PokedexManager_ReloadList();
+            }
         }
         //When The "Add Move" Button is clicked
         private void PokedexManager_AddDex_Move_Click(object sender, RoutedEventArgs e)

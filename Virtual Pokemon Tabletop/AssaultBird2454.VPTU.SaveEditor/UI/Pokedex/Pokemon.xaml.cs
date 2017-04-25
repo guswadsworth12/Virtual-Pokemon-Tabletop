@@ -21,7 +21,14 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
     {
         public Pokemon()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

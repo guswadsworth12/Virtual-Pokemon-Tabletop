@@ -63,9 +63,9 @@ namespace AssaultBird2454.VPTU.SaveEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _000 {
+        internal static System.Drawing.Bitmap Unknown_Pokemon_Sprite {
             get {
-                object obj = ResourceManager.GetObject("_000", resourceCulture);
+                object obj = ResourceManager.GetObject("Unknown_Pokemon_Sprite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

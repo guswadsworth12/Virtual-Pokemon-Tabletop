@@ -34,7 +34,7 @@ namespace AssaultBird2454.VPTU.Client
                 using (StreamReader read = new StreamReader(str))
                 {
                     VersioningInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectInfo>(read.ReadToEnd());
-                    this.Title = "Virtual Pokemon Tabletop (Version: " + VersioningInfo.Version + ") (Commit: " + VersioningInfo.Compile_Commit.Remove(7) + ")";
+                    this.Title = "Virtual Pokemon Tabletop - Client (Version: " + VersioningInfo.Version + ") (Commit: " + VersioningInfo.Compile_Commit.Remove(7) + ")";
                 }
             }
             #endregion

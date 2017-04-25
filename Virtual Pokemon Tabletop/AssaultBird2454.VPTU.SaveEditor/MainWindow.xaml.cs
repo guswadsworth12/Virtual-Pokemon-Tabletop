@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,10 +12,23 @@ namespace AssaultBird2454.VPTU.SaveEditor
     public partial class MainWindow : Window
     {
         SaveManager.SaveManager SaveManager;
+        public ProjectInfo VersioningInfo;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            #region Versioning Info
+            using (Stream str = Assembly.GetExecutingAssembly().GetManifestResourceStream("AssaultBird2454.VPTU.SaveEditor.ProjectVariables.json"))
+            {
+                using (StreamReader read = new StreamReader(str))
+                {
+                    VersioningInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectInfo>(read.ReadToEnd());
+                    this.Title = "Virtual Pokemon Tabletop - SaveEditor (Version: " + VersioningInfo.Version + ") (Commit: " + VersioningInfo.Compile_Commit.Remove(7) + ")";
+                }
+            }
+            #endregion
+
             Setup();
         }
 

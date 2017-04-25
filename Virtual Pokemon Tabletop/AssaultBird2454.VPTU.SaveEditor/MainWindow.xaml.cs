@@ -14,7 +14,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        public SaveManager.SaveManager SaveManager;
+        public static SaveManager.SaveManager SaveManager;
         public ProjectInfo VersioningInfo;
 
         public MainWindow()

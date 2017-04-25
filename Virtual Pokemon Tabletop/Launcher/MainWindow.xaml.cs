@@ -59,6 +59,16 @@ namespace Launcher
                 return AssemblyDirectory + "/Server.exe";
             }
         }
+        /// <summary>
+        /// Save Editor Path
+        /// </summary>
+        public static string SaveEditExecutible_Path
+        {
+            get
+            {
+                return AssemblyDirectory + "/SaveEditor.exe";
+            }
+        }
         #endregion
 
         #region Settings
@@ -121,7 +131,14 @@ namespace Launcher
             ClientProcess.StartInfo.UseShellExecute = false;
             ClientProcess.Start();
         }
-
+        Process SaveEditProcess;
+        private void LaunchSaveEditor_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveEditProcess = new Process();
+            SaveEditProcess.StartInfo = new ProcessStartInfo(SaveEditExecutible_Path);
+            SaveEditProcess.StartInfo.UseShellExecute = false;
+            SaveEditProcess.Start();
+        }
         #endregion
     }
 }

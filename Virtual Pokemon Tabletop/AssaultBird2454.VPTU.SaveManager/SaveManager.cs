@@ -76,10 +76,10 @@ namespace AssaultBird2454.VPTU.SaveManager
         public T LoadData_FromSave<T>(string SaveFile_DataDir)
         {
             //Creates a stream to read the save file from
-            using (StreamReader Reader = new StreamReader(SaveFileDir))
+            using (FileStream Reader = new FileStream(SaveFileDir, FileMode.OpenOrCreate))
             {
                 //Creates an object to read the archive data from
-                using (ZipArchive archive = new ZipArchive(Reader.BaseStream, ZipArchiveMode.Read))
+                using (ZipArchive archive = new ZipArchive(Reader, ZipArchiveMode.Update))
                 {
                     ZipArchiveEntry entry = archive.GetEntry(SaveFile_DataDir);// Gets the entry to be read from
                     if(entry == null)
@@ -102,16 +102,18 @@ namespace AssaultBird2454.VPTU.SaveManager
         public void SaveData_ToSave(string SaveFile_DataDir, object Object)
         {
             //Creates a stream to write any save data to a file
-            using (StreamWriter Writer = new StreamWriter(SaveFileDir))
+            using (FileStream Writer = new FileStream(SaveFileDir, FileMode.OpenOrCreate))
             {
                 //Creates an object to write archive data to
-                using (ZipArchive archive = new ZipArchive(Writer.BaseStream, ZipArchiveMode.Update))
+                using (ZipArchive archive = new ZipArchive(Writer, ZipArchiveMode.Update))
                 {
                     ZipArchiveEntry entry = archive.GetEntry(SaveFile_DataDir);// Gets the specified entry if it exists ready to write to
-                    if(entry == null)
+                    if(entry != null)
                     {
-                        archive.CreateEntry(SaveFile_DataDir);// If the entry does not exist, it will create a new one
+                        entry.Delete();// Removes the entry. Delete then create a new entry to save
                     }
+
+                    entry = archive.CreateEntry(SaveFile_DataDir);
 
                     //Creates a stream to Write data to the entry
                     using (StreamWriter DataWriter = new StreamWriter(entry.Open()))

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -36,7 +38,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         #region Setup Code
         private void Setup()
         {
-            //PokedexManager_List.ItemsSource = PokedexItems;
+
         }
         #endregion
 
@@ -62,7 +64,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Save File" Button is clicked
         private void Menu_Menu_Save_Click(object sender, RoutedEventArgs e)
         {
-
+            Save();
         }
         //When The "Save File As" Button is clicked
         private void Menu_Menu_SaveAs_Click(object sender, RoutedEventArgs e)
@@ -99,6 +101,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
 
         #region Pokedex Manager Code
         #region Pokedex Manager Variables
+        Thread PokedexSearchThread;
         #endregion
 
         #region Right SideBar Events
@@ -135,7 +138,18 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The Search Box has been changed
         private void PokedexManager_SearchDex_Search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                PokedexSearchThread.Abort();
+                PokedexSearchThread = null;
+            }
+            catch { }
 
+            PokedexSearchThread = new Thread(new ThreadStart(() =>
+            {
+                this.Dispatcher.Invoke(new Action(() => PokedexManager_ReloadList()));
+            }));
+            PokedexSearchThread.Start();
         }
         #endregion
 
@@ -144,39 +158,92 @@ namespace AssaultBird2454.VPTU.SaveEditor
         {
 
         }
+        private void PokedexManager_SearchDex_Pokemon_Checked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Pokemon_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Moves_Checked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Moves_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Abilitys_Checked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Abilitys_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Items_Checked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
+        private void PokedexManager_SearchDex_Items_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PokedexManager_ReloadList();
+        }
         #endregion
 
+        /// <summary>
+        /// Reloads the Pokedex list
+        /// </summary>
+        /// <param name="Search">Limits only Pokemon and Moves where the name contains the Search value (Not Case Sensitive)</param>
         public void PokedexManager_ReloadList()
         {
-            foreach (Pokedex.Pokemon.PokemonData Pokemon in SaveManager.SaveData.PokedexData.Pokemon)
+            PokedexManager_List.Items.Clear();
+
+            if(SaveManager == null) { return; }
+
+            if (PokedexManager_SearchDex_Pokemon.IsChecked == true)
             {
-                PokedexList_DataBind PokemonDB = new PokedexList_DataBind();
-                PokemonDB.Name = Pokemon.Species_Name;
-                PokemonDB.ID = Pokemon.Species_DexID;
-                PokemonDB.Type1 = Pokemon.Species_Type1.ToString();
-                PokemonDB.Type2 = Pokemon.Species_Type2.ToString();
-                PokemonDB.Class = "";
-                PokemonDB.EntryType = "Pokemon";
+                foreach (Pokedex.Pokemon.PokemonData Pokemon in SaveManager.SaveData.PokedexData.Pokemon)
+                {
+                    if (Pokemon.Species_Name.ToLower().Contains(PokedexManager_SearchDex_Search.Text.ToLower()))
+                    {
+                        PokedexList_DataBind PokemonDB = new PokedexList_DataBind();
+                        PokemonDB.Name = Pokemon.Species_Name;
+                        PokemonDB.ID = Pokemon.Species_DexID;
+                        PokemonDB.Type1 = Pokemon.Species_Type1.ToString();
+                        PokemonDB.Type2 = Pokemon.Species_Type2.ToString();
+                        PokemonDB.Class = "";
+                        PokemonDB.EntryType = "Pokemon";
 
-                PokemonDB.DataType = PokedexList_DataType.Pokemon;
-                PokemonDB.DataTag = Pokemon;
+                        PokemonDB.DataType = PokedexList_DataType.Pokemon;
+                        PokemonDB.DataTag = Pokemon;
 
-                PokedexManager_List.Items.Add(PokemonDB);
+                        PokedexManager_List.Items.Add(PokemonDB);
+                    }
+                }
             }
-            foreach (Pokedex.Moves.MoveData Move in SaveManager.SaveData.PokedexData.Moves)
+
+            if (PokedexManager_SearchDex_Moves.IsChecked == true)
             {
-                PokedexList_DataBind MoveDB = new PokedexList_DataBind();
-                MoveDB.Name = Move.Name;
-                MoveDB.ID = (SaveManager.SaveData.PokedexData.Moves.IndexOf(Move) + 1);
-                MoveDB.Type1 = Move.Move_Type.ToString();
-                MoveDB.Type2 = "";
-                MoveDB.Class = Move.Move_Class.ToString();
-                MoveDB.EntryType = "Move";
+                foreach (Pokedex.Moves.MoveData Move in SaveManager.SaveData.PokedexData.Moves)
+                {
+                    if (Move.Name.ToLower().Contains(PokedexManager_SearchDex_Search.Text.ToLower()))
+                    {
+                        PokedexList_DataBind MoveDB = new PokedexList_DataBind();
+                        MoveDB.Name = Move.Name;
+                        MoveDB.ID = (SaveManager.SaveData.PokedexData.Moves.IndexOf(Move) + 1);
+                        MoveDB.Type1 = Move.Move_Type.ToString();
+                        MoveDB.Type2 = "";
+                        MoveDB.Class = Move.Move_Class.ToString();
+                        MoveDB.EntryType = "Move";
 
-                MoveDB.DataType = PokedexList_DataType.Move;
-                MoveDB.DataTag = Move;
+                        MoveDB.DataType = PokedexList_DataType.Move;
+                        MoveDB.DataTag = Move;
 
-                PokedexManager_List.Items.Add(MoveDB);
+                        PokedexManager_List.Items.Add(MoveDB);
+                    }
+                }
             }
         }
         #endregion

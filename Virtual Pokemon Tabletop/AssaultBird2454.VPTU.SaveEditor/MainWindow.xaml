@@ -17,12 +17,12 @@
         <TabControl x:Name="SaveEditor_TabPanel" Margin="0,17.96,0,21.96">
             <TabItem Header="Overview" d:IsLocked="True">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="label_Copy2" Content="This Tab is in Development...&#xA;Try again latter" Foreground="Red" FontSize="72"/>
+                    <Label x:Name="label_Copy2" Content="This Tab is in Development..." Foreground="Red" FontSize="72"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Resource Manager" d:IsLocked="True">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="label_Copy1" Content="This Tab is in Development...&#xA;Try again latter" Foreground="Red" FontSize="72"/>
+                    <Label x:Name="label_Copy1" Content="This Tab is in Development..." Foreground="Red" FontSize="72"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Pokedex Manager">
@@ -57,13 +57,13 @@
                             <Button x:Name="PokedexManager_ManageDex_Delete" Content="Delete" VerticalAlignment="Top" Margin="0,24.96,0,0" Click="PokedexManager_ManageDex_Delete_Click"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox x:Name="PokedexManager_SearchDex" Grid.Column="1" Header="Search" Margin="10,210.92,10,292.073" d:IsLocked="True">
+                    <GroupBox x:Name="PokedexManager_SearchDex" Grid.Column="1" Header="Search" Margin="10,210.92,10,292.073">
                         <Grid Margin="0,0,-2,-12.96">
                             <TextBox x:Name="PokedexManager_SearchDex_Search" Margin="0,0,-2,0" TextWrapping="Wrap" VerticalAlignment="Top" UndoLimit="200" TextChanged="PokedexManager_SearchDex_Search_TextChanged"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Pokemon" Content="Search Pokemon" Margin="0,22.96,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Moves" Content="Search Moves" Margin="0,38.058,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Abilitys" Content="Search Abilitys" Margin="0,53.156,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Items" Content="Search Items" Margin="0,68.255,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Pokemon" Content="Search Pokemon" Margin="0,22.96,0,0" VerticalAlignment="Top" IsChecked="True" Checked="PokedexManager_SearchDex_Pokemon_Checked" Unchecked="PokedexManager_SearchDex_Pokemon_Unchecked"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Moves" Content="Search Moves" Margin="0,38.058,0,0" VerticalAlignment="Top" IsChecked="True" Checked="PokedexManager_SearchDex_Moves_Checked" Unchecked="PokedexManager_SearchDex_Moves_Unchecked"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Abilitys" Content="Search Abilitys" Margin="0,53.156,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="PokedexManager_SearchDex_Abilitys_Checked" Unchecked="PokedexManager_SearchDex_Abilitys_Unchecked"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Items" Content="Search Items" Margin="0,68.255,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="PokedexManager_SearchDex_Items_Checked" Unchecked="PokedexManager_SearchDex_Items_Unchecked"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox x:Name="PokedexManager_DisplaySettings" Grid.Column="1" Header="Display Settings" Margin="10,0,10,10" Height="108.127" VerticalAlignment="Bottom" IsEnabled="False" d:IsLocked="True">
@@ -76,12 +76,12 @@
             </TabItem>
             <TabItem Header="Entity Manager" d:IsLocked="True">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="label_Copy" Content="This Tab is in Development...&#xA;Try again latter" Foreground="Red" FontSize="72"/>
+                    <Label x:Name="label_Copy" Content="This Tab is in Development..." Foreground="Red" FontSize="72"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Map Manager" d:IsLocked="True">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="label" Content="This Tab is in Development...&#xD;&#xA;Try again latter" Foreground="Red" FontSize="72"/>
+                    <Label x:Name="label" Content="This Tab is in Development..." Foreground="Red" FontSize="72"/>
                 </Grid>
             </TabItem>
         </TabControl>

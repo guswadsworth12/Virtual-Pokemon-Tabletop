@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AssaultBird2454.VPTU.SaveManager
 {
-    public enum SaveData_Dir { Pokedex_Pokemon, Pokedex_Moves, Pokedex_Abilities, Pokedex_Items }
+    public enum SaveData_Dir { Pokedex_Pokemon, Pokedex_Moves, Pokedex_Abilitys, Pokedex_Items }
 
     public class SaveManager
     {
@@ -52,7 +52,7 @@ namespace AssaultBird2454.VPTU.SaveManager
             SaveData = new Data.SaveFile.PTUSaveData(true);
             SaveData.PokedexData.Pokemon = LoadData_FromSave<List<Pokedex.Pokemon.PokemonData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Pokemon));
             SaveData.PokedexData.Moves = LoadData_FromSave<List<Pokedex.Moves.MoveData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Moves));
-            SaveData.PokedexData.Abilitys = LoadData_FromSave<List<Pokedex.Abilities.AbilitieData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilities));
+            SaveData.PokedexData.Abilitys = LoadData_FromSave<List<Pokedex.Abilitys.AbilityData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys));
             SaveData.PokedexData.Items = LoadData_FromSave<List<Pokedex.Items.ItemData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items));
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace AssaultBird2454.VPTU.SaveManager
         {
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Pokemon), SaveData.PokedexData.Pokemon);
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Moves), SaveData.PokedexData.Moves);
-            SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilities), SaveData.PokedexData.Abilitys);
+            SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys), SaveData.PokedexData.Abilitys);
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items), SaveData.PokedexData.Items);
         }
 
@@ -82,7 +82,10 @@ namespace AssaultBird2454.VPTU.SaveManager
                 using (ZipArchive archive = new ZipArchive(Reader.BaseStream, ZipArchiveMode.Read))
                 {
                     ZipArchiveEntry entry = archive.GetEntry(SaveFile_DataDir);// Gets the entry to be read from
-
+                    if(entry == null)
+                    {
+                        return default(T);
+                    }
                     //Creates a stream to read the data from
                     using (StreamReader DataReader = new StreamReader(entry.Open()))
                     {
@@ -131,8 +134,8 @@ namespace AssaultBird2454.VPTU.SaveManager
                     return "Pokedex/Pokemon.json";
                 case SaveData_Dir.Pokedex_Moves:
                     return "Pokedex/Moves.json";
-                case SaveData_Dir.Pokedex_Abilities:
-                    return "Pokedex/Abilities.json";
+                case SaveData_Dir.Pokedex_Abilitys:
+                    return "Pokedex/Abilitys.json";
                 case SaveData_Dir.Pokedex_Items:
                     return "Pokedex/Items.json";
 

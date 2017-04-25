@@ -31,12 +31,14 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="PokedexManager_List">
+                    <ListView x:Name="PokedexManager_List" SelectionChanged="PokedexManager_List_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="50px" DisplayMemberBinding="{Binding ID}"/>
                                 <GridViewColumn Header="Name" Width="150px" DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn Header="Entry Type" Width="200px" DisplayMemberBinding="{Binding EntryType}"/>
+                                <GridViewColumn Header="Type 1" Width="80px" DisplayMemberBinding="{Binding Type1}"/>
+                                <GridViewColumn Header="Type 2" Width="80px" DisplayMemberBinding="{Binding Type2}"/>
+                                <GridViewColumn Header="Class" Width="80px" DisplayMemberBinding="{Binding Class}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -44,7 +46,7 @@
                         <Grid Margin="0,0,-2,-12.96">
                             <Button x:Name="PokedexManager_AddDex_Pokemon" Content="Add Pokemon" VerticalAlignment="Top" Click="PokedexManager_AddDex_Pokemon_Click"/>
                             <Button x:Name="PokedexManager_AddDex_Move" Content="Add Move" VerticalAlignment="Top" Margin="0,24.96,0,0" Click="PokedexManager_AddDex_Move_Click"/>
-                            <Button x:Name="PokedexManager_AddDex_Abilitie" Content="Add Ability" VerticalAlignment="Top" Margin="0,49.92,0,0" Click="PokedexManager_AddDex_Abilitie_Click"/>
+                            <Button x:Name="PokedexManager_AddDex_Ability" Content="Add Ability" VerticalAlignment="Top" Margin="0,49.92,0,0" Click="PokedexManager_AddDex_Ability_Click"/>
                             <Button x:Name="PokedexManager_AddDex_Items" Content="Add Items" Margin="0,74.88,0,0" VerticalAlignment="Top" Click="PokedexManager_AddDex_Items_Click"/>
                         </Grid>
                     </GroupBox>
@@ -59,7 +61,7 @@
                             <TextBox x:Name="PokedexManager_SearchDex_Search" Margin="0,0,-2,0" TextWrapping="Wrap" VerticalAlignment="Top" UndoLimit="200" TextChanged="PokedexManager_SearchDex_Search_TextChanged"/>
                             <CheckBox x:Name="PokedexManager_SearchDex_Pokemon" Content="Search Pokemon" Margin="0,22.96,0,0" VerticalAlignment="Top" IsChecked="True"/>
                             <CheckBox x:Name="PokedexManager_SearchDex_Moves" Content="Search Moves" Margin="0,38.058,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Abilities" Content="Search Abilitys" Margin="0,53.156,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                            <CheckBox x:Name="PokedexManager_SearchDex_Abilitys" Content="Search Abilitys" Margin="0,53.156,0,0" VerticalAlignment="Top" IsChecked="True"/>
                             <CheckBox x:Name="PokedexManager_SearchDex_Items" Content="Search Items" Margin="0,68.255,0,0" VerticalAlignment="Top" IsChecked="True"/>
                         </Grid>
                     </GroupBox>

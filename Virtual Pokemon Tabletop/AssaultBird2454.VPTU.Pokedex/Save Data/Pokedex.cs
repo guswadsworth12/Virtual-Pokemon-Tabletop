@@ -21,7 +21,7 @@ namespace AssaultBird2454.VPTU.Pokedex.Save_Data
             {
                 Moves = new List<Moves.MoveData>();// Initilises the MoveData
                 Pokemon = new List<Pokemon.PokemonData>();// Initilises the PokemonData
-                Abilitys = new List<Abilities.AbilitieData>();// Initilises the AbilityData
+                Abilitys = new List<Abilitys.AbilityData>();// Initilises the AbilityData
                 Items = new List<Items.ItemData>();// Initilises the ItemData
             }
         }
@@ -37,7 +37,7 @@ namespace AssaultBird2454.VPTU.Pokedex.Save_Data
         /// <summary>
         /// All the Abilitys in the save file
         /// </summary>
-        public List<Abilities.AbilitieData> Abilitys;
+        public List<Abilitys.AbilityData> Abilitys;
         /// <summary>
         /// All the Items in the save file
         /// </summary>

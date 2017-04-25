@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -11,7 +12,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        SaveManager.SaveManager SaveManager;
+        public SaveManager.SaveManager SaveManager;
         public ProjectInfo VersioningInfo;
 
         public MainWindow()
@@ -35,7 +36,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         #region Setup Code
         private void Setup()
         {
-            PokedexManager_List.ItemsSource = PokedexItems;
+            //PokedexManager_List.ItemsSource = PokedexItems;
         }
         #endregion
 
@@ -44,7 +45,19 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Open File" Button is clicked
         private void Menu_Menu_Open_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.CheckFileExists = true;
+            openFile.CheckPathExists = true;
+            openFile.Multiselect = false;
+            openFile.Title = "Open Virtual PTU Save File";
+            openFile.DefaultExt = ".ptu";
 
+            openFile.FileOk += new System.ComponentModel.CancelEventHandler((object obj, System.ComponentModel.CancelEventArgs args) =>
+            {
+                Load(openFile.FileName);
+            });
+
+            openFile.ShowDialog();
         }
         //When The "Save File" Button is clicked
         private void Menu_Menu_Save_Click(object sender, RoutedEventArgs e)
@@ -63,7 +76,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         /// </summary>
         public void Save()
         {
-            if(SaveManager == null)
+            if (SaveManager == null)
             {
                 MessageBox.Show("No File is open... Please open a file before saving");
                 return;
@@ -79,15 +92,13 @@ namespace AssaultBird2454.VPTU.SaveEditor
         {
             SaveManager = new VPTU.SaveManager.SaveManager(Path);
             SaveManager.Load_SaveData();
+
+            PokedexManager_ReloadList();//Reload List
         }
         #endregion
 
         #region Pokedex Manager Code
         #region Pokedex Manager Variables
-        /// <summary>
-        /// List of all items in the Pokedex Manager List
-        /// </summary>
-        private List<PokedexList_DataBind> PokedexItems = new List<PokedexList_DataBind>();
         #endregion
 
         #region Right SideBar Events
@@ -102,7 +113,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
 
         }
         //When The "Add Ability" Button is clicked
-        private void PokedexManager_AddDex_Abilitie_Click(object sender, RoutedEventArgs e)
+        private void PokedexManager_AddDex_Ability_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -128,9 +139,37 @@ namespace AssaultBird2454.VPTU.SaveEditor
         }
         #endregion
 
+        #region List Events
+        private void PokedexManager_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        public void PokedexManager_ReloadList()
+        {
+            foreach (Pokedex.Pokemon.PokemonData Pokemon in SaveManager.SaveData.PokedexData.Pokemon)
+            {
+                PokedexList_DataBind PokemonDB = new PokedexList_DataBind();
+                PokemonDB.Name = Pokemon.Species_Name;
+                PokemonDB.ID = Pokemon.Species_DexID;
+                PokemonDB.Type1 = Pokemon.Species_Type1.ToString();
+                PokemonDB.Type2 = Pokemon.Species_Type2.ToString();
+                PokemonDB.Class = "";
+
+                PokemonDB.DataType = PokedexList_DataType.Pokemon;
+                PokemonDB.DataTag = Pokemon;
+
+                PokedexManager_List.Items.Add(PokemonDB);
+            }
+        }
         #endregion
     }
 
+    /// <summary>
+    /// All the types that the pokedex list will display (Used for Pharsing Selections)
+    /// </summary>
+    public enum PokedexList_DataType { Pokemon, Moves, Abilitys, Items }
     /// <summary>
     /// A Class designed for Data Binding Pokedex Data to the Pokedex List
     /// </summary>
@@ -142,24 +181,51 @@ namespace AssaultBird2454.VPTU.SaveEditor
         /// <param name="_ID"></param>
         /// <param name="_Name"></param>
         /// <param name="_EntryType"></param>
-        public PokedexList_DataBind(int _ID, string _Name, string _EntryType)
+        /// <param name="_Type1"></param>
+        /// <param name="_Type2"></param>
+        /// <param name="_Class"></param>
+        public PokedexList_DataBind(int _ID, string _Name, string _EntryType, string _Type1, string _Type2, string _Class)
         {
             ID = _ID;
             Name = _Name;
-            EntryType = _EntryType;
+            Type1 = _Type1;
+            Type2 = _Type2;
+            Class = _Class;
+        }
+        /// <summary>
+        /// Creates a new instance of the PokedexList DataBind Object
+        /// </summary>
+        /// <param name="_ID"></param>
+        /// <param name="_Name"></param>
+        /// <param name="_EntryType"></param>
+        public PokedexList_DataBind()
+        {
+
         }
 
         /// <summary>
         /// The ID of the Object
         /// </summary>
-        public int ID { get; set; }
+        public decimal ID { get; set; }
         /// <summary>
         /// The Name of the Object
         /// </summary>
         public string Name { get; set; }
+        
         /// <summary>
-        /// The Entity Type of the Object
+        /// The Type of the Pokemon or Move
         /// </summary>
-        public string EntryType { get; set; }
+        public string Type1 { get; set; }
+        /// <summary>
+        /// The Secondary Type of the Pokemon
+        /// </summary>
+        public string Type2 { get; set; }
+        /// <summary>
+        /// The Class of move
+        /// </summary>
+        public string Class { get; set; }
+
+        public PokedexList_DataType DataType { get; set; }
+        public object DataTag { get; set; }
     }
 }

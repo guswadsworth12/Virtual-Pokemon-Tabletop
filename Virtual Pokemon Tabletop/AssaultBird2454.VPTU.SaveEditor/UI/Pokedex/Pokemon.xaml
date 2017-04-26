@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AssaultBird2454.VPTU.SaveEditor.UI.Pokedex"
         mc:Ignorable="d"
-        Title="Pokemon" Height="643.111" Width="910.357">
+        Title="Pokemon" ResizeMode="NoResize" Width="928" Height="647">
     <Grid>
         <GroupBox x:Name="G_BasicInfo" Header="Basic Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="253">
             <Grid Margin="0">
@@ -25,18 +25,17 @@
         </GroupBox>
         <GroupBox x:Name="G_BreedingInfo" Header="Gender Information" Margin="258,0,0,0" VerticalAlignment="Top" Height="144.72" HorizontalAlignment="Left" Width="180.697">
             <Grid Margin="0">
-                <RadioButton x:Name="radioButton" Content="Male Only" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <RadioButton x:Name="radioButton_Copy" Content="Female Only" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77.903,0,0,0"/>
-                <RadioButton x:Name="radioButton_Copy1" Content="Both" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,19.96,0,0"/>
-                <RadioButton x:Name="radioButton_Copy2" Content="Genderless" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48.766,19.96,0,0"/>
-                <Label x:Name="Chance_Male" Content="Chance to be Male:" HorizontalAlignment="Left" Margin="0,0,0,25.96" VerticalAlignment="Bottom"/>
-                <Label x:Name="Chance_Female" Content="Chance to be Female:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <Slider x:Name="GenderRatio_Slider" Margin="0,0,0,56.92" Maximum="100" TickPlacement="BottomRight" Value="50" VerticalAlignment="Bottom"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Right" Margin="0,0,0,29.96" TextWrapping="Wrap" Text="100" VerticalAlignment="Bottom" Width="40.11" TextAlignment="Center"/>
-                <TextBox x:Name="textBox_Copy" HorizontalAlignment="Right" Margin="0,0,0,4" TextWrapping="Wrap" Text="100" VerticalAlignment="Bottom" Width="40.11" TextAlignment="Center" IsReadOnly="True"/>
+                <RadioButton x:Name="Breeding_MaleOnly" Content="Male Only" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <RadioButton x:Name="Breeding_FemaleOnly" Content="Female Only" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77.903,0,0,0"/>
+                <RadioButton x:Name="Breeding_Both" Content="Both" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,19.96,0,0" IsChecked="True"/>
+                <RadioButton x:Name="Breeding_Genderless" Content="Genderless" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48.766,19.96,0,0"/>
+                <Label x:Name="Chance_Male" Content="Chance to be Male:" HorizontalAlignment="Left" Margin="0,39.84,0,55.96" d:LayoutOverrides="Height"/>
+                <Label x:Name="Chance_Female" Content="Chance to be Female:" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
+                <TextBox x:Name="Breeding_MaleChance" HorizontalAlignment="Right" Margin="0,43.84,0,59.96" TextWrapping="Wrap" Text="50" Width="40.11" TextAlignment="Center" TextChanged="Breeding_MaleChance_TextChanged" d:LayoutOverrides="Height"/>
+                <TextBox x:Name="Breeding_FemaleChance" HorizontalAlignment="Right" Margin="0,0,0,29" TextWrapping="Wrap" Text="50" VerticalAlignment="Bottom" Width="40.11" TextAlignment="Center" IsReadOnly="True" IsEnabled="False"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_Resources" Header="Sprite Selection" Margin="0,186.72,0,238.431" HorizontalAlignment="Left">
+        <GroupBox x:Name="G_Resources" Header="Sprite Selection" Margin="0,186.72,0,0" HorizontalAlignment="Left" Height="186.96" VerticalAlignment="Top">
             <Grid Margin="0">
                 <Border x:Name="Image_Normal" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="0,5,0,0">
                     <Border.Background>
@@ -59,36 +58,36 @@
                 <Button x:Name="button_Copy2" Content="Import Resource" Margin="0,134.96,0.697,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox" Header="Species Base Stats" Margin="302,149.72,0,272.431" HorizontalAlignment="Left" Width="136.697">
+        <GroupBox x:Name="groupBox" Header="Species Base Stats" Margin="302,149.72,0,0" HorizontalAlignment="Left" Width="136.697" Height="198.96" VerticalAlignment="Top">
             <Grid Margin="0">
                 <Label x:Name="label" Content="HP" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="textBox1" Height="23" Margin="77.647,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <TextBox x:Name="textBox1" Height="23" Margin="77.647,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42" Text="0"/>
                 <Label x:Name="label_Copy" Content="Attack" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,28,0,0"/>
-                <TextBox x:Name="textBox1_Copy" Height="23" Margin="77.647,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <TextBox x:Name="textBox1_Copy" Height="23" Margin="77.647,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42" Text="0"/>
                 <Label x:Name="label_Copy1" Content="Defence" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,56,0,0"/>
-                <TextBox x:Name="textBox1_Copy1" Height="23" Margin="77.647,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <TextBox x:Name="textBox1_Copy1" Height="23" Margin="77.647,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42" Text="0"/>
                 <Label x:Name="label_Copy2" Content="Sp. Attack" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="textBox1_Copy2" Margin="77.647,84,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="42" Height="23" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox1_Copy2" Margin="77.647,84,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="42" Height="23" VerticalAlignment="Top" Text="0"/>
                 <Label x:Name="label_Copy3" Content="Sp. Defence" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,112,0,0"/>
-                <TextBox x:Name="textBox1_Copy3" Height="23" Margin="77.647,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <TextBox x:Name="textBox1_Copy3" Height="23" Margin="77.647,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42" Text="0"/>
                 <Label x:Name="label_Copy4" Content="Speed" VerticalAlignment="Top" Margin="0,140,0,0" HorizontalAlignment="Left"/>
-                <TextBox x:Name="textBox1_Copy4" Height="23" Margin="77.647,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <TextBox x:Name="textBox1_Copy4" Height="23" Margin="77.647,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42" Text="0"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox1" Header="Moves &amp; Ability's" HorizontalAlignment="Left" Margin="0,0,0,21.471" VerticalAlignment="Bottom" Height="211.96" Width="273.963">
+        <GroupBox x:Name="groupBox1" Header="Moves &amp; Ability's" HorizontalAlignment="Left" Margin="0,378.68,0,0" VerticalAlignment="Top" Height="211.96" Width="273.963">
             <Grid Margin="0" Background="#FFFF6666"/>
         </GroupBox>
-        <GroupBox x:Name="groupBox1_Copy" Header="Forms and Evolutions" Margin="278.963,0,316.697,21.471" VerticalAlignment="Bottom" Height="211.96">
+        <GroupBox x:Name="groupBox1_Copy" Header="Forms and Evolutions" Margin="278.963,378.68,0,0" VerticalAlignment="Top" Height="211.96" HorizontalAlignment="Left" Width="306.697">
             <Grid Margin="0" Background="#FFFF6666"/>
         </GroupBox>
-        <GroupBox x:Name="groupBox1_Copy1" Header="Capabilities" Margin="0,276.96,0,149.191" HorizontalAlignment="Right" Width="311.697">
+        <GroupBox x:Name="groupBox1_Copy1" Header="Capabilities" Margin="590.66,276.96,0,0" HorizontalAlignment="Left" Width="311.697" Height="185.96" VerticalAlignment="Top">
             <Grid Margin="0" Background="#FFFF6666"/>
         </GroupBox>
-        <GroupBox x:Name="groupBox1_Copy2" Header="Skills" Margin="443.697,0,0,0" Height="271.96" VerticalAlignment="Top">
+        <GroupBox x:Name="groupBox1_Copy2" Header="Skills" Margin="443.697,0,0,0" Height="271.96" VerticalAlignment="Top" HorizontalAlignment="Left" Width="458.66">
             <Grid Margin="0" Background="#FFFF6666"/>
         </GroupBox>
         <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="82" Click="Cancel_Button_Click"/>
-        <Button x:Name="Add_Button" Content="Add / Update" HorizontalAlignment="Right" Margin="0,0,97,10" VerticalAlignment="Bottom" Width="82" IsDefault="True" Click="Add_Button_Click"/>
+        <Button x:Name="Add_Button" Content="Add / Update" HorizontalAlignment="Right" Margin="0,0,97,10" VerticalAlignment="Bottom" Width="82" Click="Add_Button_Click" IsDefault="True"/>
 
     </Grid>
 </Window>

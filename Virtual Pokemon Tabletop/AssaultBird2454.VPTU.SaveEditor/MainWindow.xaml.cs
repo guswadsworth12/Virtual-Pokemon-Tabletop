@@ -134,7 +134,21 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Edit" Button is clicked
         private void PokedexManager_ManageDex_Edit_Click(object sender, RoutedEventArgs e)
         {
+            if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+            {
+                Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
+                UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon(Data);
+                bool? OK = pokemon.ShowDialog();
 
+                if (OK == true)
+                {
+                    PokedexManager_ReloadList();
+                }
+            }
+            else if(((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+            {
+                MessageBox.Show("Feature not Avaliable for that Data Type.");
+            }
         }
         //When The "Delete" Button is clicked
         private void PokedexManager_ManageDex_Delete_Click(object sender, RoutedEventArgs e)

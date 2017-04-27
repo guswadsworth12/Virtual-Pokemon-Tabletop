@@ -35,6 +35,9 @@ namespace AssaultBird2454.VPTU.BattleManager.Data
         SandStorm, Sunny, WeightClass
     }
 
+    /// <summary>
+    /// This enum contains an object for all skills in the game.
+    /// </summary>
     public enum Skills
     {
         Body_Acrobatics, Body_Athletics, Body_Combat, Body_Intimidate, Body_Stealth, Body_Survival,

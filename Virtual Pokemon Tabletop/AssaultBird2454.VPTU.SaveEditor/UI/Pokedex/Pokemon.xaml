@@ -75,16 +75,29 @@
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBox1" Header="Moves &amp; Ability's" HorizontalAlignment="Left" Margin="0,378.68,0,0" VerticalAlignment="Top" Height="211.96" Width="273.963">
-            <Grid Margin="0" Background="#FFFF6666"/>
+            <Grid Margin="0"/>
         </GroupBox>
         <GroupBox x:Name="groupBox1_Copy" Header="Forms and Evolutions" Margin="278.963,378.68,0,0" VerticalAlignment="Top" Height="211.96" HorizontalAlignment="Left" Width="306.697">
-            <Grid Margin="0" Background="#FFFF6666"/>
+            <Grid Margin="0"/>
         </GroupBox>
         <GroupBox x:Name="groupBox1_Copy1" Header="Capabilities" Margin="590.66,276.96,0,0" HorizontalAlignment="Left" Width="311.697" Height="185.96" VerticalAlignment="Top">
-            <Grid Margin="0" Background="#FFFF6666"/>
+            <Grid Margin="0"/>
         </GroupBox>
         <GroupBox x:Name="groupBox1_Copy2" Header="Skills" Margin="443.697,0,0,0" Height="271.96" VerticalAlignment="Top" HorizontalAlignment="Left" Width="458.66">
-            <Grid Margin="0" Background="#FFFF6666"/>
+            <Grid Margin="0">
+                <TextBox x:Name="Breeding_MaleChance_Copy" Margin="173.303,0,0,75.5" TextWrapping="Wrap" Text="0" TextAlignment="Center" TextChanged="Breeding_MaleChance_TextChanged" VerticalAlignment="Bottom" SelectionOpacity="1" HorizontalAlignment="Left" Width="40.11"/>
+                <ComboBox x:Name="comboBox" Margin="48.303,0,0,72.5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <Label x:Name="label1" Content="Label" HorizontalAlignment="Right" Margin="0,0,174.363,71.5" VerticalAlignment="Bottom"/>
+                <ListView x:Name="listView" Height="100" Margin="10,10,10,0" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Skill Name" Width="150px" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Skill Rank" Width="150px" DisplayMemberBinding="{Binding Rank}"/>
+                            <GridViewColumn Header="Skill Mod" Width="80px" DisplayMemberBinding="{Binding Mod}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </GroupBox>
         <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="82" Click="Cancel_Button_Click"/>
         <Button x:Name="Add_Button" Content="Add / Update" HorizontalAlignment="Right" Margin="0,0,97,10" VerticalAlignment="Bottom" Width="82" Click="Add_Button_Click" IsDefault="True"/>

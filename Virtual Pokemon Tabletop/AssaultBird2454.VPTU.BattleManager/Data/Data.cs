@@ -35,5 +35,10 @@ namespace AssaultBird2454.VPTU.BattleManager.Data
         SandStorm, Sunny, WeightClass
     }
 
-
+    public enum Skills
+    {
+        Body_Acrobatics, Body_Athletics, Body_Combat, Body_Intimidate, Body_Stealth, Body_Survival,
+        Mind_GeneralEducation, Mind_MedicineEducation, Mind_OccultEducation, Mind_PokémonEducation, Mind_TechnologyEducation, Mind_Guile, Mind_Perception,
+        Spirit_Charm, Spirit_Command, Spirit_Focus, Spirit_Intuition, Spirit_Edges
+    }
 }

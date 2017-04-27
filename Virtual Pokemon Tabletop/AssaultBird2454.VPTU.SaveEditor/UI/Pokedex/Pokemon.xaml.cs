@@ -229,5 +229,17 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             catch { }
         }
         #endregion
+        
+        public void Add_Skill()
+        {
+
+        }
+    }
+
+    public class Skill_Display
+    {
+        ComboBox Rank { get; set; }
+        TextBox Mod { get; set; }
+        TextBox Name { get; set; }
     }
 }

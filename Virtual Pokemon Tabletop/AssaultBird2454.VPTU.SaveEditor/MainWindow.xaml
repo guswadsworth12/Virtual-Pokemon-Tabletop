@@ -13,6 +13,10 @@
                 <MenuItem x:Name="Menu_Menu_Save" Header="Save File" Click="Menu_Menu_Save_Click"/>
                 <MenuItem x:Name="Menu_Menu_SaveAs" Header="Save File As" IsEnabled="False" Click="Menu_Menu_SaveAs_Click"/>
             </MenuItem>
+            <MenuItem x:Name="Menu_About" Header="About">
+                <MenuItem x:Name="Menu_About_Licence" Header="Licence" Click="Menu_About_Licence_Click"/>
+                <MenuItem x:Name="Menu_About_LegalNotices" Header="Legal Notices" Click="Menu_About_LegalNotices_Click"/>
+            </MenuItem>
         </Menu>
         <TabControl x:Name="SaveEditor_TabPanel" Margin="0,17.96,0,21.96">
             <TabItem Header="Overview" d:IsLocked="True">

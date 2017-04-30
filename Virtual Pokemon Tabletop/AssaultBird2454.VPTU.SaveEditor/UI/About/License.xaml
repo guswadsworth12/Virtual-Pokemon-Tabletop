@@ -1,0 +1,13 @@
+﻿<Window x:Class="AssaultBird2454.VPTU.SaveEditor.UI.About.License"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssaultBird2454.VPTU.SaveEditor.UI.About"
+        mc:Ignorable="d"
+        Title="Licence" Height="383.062" Width="522.768" ResizeMode="NoResize">
+    <Grid>
+        <TextBox x:Name="License_Text" Margin="10" TextWrapping="Wrap"/>
+
+    </Grid>
+</Window>

@@ -16,7 +16,21 @@ namespace AssaultBird2454.VPTU.SaveEditor
     {
         public static SaveManager.SaveManager SaveManager;
         public ProjectInfo VersioningInfo;
+        /// <summary>
+        /// Assembly Directory
+        /// </summary>
+        public static string AssemblyDirectory
+        {
+            get
+            {
+                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+                UriBuilder uri = new UriBuilder(codeBase);
+                string path = Uri.UnescapeDataString(uri.Path);
+                return System.IO.Path.GetDirectoryName(path);
+            }
+        }
 
+        #region Form Code
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +48,43 @@ namespace AssaultBird2454.VPTU.SaveEditor
 
             Setup();
         }
+        private void Menu_About_Licence_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(AssemblyDirectory + "/LICENSE", FileMode.Open))
+                {
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
+                        UI.About.License lic = new UI.About.License(sr.ReadToEnd(), "License");
+                        lic.ShowDialog();
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The \"LICENSE\" File was not found when trying to read it! The \"LICENSE\" file is avalable on GitHub.", "License File Missing");
+            }
+        }
+        private void Menu_About_LegalNotices_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(AssemblyDirectory + "/LEGAL NOTICE", FileMode.Open))
+                {
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
+                        UI.About.License lic = new UI.About.License(sr.ReadToEnd(), "Legal Notices");
+                        lic.ShowDialog();
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The \"LEGAL NOTICE\" File was not found when trying to read it! The \"LEGAL NOTICE\" file is avalable on GitHub.", "License File Missing");
+            }
+        }
+        #endregion
 
         #region Setup Code
         private void Setup()
@@ -145,7 +196,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
                     PokedexManager_ReloadList();
                 }
             }
-            else if(((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+            else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
             {
                 MessageBox.Show("Feature not Avaliable for that Data Type.");
             }
@@ -220,7 +271,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         {
             PokedexManager_List.Items.Clear();
 
-            if(SaveManager == null) { return; }
+            if (SaveManager == null) { return; }
 
             if (PokedexManager_SearchDex_Pokemon.IsChecked == true)
             {

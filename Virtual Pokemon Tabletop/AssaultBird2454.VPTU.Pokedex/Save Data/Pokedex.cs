@@ -26,6 +26,26 @@ namespace AssaultBird2454.VPTU.Pokedex.Save_Data
             }
         }
 
+        public void InitNullObjects()
+        {
+            if (Moves == null)
+            {
+                Moves = new List<Moves.MoveData>();// Initilises the MoveData
+            }
+            if (Pokemon == null)
+            {
+                Pokemon = new List<Pokemon.PokemonData>();// Initilises the PokemonData
+            }
+            if (Abilitys == null)
+            {
+                Abilitys = new List<Abilitys.AbilityData>();// Initilises the AbilityData
+            }
+            if (Items == null)
+            {
+                Items = new List<Items.ItemData>();// Initilises the ItemData
+            }
+        }
+
         /// <summary>
         /// All the Moves in the save file
         /// </summary>

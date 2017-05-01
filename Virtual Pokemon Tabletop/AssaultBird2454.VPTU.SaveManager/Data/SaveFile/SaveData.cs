@@ -27,11 +27,11 @@ namespace AssaultBird2454.VPTU.SaveManager.Data.SaveFile
     /// </summary>
     public class PTUSaveData
     {
-        public PTUSaveData()
-        {
-
-        }
-        public PTUSaveData(bool InitNewSave)
+        /// <summary>
+        /// Creates a new PTUSaveData class
+        /// </summary>
+        /// <param name="InitNewSave">Initilises all objects</param>
+        public PTUSaveData(bool InitNewSave = false)
         {
             if (InitNewSave)
             {
@@ -48,6 +48,36 @@ namespace AssaultBird2454.VPTU.SaveManager.Data.SaveFile
 
                 PokedexData = new Pokedex.Save_Data.Pokedex(true);
             }
+        }
+
+        /// <summary>
+        /// Creates a new instance of all objects that are null
+        /// </summary>
+        public void InitNullObjects()
+        {
+            if (Trainers == null)
+            {
+                Trainers = new List<BattleManager.Entity.Trainer.EntityTrainerData>();
+            }
+            if (Pokemon == null)
+            {
+                Pokemon = new List<BattleManager.Entity.Pokemon.EntityPokemonData>();
+            }
+            if (EntityGroups == null)
+            {
+                EntityGroups = new List<BattleManager.Entity.EntityGroup>();
+            }
+
+            //MapFiles = new List<Resources.MapFileData>();
+            //Maps = new List<Resources.MapData>();
+
+            if (AudioResources == null)
+            {
+                AudioResources = new List<SoundSystem.SaveData.AudioData>();
+            }
+            //ImageResources = new List<Data.Image.Image_Data>();
+
+            PokedexData.InitNullObjects();
         }
 
         #region Data

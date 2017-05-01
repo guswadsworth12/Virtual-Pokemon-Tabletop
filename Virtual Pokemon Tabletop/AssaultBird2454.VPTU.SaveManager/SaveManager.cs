@@ -54,6 +54,8 @@ namespace AssaultBird2454.VPTU.SaveManager
             SaveData.PokedexData.Moves = LoadData_FromSave<List<Pokedex.Moves.MoveData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Moves));
             SaveData.PokedexData.Abilitys = LoadData_FromSave<List<Pokedex.Abilitys.AbilityData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys));
             SaveData.PokedexData.Items = LoadData_FromSave<List<Pokedex.Items.ItemData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items));
+
+            SaveData.InitNullObjects();
         }
         /// <summary>
         /// Saves save data to save file
@@ -88,7 +90,7 @@ namespace AssaultBird2454.VPTU.SaveManager
                     }
                     //Creates a stream to read the data from
                     using (StreamReader DataReader = new StreamReader(entry.Open()))
-                    {
+                    {                       
                         return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(DataReader.ReadToEnd());// Returns the save file data
                     }
                 }
@@ -128,7 +130,7 @@ namespace AssaultBird2454.VPTU.SaveManager
         /// </summary>
         /// <param name="DirType">File requested</param>
         /// <returns>Path to file</returns>
-        internal string GetSaveFile_DataDir(SaveData_Dir DirType)
+        private string GetSaveFile_DataDir(SaveData_Dir DirType)
         {
             switch (DirType)
             {

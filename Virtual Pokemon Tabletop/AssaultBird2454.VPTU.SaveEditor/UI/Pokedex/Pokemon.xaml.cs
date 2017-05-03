@@ -25,6 +25,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         public Pokemon(VPTU.Pokedex.Pokemon.PokemonData _PokemonData = null)
         {
             InitializeComponent();
+            Setup();
 
             if (_PokemonData == null)
             {
@@ -36,12 +37,55 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 Update = true;
                 Load();
             }
+        }
 
-
+        /// <summary>
+        /// Used to setup some fields
+        /// </summary>
+        private void Setup()
+        {
+            #region Populating Fields
             Basic_Type1.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.Type));
             Basic_Type2.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.Type));
             Basic_Weight.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.WeightClass));
             Basic_Size.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SizeClass));
+            Skill_Acrobatics_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Athletics_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Charm_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Combat_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Command_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Focus_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_GeneralEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Gulie_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Intimidate_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Intuition_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_MedicineEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_OccultEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Perception_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_PokemonEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Stealth_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_Survival_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            Skill_TechnologyEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+            #endregion
+            #region Defaulting
+            Skill_Acrobatics_Rank.SelectedIndex = 1;
+            Skill_Athletics_Rank.SelectedIndex = 1;
+            Skill_Charm_Rank.SelectedIndex = 1;
+            Skill_Combat_Rank.SelectedIndex = 1;
+            Skill_Command_Rank.SelectedIndex = 1;
+            Skill_Focus_Rank.SelectedIndex = 1;
+            Skill_GeneralEDU_Rank.SelectedIndex = 1;
+            Skill_Gulie_Rank.SelectedIndex = 1;
+            Skill_Intimidate_Rank.SelectedIndex = 1;
+            Skill_Intuition_Rank.SelectedIndex = 1;
+            Skill_MedicineEDU_Rank.SelectedIndex = 1;
+            Skill_OccultEDU_Rank.SelectedIndex = 1;
+            Skill_Perception_Rank.SelectedIndex = 1;
+            Skill_PokemonEDU_Rank.SelectedIndex = 1;
+            Skill_Stealth_Rank.SelectedIndex = 1;
+            Skill_Survival_Rank.SelectedIndex = 1;
+            Skill_TechnologyEDU_Rank.SelectedIndex = 1;
+            #endregion
         }
 
         /// <summary>
@@ -57,40 +101,119 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Basic_Weight.SelectedItem = PokemonData.Species_WeightClass;
             Basic_Size.SelectedItem = PokemonData.Species_SizeClass;
             #endregion
+            #region Skill Data
+            //Skill Rank Data
+            Skill_Acrobatics_Rank.SelectedItem = PokemonData.Species_Skill_Data.Acrobatics_Rank;
+            Skill_Athletics_Rank.SelectedItem = PokemonData.Species_Skill_Data.Athletics_Rank;
+            Skill_Charm_Rank.SelectedItem = PokemonData.Species_Skill_Data.Charm_Rank;
+            Skill_Combat_Rank.SelectedItem = PokemonData.Species_Skill_Data.Combat_Rank;
+            Skill_Command_Rank.SelectedItem = PokemonData.Species_Skill_Data.Command_Rank;
+            Skill_Focus_Rank.SelectedItem = PokemonData.Species_Skill_Data.Focus_Rank;
+            Skill_GeneralEDU_Rank.SelectedItem = PokemonData.Species_Skill_Data.General_Rank;
+            Skill_Gulie_Rank.SelectedItem = PokemonData.Species_Skill_Data.Guile_Rank;
+            Skill_Intimidate_Rank.SelectedItem = PokemonData.Species_Skill_Data.Intimidate_Rank;
+            Skill_Intuition_Rank.SelectedItem = PokemonData.Species_Skill_Data.Intuition_Rank;
+            Skill_MedicineEDU_Rank.SelectedItem = PokemonData.Species_Skill_Data.Medicine_Rank;
+            Skill_OccultEDU_Rank.SelectedItem = PokemonData.Species_Skill_Data.Occult_Rank;
+            Skill_Perception_Rank.SelectedItem = PokemonData.Species_Skill_Data.Perception_Rank;
+            Skill_PokemonEDU_Rank.SelectedItem = PokemonData.Species_Skill_Data.Pokemon_Rank;
+            Skill_Stealth_Rank.SelectedItem = PokemonData.Species_Skill_Data.Stealth_Rank;
+            Skill_Survival_Rank.SelectedItem = PokemonData.Species_Skill_Data.Survival_Rank;
+            Skill_TechnologyEDU_Rank.SelectedItem = PokemonData.Species_Skill_Data.Technology_Rank;
 
+            //Skill Mod Data
+            Skill_Acrobatics_Mod.Value = PokemonData.Species_Skill_Data.Acrobatics_Mod;
+            Skill_Athletics_Mod.Value = PokemonData.Species_Skill_Data.Athletics_Mod;
+            Skill_Charm_Mod.Value = PokemonData.Species_Skill_Data.Charm_Mod;
+            Skill_Combat_Mod.Value = PokemonData.Species_Skill_Data.Combat_Mod;
+            Skill_Command_Mod.Value = PokemonData.Species_Skill_Data.Command_Mod;
+            Skill_Focus_Mod.Value = PokemonData.Species_Skill_Data.Focus_Mod;
+            Skill_GeneralEDU_Mod.Value = PokemonData.Species_Skill_Data.General_Mod;
+            Skill_Gulie_Mod.Value = PokemonData.Species_Skill_Data.Guile_Mod;
+            Skill_Intimidate_Mod.Value = PokemonData.Species_Skill_Data.Intimidate_Mod;
+            Skill_Intuition_Mod.Value = PokemonData.Species_Skill_Data.Intuition_Mod;
+            Skill_MedicineEDU_Mod.Value = PokemonData.Species_Skill_Data.Medicine_Mod;
+            Skill_OccultEDU_Mod.Value = PokemonData.Species_Skill_Data.Occult_Mod;
+            Skill_Perception_Mod.Value = PokemonData.Species_Skill_Data.Perception_Mod;
+            Skill_PokemonEDU_Mod.Value = PokemonData.Species_Skill_Data.Pokemon_Mod;
+            Skill_Stealth_Mod.Value = PokemonData.Species_Skill_Data.Stealth_Mod;
+            Skill_Survival_Mod.Value = PokemonData.Species_Skill_Data.Survival_Mod;
+            Skill_TechnologyEDU_Mod.Value = PokemonData.Species_Skill_Data.Technology_Mod;
+            #endregion
+            #region Links
+            #region Moves
+            if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Move_Link>(); }
+            foreach (AssaultBird2454.VPTU.Pokedex.Pokemon.Move_Link ML in PokemonData.Moves)
+            {
+                Moves_List.Items.Add(ML);
+            }
+            #endregion
+
+            #endregion
         }
         /// <summary>
         /// Saves Modifications or Adds a new entry to the Pokedex
         /// </summary>
         private void Save()
         {
-            bool Close = false;
-            try
-            {
-                if (ValidateSettings())// Settings get Validated here and if it passes, it will Save the Data Below
-                {
-                    //Save Form to Object Here
-                    #region Basic Info
-                    PokemonData.Species_Name = Basic_Name.Text;
-                    PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Text);
-                    PokemonData.Species_Type1 = (BattleManager.Data.Type)Basic_Type1.SelectedItem;
-                    PokemonData.Species_Type2 = (BattleManager.Data.Type)Basic_Type2.SelectedItem;
-                    PokemonData.Species_WeightClass = (BattleManager.Entity.WeightClass)Basic_Weight.SelectedItem;
-                    PokemonData.Species_SizeClass = (BattleManager.Entity.SizeClass)Basic_Size.SelectedItem;
-                    #endregion
-                }
-                Close = true;// All Save & Validation Complete, Allow Close
-            }
-            catch
-            {
-                return;// Cancel
-            }
+            //Save Form to Object Here
+            #region Basic Info
+            PokemonData.Species_Name = Basic_Name.Text;
+            PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Text);
+            PokemonData.Species_Type1 = (BattleManager.Data.Type)Basic_Type1.SelectedItem;
+            PokemonData.Species_Type2 = (BattleManager.Data.Type)Basic_Type2.SelectedItem;
+            PokemonData.Species_WeightClass = (BattleManager.Entity.WeightClass)Basic_Weight.SelectedItem;
+            PokemonData.Species_SizeClass = (BattleManager.Entity.SizeClass)Basic_Size.SelectedItem;
+            #endregion
+            #region Skill Data
+            //Skill Rank Data
+            PokemonData.Species_Skill_Data.Acrobatics_Rank = (BattleManager.Entity.SkillRank)Skill_Acrobatics_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Athletics_Rank = (BattleManager.Entity.SkillRank)Skill_Athletics_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Charm_Rank = (BattleManager.Entity.SkillRank)Skill_Charm_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Combat_Rank = (BattleManager.Entity.SkillRank)Skill_Combat_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Command_Rank = (BattleManager.Entity.SkillRank)Skill_Command_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Focus_Rank = (BattleManager.Entity.SkillRank)Skill_Focus_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.General_Rank = (BattleManager.Entity.SkillRank)Skill_GeneralEDU_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Guile_Rank = (BattleManager.Entity.SkillRank)Skill_Gulie_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Intimidate_Rank = (BattleManager.Entity.SkillRank)Skill_Intimidate_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Intuition_Rank = (BattleManager.Entity.SkillRank)Skill_Intuition_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Medicine_Rank = (BattleManager.Entity.SkillRank)Skill_MedicineEDU_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Occult_Rank = (BattleManager.Entity.SkillRank)Skill_OccultEDU_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Perception_Rank = (BattleManager.Entity.SkillRank)Skill_Perception_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Pokemon_Rank = (BattleManager.Entity.SkillRank)Skill_PokemonEDU_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Stealth_Rank = (BattleManager.Entity.SkillRank)Skill_Stealth_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Survival_Rank = (BattleManager.Entity.SkillRank)Skill_Survival_Rank.SelectedItem;
+            PokemonData.Species_Skill_Data.Technology_Rank = (BattleManager.Entity.SkillRank)Skill_TechnologyEDU_Rank.SelectedItem;
 
-            if (Close)// Close and DialogResalt = true
+            //Skill Mod Data
+            PokemonData.Species_Skill_Data.Acrobatics_Mod = (int)Skill_Acrobatics_Mod.Value;
+            PokemonData.Species_Skill_Data.Athletics_Mod = (int)Skill_Athletics_Mod.Value;
+            PokemonData.Species_Skill_Data.Charm_Mod = (int)Skill_Charm_Mod.Value;
+            PokemonData.Species_Skill_Data.Combat_Mod = (int)Skill_Combat_Mod.Value;
+            PokemonData.Species_Skill_Data.Command_Mod = (int)Skill_Command_Mod.Value;
+            PokemonData.Species_Skill_Data.Focus_Mod = (int)Skill_Focus_Mod.Value;
+            PokemonData.Species_Skill_Data.General_Mod = (int)Skill_GeneralEDU_Mod.Value;
+            PokemonData.Species_Skill_Data.Guile_Mod = (int)Skill_Gulie_Mod.Value;
+            PokemonData.Species_Skill_Data.Intimidate_Mod = (int)Skill_Intimidate_Mod.Value;
+            PokemonData.Species_Skill_Data.Intuition_Mod = (int)Skill_Intuition_Mod.Value;
+            PokemonData.Species_Skill_Data.Medicine_Mod = (int)Skill_MedicineEDU_Mod.Value;
+            PokemonData.Species_Skill_Data.Occult_Mod = (int)Skill_OccultEDU_Mod.Value;
+            PokemonData.Species_Skill_Data.Perception_Mod = (int)Skill_Perception_Mod.Value;
+            PokemonData.Species_Skill_Data.Pokemon_Mod = (int)Skill_PokemonEDU_Mod.Value;
+            PokemonData.Species_Skill_Data.Stealth_Mod = (int)Skill_Stealth_Mod.Value;
+            PokemonData.Species_Skill_Data.Survival_Mod = (int)Skill_Survival_Mod.Value;
+            PokemonData.Species_Skill_Data.Technology_Mod = (int)Skill_TechnologyEDU_Mod.Value;
+            #endregion
+
+            #region Links
+            #region Moves
+            PokemonData.Moves.Clear();
+            foreach (VPTU.Pokedex.Pokemon.Move_Link link in Moves_List.Items)
             {
-                DialogResult = true;
-                this.Close();
+                PokemonData.Moves.Add(link);
             }
+            #endregion
+            #endregion
         }
         /// <summary>
         /// Validates settings and fixes some automaticly fixable errors. This is always run before Saving Data.
@@ -197,6 +320,9 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
             Save();
+
+            DialogResult = true;
+            Close();
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -211,10 +337,12 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             else if (mbr == MessageBoxResult.No)
             {
                 Load();
+                DialogResult = null;
                 return;
             }
             else if (mbr == MessageBoxResult.Cancel)
             {
+                DialogResult = null;
                 return;
             }
         }
@@ -229,17 +357,45 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             catch { }
         }
         #endregion
-        
-        public void Add_Skill()
+
+        #region Link Moves
+        /// <summary>
+        /// Add Link Button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LinkMove_Button_Click(object sender, RoutedEventArgs e)
         {
+            Move_Link link = new Move_Link();// Create a new MoveLink Window to create a link with
+            bool? add = link.ShowDialog();// Shows the Link Window, Creates a Dialog to return true if it added successfully
 
+            if (add == true)
+            {
+                Moves_List.Items.Add(link.LinkData);// Add MoveLink to list if not canceled
+            }
         }
-    }
+        /// <summary>
+        /// Edit Link Button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditLinkMove_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Moves_List.SelectedItem == null) { return; }// Returns if selection is null
 
-    public class Skill_Display
-    {
-        ComboBox Rank { get; set; }
-        TextBox Mod { get; set; }
-        TextBox Name { get; set; }
+            Move_Link link = new Move_Link((VPTU.Pokedex.Pokemon.Move_Link)Moves_List.SelectedItem);// Creates a new MoveLink Window to modify link with
+            link.ShowDialog();// Shows the Link Window
+        }
+        /// <summary>
+        /// Remove Link Button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveLinkMove_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Moves_List.SelectedItem == null) { return; }// Returns if selection is null
+            Moves_List.Items.Remove(Moves_List.SelectedItem);// Removes Link from list
+        }
+        #endregion
     }
 }

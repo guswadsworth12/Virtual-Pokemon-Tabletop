@@ -112,8 +112,14 @@
     <Compile Include="UI\Pokedex\Moves.xaml.cs">
       <DependentUpon>Moves.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pokedex\Move_Link.xaml.cs">
+      <DependentUpon>Move_Link.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pokedex\Pokemon.xaml.cs">
       <DependentUpon>Pokemon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Selection\Pokedex\Select_Move.xaml.cs">
+      <DependentUpon>Select_Move.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,7 +145,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Pokedex\Move_Link.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pokedex\Pokemon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Selection\Pokedex\Select_Move.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

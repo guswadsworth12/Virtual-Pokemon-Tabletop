@@ -118,8 +118,11 @@
     <Compile Include="UI\Pokedex\Pokemon.xaml.cs">
       <DependentUpon>Pokemon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Selection\Pokedex\Select_Move.xaml.cs">
+    <Compile Include="UI\Pokedex\Select_Move.xaml.cs">
       <DependentUpon>Select_Move.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Resources\Search_Resources.xaml.cs">
+      <DependentUpon>Search_Resources.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -153,7 +156,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Selection\Pokedex\Select_Move.xaml">
+    <Page Include="UI\Pokedex\Select_Move.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Resources\Search_Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,6 +240,7 @@
   <ItemGroup>
     <Resource Include="pokeball_B98_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

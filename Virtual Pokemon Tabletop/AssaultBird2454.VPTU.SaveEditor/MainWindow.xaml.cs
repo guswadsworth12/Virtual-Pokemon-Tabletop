@@ -240,6 +240,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
         {
 
         }
+        //All of these events will reload the Pokedex List
         private void PokedexManager_SearchDex_Pokemon_Checked(object sender, RoutedEventArgs e)
         {
             PokedexManager_ReloadList();

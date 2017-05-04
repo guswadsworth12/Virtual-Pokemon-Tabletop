@@ -73,7 +73,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         #region Search For Move
         private void Move_Name_Select_Click(object sender, RoutedEventArgs e)
         {
-            UI.Selection.Pokedex.Select_Move sm = new Selection.Pokedex.Select_Move();
+            Select_Move sm = new Select_Move();
             bool? pass = sm.ShowDialog();
 
             if(pass == true && sm.Selected_Move != null)

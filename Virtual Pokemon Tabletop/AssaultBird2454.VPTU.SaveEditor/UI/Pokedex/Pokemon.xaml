@@ -32,8 +32,8 @@
                 <RadioButton x:Name="Breeding_Genderless" Content="Genderless" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48.766,19.96,0,0"/>
                 <Label x:Name="Chance_Male" Content="Chance to be Male:" HorizontalAlignment="Left" Margin="0,39.84,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="Chance_Female" Content="Chance to be Female:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,70.8,0,0"/>
-                <TextBox x:Name="Breeding_FemaleChance" HorizontalAlignment="Left" Margin="128.587,74.8,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Width="62.413" TextAlignment="Center" IsReadOnly="True" IsEnabled="False"/>
-                <xctk:DecimalUpDown x:Name="Breeding_MaleChance" HorizontalAlignment="Left" Margin="128.587,43.8,0,0" Width="62.413" Watermark="Chance" TextAlignment="Center" VerticalAlignment="Top"/>
+                <TextBox x:Name="Breeding_FemaleChance" HorizontalAlignment="Left" Margin="128.587,74.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62.413" TextAlignment="Center" IsReadOnly="True" IsEnabled="False" Text="0"/>
+                <xctk:DecimalUpDown x:Name="Breeding_MaleChance" HorizontalAlignment="Left" Margin="128.587,43.8,0,0" Width="62.413" Watermark="Chance" TextAlignment="Center" VerticalAlignment="Top" ValueChanged="Breeding_MaleChance_ValueChanged" Value="50"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="G_Resources" Header="Sprite Selection" Margin="0,186.72,0,0" HorizontalAlignment="Left" Height="186.96" VerticalAlignment="Top">

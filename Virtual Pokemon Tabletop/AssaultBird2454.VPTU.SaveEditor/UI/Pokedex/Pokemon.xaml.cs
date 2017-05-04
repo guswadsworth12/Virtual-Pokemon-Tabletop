@@ -39,6 +39,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             }
         }
 
+        #region Main Functions
         /// <summary>
         /// Used to setup some fields
         /// </summary>
@@ -93,6 +94,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         /// </summary>
         private void Load()
         {
+            //Save Basic Pokemon Data
             #region Basic Info
             Basic_Name.Text = PokemonData.Species_Name;
             Basic_ID.Text = PokemonData.Species_DexID.ToString();
@@ -101,6 +103,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Basic_Weight.SelectedItem = PokemonData.Species_WeightClass;
             Basic_Size.SelectedItem = PokemonData.Species_SizeClass;
             #endregion
+            //Load Pokemon Skill Data
             #region Skill Data
             //Skill Rank Data
             Skill_Acrobatics_Rank.SelectedItem = PokemonData.Species_Skill_Data.Acrobatics_Rank;
@@ -140,7 +143,19 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_Survival_Mod.Value = PokemonData.Species_Skill_Data.Survival_Mod;
             Skill_TechnologyEDU_Mod.Value = PokemonData.Species_Skill_Data.Technology_Mod;
             #endregion
+            //Load Pokemon Base Stat Data
+            #region Base Stats
+            BaseStats_HP.Value = PokemonData.Species_BaseStats_HP;
+            BaseStats_Attack.Value = PokemonData.Species_BaseStats_Attack;
+            BaseStats_Defence.Value = PokemonData.Species_BaseStats_Defence;
+            BaseStats_SpAttack.Value = PokemonData.Species_BaseStats_SpAttack;
+            BaseStats_SpDefence.Value = PokemonData.Species_BaseStats_SpDefence;
+            BaseStats_Speed.Value = PokemonData.Species_BaseStats_Speed;
+            #endregion
+
+            //All the linked objects get loaded here
             #region Links
+            //Load Linked Move Data
             #region Moves
             if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Move_Link>(); }
             foreach (AssaultBird2454.VPTU.Pokedex.Pokemon.Move_Link ML in PokemonData.Moves)
@@ -156,7 +171,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         /// </summary>
         private void Save()
         {
-            //Save Form to Object Here
+            //Save Basic Pokemon Data
             #region Basic Info
             PokemonData.Species_Name = Basic_Name.Text;
             PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Text);
@@ -165,6 +180,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             PokemonData.Species_WeightClass = (BattleManager.Entity.WeightClass)Basic_Weight.SelectedItem;
             PokemonData.Species_SizeClass = (BattleManager.Entity.SizeClass)Basic_Size.SelectedItem;
             #endregion
+            //Save Pokemon Skill Data
             #region Skill Data
             //Skill Rank Data
             PokemonData.Species_Skill_Data.Acrobatics_Rank = (BattleManager.Entity.SkillRank)Skill_Acrobatics_Rank.SelectedItem;
@@ -204,8 +220,19 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             PokemonData.Species_Skill_Data.Survival_Mod = (int)Skill_Survival_Mod.Value;
             PokemonData.Species_Skill_Data.Technology_Mod = (int)Skill_TechnologyEDU_Mod.Value;
             #endregion
+            //Save Pokemon Base Stat Data
+            #region Base Stats
+            PokemonData.Species_BaseStats_HP = (int)BaseStats_HP.Value;
+            PokemonData.Species_BaseStats_Attack = (int)BaseStats_Attack.Value;
+            PokemonData.Species_BaseStats_Defence = (int)BaseStats_Defence.Value;
+            PokemonData.Species_BaseStats_SpAttack = (int)BaseStats_SpAttack.Value;
+            PokemonData.Species_BaseStats_SpDefence = (int)BaseStats_SpDefence.Value;
+            PokemonData.Species_BaseStats_Speed = (int)BaseStats_Speed.Value;
+            #endregion
 
+            //All the linked objects get saved here
             #region Links
+            //Save Linked Move Data
             #region Moves
             PokemonData.Moves.Clear();
             foreach (VPTU.Pokedex.Pokemon.Move_Link link in Moves_List.Items)
@@ -215,10 +242,12 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #endregion
             #endregion
         }
+
         /// <summary>
         /// Validates settings and fixes some automaticly fixable errors. This is always run before Saving Data.
         /// </summary>
         /// <returns>Validation Pass</returns>
+        [Obsolete("Code is not complete, Contains Errors", true)]
         private bool ValidateSettings()
         {
             bool Pass = true;// The variable that defines if the settings pass validation
@@ -317,6 +346,11 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             return Pass;// returns the validation pass state
         }
 
+        /// <summary>
+        /// When the Add / Update Button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
             Save();
@@ -324,6 +358,12 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             DialogResult = true;
             Close();
         }
+
+        /// <summary>
+        /// When the Cancel Button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult mbr = MessageBox.Show("All unsaved work will be lost!\nDo you want to close?\n\nYes = Close\nNo = Clear all changes and continue to edit\nCancel = Keep Changes and Keep editing", "", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
@@ -346,15 +386,12 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 return;
             }
         }
+        #endregion
 
-        #region Form Componants Change
-        private void Breeding_MaleChance_TextChanged(object sender, TextChangedEventArgs e)
+        #region Form Components Change
+        private void Breeding_MaleChance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            try
-            {
-                Breeding_FemaleChance.Text = (100 - Convert.ToDecimal(Breeding_MaleChance.Text)).ToString();
-            }
-            catch { }
+            Breeding_FemaleChance.Text = (100 - Breeding_MaleChance.Value).ToString();
         }
         #endregion
 

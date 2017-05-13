@@ -47,18 +47,41 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Resources
 
         private void Import()
         {
-            foreach (string file in Directory.GetFiles(Selected_FileDir.Text))
-            {
-                ImportThread = new Thread(new ThreadStart(new Action(() => ImportFile(file))));
-                //Import
+            Import_Progress.Value = 0;
 
-                System.Windows.MessageBox.Show("File Name: " + file);
+            if (File.Exists(Selected_FileDir.Text))
+            {
+                Import_Progress.Maximum = 1;// Sets the Progress Bar to 1 File
+
+                ImportFile(Selected_FileDir.Text);
+                Import_Progress.Dispatcher.Invoke(new Action(() => Import_Progress.Value = 1));
             }
+            else if (Directory.Exists(Selected_FileDir.Text))
+            {
+                string[] Files = Directory.GetFiles(Selected_FileDir.Text);
+                Import_Progress.Maximum = Files.Count();// Sets the Progress Bar to the amount of file in folder
+
+                foreach (string file in Files)
+                {
+                    ImportThread = new Thread(new ThreadStart(new Action(() =>
+                    {
+                        ImportFile(file);
+                    })));
+                    ImportThread.Start();
+                    Import_Progress.Value++; ;
+                    ImportThread.Join();
+                }
+            }
+            else { }
         }
 
         private void ImportFile(string FileDir)
         {
+            SaveManager.Resource_Data.ImageResources res = new SaveManager.Resource_Data.ImageResources();
+            res.Name = System.IO.Path.GetFileName(FileDir);
+            res.Path = FileDir;
 
+            MainWindow.SaveManager.SaveData.ImageResources.Add(res);
         }
         #endregion
 

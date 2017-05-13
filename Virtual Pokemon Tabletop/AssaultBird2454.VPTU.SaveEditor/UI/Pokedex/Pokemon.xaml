@@ -6,25 +6,31 @@
         xmlns:local="clr-namespace:AssaultBird2454.VPTU.SaveEditor.UI.Pokedex"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Pokemon"
         mc:Ignorable="d"
-        Title="Pokemon" ResizeMode="NoResize" Width="1163" Height="591">
+        Title="Pokemon" ResizeMode="NoResize" Width="1390" Height="591">
     <Grid>
-        <GroupBox x:Name="G_BasicInfo" Header="Basic Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="253">
+        <GroupBox x:Name="G_BasicInfo" Header="Basic Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="465">
             <Grid Margin="0">
-                <TextBox x:Name="Basic_Name" Margin="89.506,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150.45"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250*"/>
+                    <ColumnDefinition Width="203*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="Basic_Name" Margin="90,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
                 <Label Content="Species Name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="Basic_ID" Margin="89.506,29.96,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="150.45" VerticalAlignment="Top"/>
-                <Label Content="Species Dex#" Margin="0,25.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Label Content="Type 1" HorizontalAlignment="Left" Margin="0,51.92,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="Basic_Type1" Margin="89.506,52.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150.45"/>
-                <Label Content="Type 2" Margin="0,78.88,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="Basic_Type2" Margin="89.506,79.88,0,0" HorizontalAlignment="Left" Width="150.45" VerticalAlignment="Top"/>
-                <Label Content="Size Class" HorizontalAlignment="Left" Margin="0,105.84,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="Basic_Size" Margin="89.506,106.84,0,0" HorizontalAlignment="Left" Width="150.45" VerticalAlignment="Top"/>
-                <Label Content="Weight Class" Margin="0,132.8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="Basic_Weight" Margin="89.506,133.8,0,0" HorizontalAlignment="Left" Width="150.45" VerticalAlignment="Top"/>
+                <TextBox x:Name="Basic_ID" Margin="90,30,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="151" VerticalAlignment="Top"/>
+                <Label Content="Species Dex#" Margin="0,26,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Content="Type 1" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="Basic_Type1" Margin="90,53,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+                <Label Content="Type 2" Margin="0,79,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="Basic_Type2" Margin="90,80,0,0" HorizontalAlignment="Left" Width="150" VerticalAlignment="Top"/>
+                <Label Content="Size Class" HorizontalAlignment="Left" Margin="0,106,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="Basic_Size" Margin="90,107,0,0" HorizontalAlignment="Left" Width="150" VerticalAlignment="Top"/>
+                <Label Content="Weight Class" Margin="0,133,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="Basic_Weight" Margin="90,134,0,0" HorizontalAlignment="Left" Width="150" VerticalAlignment="Top"/>
+                <Label x:Name="label3" Content="Pokedex Description" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="183" Grid.Column="1" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="Basic_Desc" HorizontalAlignment="Left" Height="119" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Column="1"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_BreedingInfo" Header="Gender Information" Margin="258,0,0,0" VerticalAlignment="Top" Height="120" HorizontalAlignment="Left" Width="207">
+        <GroupBox x:Name="G_BreedingInfo" Header="Gender Information" Margin="492,0,0,0" VerticalAlignment="Top" Height="120" HorizontalAlignment="Left" Width="207">
             <Grid Margin="0">
                 <RadioButton x:Name="Breeding_MaleOnly" Content="Male Only" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <RadioButton x:Name="Breeding_FemaleOnly" Content="Female Only" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77.903,0,0,0"/>
@@ -59,7 +65,7 @@
                 <Button x:Name="button_Copy2" Content="Import Resource" Margin="0,134.96,0.697,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_BaseStats" Header="Species Base Stats" Margin="302,174.72,0,0" HorizontalAlignment="Left" Width="163" Height="198.96" VerticalAlignment="Top">
+        <GroupBox x:Name="G_BaseStats" Header="Species Base Stats" Margin="302,180,0,0" HorizontalAlignment="Left" Width="163" Height="199" VerticalAlignment="Top">
             <Grid Margin="0">
                 <Label x:Name="label" Content="HP" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10"/>
                 <Label x:Name="label_Copy" Content="Attack" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,28,0,0" FontSize="10"/>
@@ -97,13 +103,37 @@
                 </ListView>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_FormsAndEvolutions" Header="Forms and Evolutions" Margin="793.66,190.96,0,0" VerticalAlignment="Top" Height="211.96" HorizontalAlignment="Left" Width="311.697">
+        <GroupBox x:Name="G_FormsAndEvolutions" Header="Forms and Evolutions" Margin="1063,315,0,0" VerticalAlignment="Top" Height="212" HorizontalAlignment="Left" Width="311">
             <Grid Margin="0"/>
         </GroupBox>
-        <GroupBox x:Name="G_Capabilities" Header="Capabilities" Margin="793.66,0,0,0" HorizontalAlignment="Left" Width="311.697" Height="185.96" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
-            <Grid Margin="0"/>
+        <GroupBox x:Name="G_Capabilities" Header="Capabilities" Margin="1048,80,0,0" HorizontalAlignment="Left" Width="326" Height="235" VerticalAlignment="Top">
+            <Grid Margin="0">
+                <ComboBox x:Name="Capabilities_NatureWalk_2" HorizontalAlignment="Left" Margin="172,181,0,0" VerticalAlignment="Top" Width="79" KeyDown="Capabilities_NatureWalk_2_KeyDown"/>
+                <ComboBox x:Name="Capabilities_NatureWalk_1" HorizontalAlignment="Left" Margin="88,181,0,0" VerticalAlignment="Top" Width="79" KeyDown="Capabilities_NatureWalk_1_KeyDown"/>
+                <Label x:Name="label2" Content="Nature Walks" HorizontalAlignment="Left" Margin="2,177,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label1_Copy16" Content="Overland" VerticalAlignment="Top" Height="26" Margin="2,4,232,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy" HorizontalAlignment="Left" Margin="73,8,0,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy17" Content="Swim" VerticalAlignment="Top" Height="26" Margin="2,35,232,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy1" HorizontalAlignment="Left" Margin="73,39,0,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy18" Content="Jump (L)" VerticalAlignment="Top" Height="26" Margin="2,66,232,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy2" HorizontalAlignment="Left" Margin="73,70,0,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy19" Content="Jump (H)" VerticalAlignment="Top" Height="26" Margin="2,97,232,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy3" HorizontalAlignment="Left" Margin="73,101,0,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy20" Content="Power" VerticalAlignment="Top" Height="26" Margin="2,128,232,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy4" HorizontalAlignment="Left" Margin="73,132,0,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy21" Content="Overland" VerticalAlignment="Top" Height="26" Margin="158,4,76,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy5" HorizontalAlignment="Left" Margin="229,8,-9,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy22" Content="Swim" VerticalAlignment="Top" Height="26" Margin="158,35,76,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy6" HorizontalAlignment="Left" Margin="229,39,-9,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy23" Content="Jump (L)" VerticalAlignment="Top" Height="26" Margin="158,66,76,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy7" HorizontalAlignment="Left" Margin="229,70,-9,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy24" Content="Jump (H)" VerticalAlignment="Top" Height="26" Margin="158,97,76,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy8" HorizontalAlignment="Left" Margin="229,101,-9,0" VerticalAlignment="Top" Width="80"/>
+                <Label x:Name="label1_Copy25" Content="Power" VerticalAlignment="Top" Height="26" Margin="158,128,76,0"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod_Copy9" HorizontalAlignment="Left" Margin="229,132,-9,0" VerticalAlignment="Top" Width="80"/>
+            </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_Skills" Header="Skills" Margin="470,0,0,0" HorizontalAlignment="Left" Width="318.66" Height="555" VerticalAlignment="Top">
+        <GroupBox x:Name="G_Skills" Header="Skills" Margin="704,0,0,0" HorizontalAlignment="Left" Width="319" Height="555" VerticalAlignment="Top">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="103.104"/>

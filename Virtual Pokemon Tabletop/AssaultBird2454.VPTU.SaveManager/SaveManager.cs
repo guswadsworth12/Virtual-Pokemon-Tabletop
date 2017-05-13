@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AssaultBird2454.VPTU.SaveManager
 {
-    public enum SaveData_Dir { Pokedex_Pokemon, Pokedex_Moves, Pokedex_Abilitys, Pokedex_Items }
+    public enum SaveData_Dir { Pokedex_Pokemon, Pokedex_Moves, Pokedex_Abilitys, Pokedex_Items, Resource_Image }
 
     public class SaveManager
     {
@@ -55,6 +55,8 @@ namespace AssaultBird2454.VPTU.SaveManager
             SaveData.PokedexData.Abilitys = LoadData_FromSave<List<Pokedex.Abilitys.AbilityData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys));
             SaveData.PokedexData.Items = LoadData_FromSave<List<Pokedex.Items.ItemData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items));
 
+            SaveData.ImageResources = LoadData_FromSave<List<Resource_Data.ImageResources>>(GetSaveFile_DataDir(SaveData_Dir.Resource_Image));
+
             SaveData.InitNullObjects();
         }
         /// <summary>
@@ -66,6 +68,8 @@ namespace AssaultBird2454.VPTU.SaveManager
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Moves), SaveData.PokedexData.Moves);
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys), SaveData.PokedexData.Abilitys);
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items), SaveData.PokedexData.Items);
+
+            SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Resource_Image), SaveData.ImageResources);
         }
 
         #region Load and Save
@@ -142,6 +146,8 @@ namespace AssaultBird2454.VPTU.SaveManager
                     return "Pokedex/Abilitys.json";
                 case SaveData_Dir.Pokedex_Items:
                     return "Pokedex/Items.json";
+                case SaveData_Dir.Resource_Image:
+                    return "Resource/ImageData.json";
 
                 default:
                     return null;

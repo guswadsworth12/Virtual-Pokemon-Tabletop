@@ -14,6 +14,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Form Code
         public static SaveManager.SaveManager SaveManager;
         public ProjectInfo VersioningInfo;
         /// <summary>
@@ -30,7 +31,6 @@ namespace AssaultBird2454.VPTU.SaveEditor
             }
         }
 
-        #region Form Code
         public MainWindow()
         {
             InitializeComponent();
@@ -84,13 +84,13 @@ namespace AssaultBird2454.VPTU.SaveEditor
                 MessageBox.Show("The \"LEGAL NOTICE\" File was not found when trying to read it! The \"LEGAL NOTICE\" file is avalable on GitHub.", "License File Missing");
             }
         }
-        #endregion
 
         #region Setup Code
         private void Setup()
         {
 
         }
+        #endregion
         #endregion
 
         #region Save Manager Related Code
@@ -332,6 +332,51 @@ namespace AssaultBird2454.VPTU.SaveEditor
                 }
             }
             catch { }
+        }
+        #endregion
+
+        #region Resource Manager Code
+        /// <summary>
+        /// Add Audio Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_AddRes_Audio_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Add Image Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_AddRes_Images_Click(object sender, RoutedEventArgs e)
+        {
+            UI.Resources.Import_ImageResource imp = new UI.Resources.Import_ImageResource();
+            bool? pass = imp.ShowDialog();
+
+            if(pass == true)
+            {
+                //Update
+            }
+        }
+        /// <summary>
+        /// Edit Resource Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_ManageRes_Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Delete Resource
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_ManageRes_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
         #endregion
     }

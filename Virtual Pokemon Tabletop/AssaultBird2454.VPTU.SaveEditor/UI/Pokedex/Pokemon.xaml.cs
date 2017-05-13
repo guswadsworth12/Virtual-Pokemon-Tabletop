@@ -46,10 +46,13 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         private void Setup()
         {
             #region Populating Fields
+            //Basic Data
             Basic_Type1.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.Type));
             Basic_Type2.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.Type));
             Basic_Weight.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.WeightClass));
             Basic_Size.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SizeClass));
+
+            //Skill Data
             Skill_Acrobatics_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_Athletics_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_Charm_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
@@ -67,8 +70,13 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_Stealth_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_Survival_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_TechnologyEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+
+            //Capabilities Data
+            Capabilities_NatureWalk_1.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.NatureWalk_Type));
+            Capabilities_NatureWalk_2.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.NatureWalk_Type));
             #endregion
             #region Defaulting
+            //Skill Data
             Skill_Acrobatics_Rank.SelectedIndex = 1;
             Skill_Athletics_Rank.SelectedIndex = 1;
             Skill_Charm_Rank.SelectedIndex = 1;
@@ -86,6 +94,10 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_Stealth_Rank.SelectedIndex = 1;
             Skill_Survival_Rank.SelectedIndex = 1;
             Skill_TechnologyEDU_Rank.SelectedIndex = 1;
+
+            //Capabilities Data
+            Capabilities_NatureWalk_1.SelectedIndex = -1;
+            Capabilities_NatureWalk_2.SelectedIndex = -1;
             #endregion
         }
 
@@ -97,6 +109,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             //Save Basic Pokemon Data
             #region Basic Info
             Basic_Name.Text = PokemonData.Species_Name;
+            try { Basic_Desc.Text = PokemonData.Species_Desc; } catch { } // Try and catch this as old versions of the save will not be able to read this?
             Basic_ID.Text = PokemonData.Species_DexID.ToString();
             Basic_Type1.SelectedItem = PokemonData.Species_Type1;
             Basic_Type2.SelectedItem = PokemonData.Species_Type2;
@@ -143,6 +156,11 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_Survival_Mod.Value = PokemonData.Species_Skill_Data.Survival_Mod;
             Skill_TechnologyEDU_Mod.Value = PokemonData.Species_Skill_Data.Technology_Mod;
             #endregion
+            //Load Pokemon Capabilities Data
+            #region Capabilities
+            Capabilities_NatureWalk_1.SelectedItem = PokemonData.Species_Capability_Data.NatureWalk_1;
+            Capabilities_NatureWalk_2.SelectedItem = PokemonData.Species_Capability_Data.NatureWalk_2;
+            #endregion
             //Load Pokemon Base Stat Data
             #region Base Stats
             BaseStats_HP.Value = PokemonData.Species_BaseStats_HP;
@@ -174,6 +192,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             //Save Basic Pokemon Data
             #region Basic Info
             PokemonData.Species_Name = Basic_Name.Text;
+            PokemonData.Species_Desc = Basic_Desc.Text;
             PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Text);
             PokemonData.Species_Type1 = (BattleManager.Data.Type)Basic_Type1.SelectedItem;
             PokemonData.Species_Type2 = (BattleManager.Data.Type)Basic_Type2.SelectedItem;
@@ -219,6 +238,11 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             PokemonData.Species_Skill_Data.Stealth_Mod = (int)Skill_Stealth_Mod.Value;
             PokemonData.Species_Skill_Data.Survival_Mod = (int)Skill_Survival_Mod.Value;
             PokemonData.Species_Skill_Data.Technology_Mod = (int)Skill_TechnologyEDU_Mod.Value;
+            #endregion
+            //Load Pokemon Capabilities Data
+            #region Capabilities
+            PokemonData.Species_Capability_Data.NatureWalk_1 = (BattleManager.Data.NatureWalk_Type)Capabilities_NatureWalk_1.SelectedItem;
+            PokemonData.Species_Capability_Data.NatureWalk_2 = (BattleManager.Data.NatureWalk_Type)Capabilities_NatureWalk_2.SelectedItem;
             #endregion
             //Save Pokemon Base Stat Data
             #region Base Stats
@@ -432,6 +456,33 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         {
             if (Moves_List.SelectedItem == null) { return; }// Returns if selection is null
             Moves_List.Items.Remove(Moves_List.SelectedItem);// Removes Link from list
+        }
+        #endregion
+
+        #region Capabilities
+        /// <summary>
+        /// Clear the Selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Capabilities_NatureWalk_1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete || e.Key == Key.Escape)
+            {
+                Capabilities_NatureWalk_1.SelectedIndex = -1;
+            }
+        }
+        /// <summary>
+        /// Clear the Selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Capabilities_NatureWalk_2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete || e.Key == Key.Escape)
+            {
+                Capabilities_NatureWalk_2.SelectedIndex = -1;
+            }
         }
         #endregion
     }

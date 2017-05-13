@@ -33,6 +33,11 @@ namespace AssaultBird2454.VPTU.BattleManager.Entity
 
     public class Capability_Data
     {
+        public Capability_Data()
+        {
+
+        }
+
         public int Power { get; set; }
         public int ThrowingRange { get; set; }
         public int LongJump { get; set; }
@@ -45,8 +50,8 @@ namespace AssaultBird2454.VPTU.BattleManager.Entity
         public int Levitate { get; set; }
         public int Teleport { get; set; }
 
-        [Obsolete("Incomplete", true)]
-        public List<object> OtherCapabilitys { get; set; }
+        public Data.NatureWalk_Type NatureWalk_1 { get; set; }
+        public Data.NatureWalk_Type NatureWalk_2 { get; set; }
     }
 
     public class Skill_Data

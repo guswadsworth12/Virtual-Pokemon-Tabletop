@@ -27,7 +27,25 @@ No Servers exist or have been developed at the moment... more info will be avali
 
 ## Links
 Road Map: https://trello.com/b/G8V5Musv/ <br>
-Forum Post About This: http://forums.pokemontabletop.com/topic/30059453/1/
+Forum Post About This: http://forums.pokemontabletop.com/topic/30059453/1/ <br>
+Discord Server: https://discordapp.com/invite/fYExGbz <br>
+Public Google Drive: https://drive.google.com/drive/folders/0Bxg9n3R5Ivhxd0VGZHJFUFNrZ1k?usp=sharing 
+
+Google Drive Note: This folder contains screenshots and other usefull resources (E.G. Template Save Files and Resources)
+
+## Doc's And Support
+Support and Documentation is important for any piece of software, not just for new people to get an understanding of basic functions, but to also give more advanced information and help in diagnosing issues
+
+### Documentation
+Below are links to the avaliable doc's (Note: The doc's will be avaliable when the software is in a more usable state.)
+
+Videos (Youtube): [No Video's Avaliable yet] <br>
+PDF (Google Drive): [No PDF's Avaliable yet]
+
+### Support
+When you need help wether it's just a question or your having an issue you need to resolve, there are a few places to go
+
+Discord Server: https://discordapp.com/invite/fYExGbz
 
 ## Bugs
 Please report all crashes to the Issues Tab above. This will help us in fixing these bugs quickly and patch them in a new release. Please if you see a report for a similar bug please dont open a new issue.

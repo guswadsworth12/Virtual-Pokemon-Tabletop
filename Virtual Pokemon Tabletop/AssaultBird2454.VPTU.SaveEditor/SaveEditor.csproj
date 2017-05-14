@@ -110,17 +110,23 @@
     <Compile Include="UI\About\License.xaml.cs">
       <DependentUpon>License.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pokedex\Link\Link_Evolution.xaml.cs">
+      <DependentUpon>Link_Evolution.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pokedex\Moves.xaml.cs">
       <DependentUpon>Moves.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pokedex\Move_Link.xaml.cs">
-      <DependentUpon>Move_Link.xaml</DependentUpon>
+    <Compile Include="UI\Pokedex\Link\Link_Move.xaml.cs">
+      <DependentUpon>Link_Move.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pokedex\Pokemon.xaml.cs">
       <DependentUpon>Pokemon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pokedex\Select_Move.xaml.cs">
+    <Compile Include="UI\Pokedex\Select\Select_Move.xaml.cs">
       <DependentUpon>Select_Move.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pokedex\Select\Select_Pokemon.xaml.cs">
+      <DependentUpon>Select_Pokemon.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Resources\Import_ImageResource.xaml.cs">
       <DependentUpon>Import_ImageResource.xaml</DependentUpon>
@@ -148,11 +154,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Pokedex\Link\Link_Evolution.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Pokedex\Moves.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pokedex\Move_Link.xaml">
+    <Page Include="UI\Pokedex\Link\Link_Move.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,9 +170,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pokedex\Select_Move.xaml">
+    <Page Include="UI\Pokedex\Select\Select_Move.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pokedex\Select\Select_Pokemon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Resources\Import_ImageResource.xaml">
       <SubType>Designer</SubType>

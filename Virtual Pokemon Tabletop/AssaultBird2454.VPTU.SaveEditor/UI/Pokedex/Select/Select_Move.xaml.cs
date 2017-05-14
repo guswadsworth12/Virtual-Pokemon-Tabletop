@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
+namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Select
 {
     /// <summary>
     /// Interaction logic for Select_Move.xaml

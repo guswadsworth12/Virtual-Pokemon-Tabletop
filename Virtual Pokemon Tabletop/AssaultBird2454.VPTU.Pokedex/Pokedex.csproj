@@ -48,10 +48,10 @@
     <Compile Include="Items\ItemData.cs" />
     <Compile Include="Moves\MoveData.cs" />
     <Compile Include="Moves\Move_RangeData.cs" />
-    <Compile Include="Pokemon\Ability.cs" />
+    <Compile Include="Pokemon\Link_Ability.cs" />
     <Compile Include="Pokemon\Data.cs" />
-    <Compile Include="Pokemon\Evolution_Link.cs" />
-    <Compile Include="Pokemon\Move_Link.cs" />
+    <Compile Include="Pokemon\Link_Evolution.cs" />
+    <Compile Include="Pokemon\Link_Move.cs" />
     <Compile Include="Pokemon\PokemonData.cs" />
     <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

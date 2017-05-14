@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Link;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -177,8 +178,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Moves
             Moves_List.Items.Clear();
 
-            if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Move_Link>(); }
-            foreach (VPTU.Pokedex.Pokemon.Move_Link ML in PokemonData.Moves)
+            if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Link_Moves>(); }
+            foreach (VPTU.Pokedex.Pokemon.Link_Moves ML in PokemonData.Moves)
             {
                 Moves_List.Items.Add(ML);
             }
@@ -187,8 +188,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Evo Forms
             FormsAndEvos_List.Items.Clear();
 
-            if (PokemonData.Evolutions == null) { PokemonData.Evolutions = new List<VPTU.Pokedex.Pokemon.Evolution_Link>(); }
-            foreach (VPTU.Pokedex.Pokemon.Evolution_Link EL in PokemonData.Evolutions)
+            if (PokemonData.Evolutions == null) { PokemonData.Evolutions = new List<VPTU.Pokedex.Pokemon.Link_Evolutions>(); }
+            foreach (VPTU.Pokedex.Pokemon.Link_Evolutions EL in PokemonData.Evolutions)
             {
                 EvoLinks link = new EvoLinks();
                 link.LinkData = EL;
@@ -274,7 +275,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             //Save Linked Move Data
             #region Moves
             PokemonData.Moves.Clear();
-            foreach (VPTU.Pokedex.Pokemon.Move_Link link in Moves_List.Items)
+            foreach (VPTU.Pokedex.Pokemon.Link_Moves link in Moves_List.Items)
             {
                 PokemonData.Moves.Add(link);
             }
@@ -467,7 +468,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         {
             if (Moves_List.SelectedItem == null) { return; }// Returns if selection is null
 
-            Move_Link link = new Move_Link((VPTU.Pokedex.Pokemon.Move_Link)Moves_List.SelectedItem);// Creates a new MoveLink Window to modify link with
+            Move_Link link = new Move_Link((VPTU.Pokedex.Pokemon.Link_Moves)Moves_List.SelectedItem);// Creates a new MoveLink Window to modify link with
             link.ShowDialog();// Shows the Link Window
         }
         /// <summary>
@@ -508,13 +509,55 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             }
         }
         #endregion
+
+        #region Link Evolution's and Forms
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LinkEvo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Link_Evolution link = new Link_Evolution();// Create a new EvoLink Window to create a link with
+            bool? add = link.ShowDialog();// Shows the Link Window, Creates a Dialog to return true if it added successfully
+
+            if (add == true)
+            {
+                FormsAndEvos_List.Items.Add(new EvoLinks(link.LinkData, MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == link.LinkData.Pokemon_Evo).Species_Name));// Add EvoLink to list if not canceled
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditLinkEvo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (FormsAndEvos_List.SelectedItem == null) { return; }// Returns if selection is null
+
+            Link_Evolution link = new Link_Evolution(((EvoLinks)FormsAndEvos_List.SelectedItem).LinkData);// Creates a new EvoLink Window to modify link with
+            link.ShowDialog();// Shows the Link Window
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveLinkEvo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (FormsAndEvos_List.SelectedItem == null) { return; }// Returns if selection is null
+            FormsAndEvos_List.Items.Remove(FormsAndEvos_List.SelectedItem);// Removes Link from list
+        }
+        #endregion
     }
 
     #region Data Classes
 
     public class EvoLinks
     {
-        public VPTU.Pokedex.Pokemon.Evolution_Link LinkData { get; set; }
+        public EvoLinks(VPTU.Pokedex.Pokemon.Link_Evolutions _LinkData = null, string _PokemonName = null) { }
+
+        public VPTU.Pokedex.Pokemon.Link_Evolutions LinkData { get; set; }
         public string PokemonName { get; set; }
     }
 

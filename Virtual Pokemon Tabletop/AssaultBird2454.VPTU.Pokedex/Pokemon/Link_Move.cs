@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AssaultBird2454.VPTU.Pokedex.Pokemon
 {
-    public class Move_Link
+    public class Link_Moves
     {
         public string MoveName { get; set; }
         public bool LevelUp_Move { get; set; }

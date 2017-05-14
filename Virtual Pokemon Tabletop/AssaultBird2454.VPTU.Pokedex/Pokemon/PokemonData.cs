@@ -57,8 +57,8 @@ namespace AssaultBird2454.VPTU.Pokedex.Pokemon
         public string Sound_Cry { get; set; }
         #endregion
 
-        public List<Move_Link> Moves { get; set; }
-        public List<Ability_Link> Abilitys { get; set; }
-        public List<Evolution_Link> Evolutions { get; set; }
+        public List<Link_Moves> Moves { get; set; }
+        public List<Link_Ability> Abilitys { get; set; }
+        public List<Link_Evolutions> Evolutions { get; set; }
     }
 }

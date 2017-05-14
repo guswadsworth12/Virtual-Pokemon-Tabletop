@@ -117,9 +117,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button x:Name="LinkMove_Button_Copy" Content="Link Evolution" Grid.Column="1" Margin="5,1,0,0" Height="20" VerticalAlignment="Top"/>
-                <Button x:Name="EditLinkMove_Button_Copy" Content="Edit Link" Grid.Column="1" Margin="5,26,0,0" VerticalAlignment="Top" Height="20"/>
-                <Button x:Name="RemoveLinkMove_Button_Copy" Content="Remove Link" Grid.Column="1" Margin="5,51,0,0" VerticalAlignment="Top" Height="20"/>
+                <Button x:Name="LinkEvo_Button" Content="Link Evolution" Grid.Column="1" Margin="5,1,0,0" Height="20" VerticalAlignment="Top" Click="LinkEvo_Button_Click"/>
+                <Button x:Name="EditLinkEvo_Button" Content="Edit Link" Grid.Column="1" Margin="5,26,0,0" VerticalAlignment="Top" Height="20" Click="EditLinkEvo_Button_Click"/>
+                <Button x:Name="RemoveLinkEvo_Button" Content="Remove Link" Grid.Column="1" Margin="5,51,0,0" VerticalAlignment="Top" Height="20" Click="RemoveLinkEvo_Button_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="G_Capabilities" Header="Capabilities" Margin="682,0,0,0" HorizontalAlignment="Left" Width="368" Height="211" VerticalAlignment="Top">

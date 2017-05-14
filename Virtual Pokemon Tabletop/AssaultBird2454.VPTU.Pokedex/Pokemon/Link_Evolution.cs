@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AssaultBird2454.VPTU.Pokedex.Pokemon
 {
     public enum Evolution_Type { Normal = 0, Mega, Primal, Other }
-    public class Evolution_Link
+    public class Link_Evolutions
     {
         public Decimal Pokemon_Evo { get; set; }
         public Evolution_Type Evo_Type { get; set; }

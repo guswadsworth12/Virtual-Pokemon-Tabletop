@@ -77,23 +77,23 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #endregion
             #region Defaulting
             //Skill Data
-            Skill_Acrobatics_Rank.SelectedIndex = 1;
-            Skill_Athletics_Rank.SelectedIndex = 1;
-            Skill_Charm_Rank.SelectedIndex = 1;
-            Skill_Combat_Rank.SelectedIndex = 1;
-            Skill_Command_Rank.SelectedIndex = 1;
-            Skill_Focus_Rank.SelectedIndex = 1;
-            Skill_GeneralEDU_Rank.SelectedIndex = 1;
-            Skill_Gulie_Rank.SelectedIndex = 1;
-            Skill_Intimidate_Rank.SelectedIndex = 1;
-            Skill_Intuition_Rank.SelectedIndex = 1;
-            Skill_MedicineEDU_Rank.SelectedIndex = 1;
-            Skill_OccultEDU_Rank.SelectedIndex = 1;
-            Skill_Perception_Rank.SelectedIndex = 1;
-            Skill_PokemonEDU_Rank.SelectedIndex = 1;
-            Skill_Stealth_Rank.SelectedIndex = 1;
-            Skill_Survival_Rank.SelectedIndex = 1;
-            Skill_TechnologyEDU_Rank.SelectedIndex = 1;
+            Skill_Acrobatics_Rank.SelectedIndex = 0;
+            Skill_Athletics_Rank.SelectedIndex = 0;
+            Skill_Charm_Rank.SelectedIndex = 0;
+            Skill_Combat_Rank.SelectedIndex = 0;
+            Skill_Command_Rank.SelectedIndex = 0;
+            Skill_Focus_Rank.SelectedIndex = 0;
+            Skill_GeneralEDU_Rank.SelectedIndex = 0;
+            Skill_Gulie_Rank.SelectedIndex = 0;
+            Skill_Intimidate_Rank.SelectedIndex = 0;
+            Skill_Intuition_Rank.SelectedIndex = 0;
+            Skill_MedicineEDU_Rank.SelectedIndex = 0;
+            Skill_OccultEDU_Rank.SelectedIndex = 0;
+            Skill_Perception_Rank.SelectedIndex = 0;
+            Skill_PokemonEDU_Rank.SelectedIndex = 0;
+            Skill_Stealth_Rank.SelectedIndex = 0;
+            Skill_Survival_Rank.SelectedIndex = 0;
+            Skill_TechnologyEDU_Rank.SelectedIndex = 0;
 
             //Capabilities Data
             Capabilities_NatureWalk_1.SelectedIndex = -1;
@@ -175,13 +175,28 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Links
             //Load Linked Move Data
             #region Moves
+            Moves_List.Items.Clear();
+
             if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Move_Link>(); }
-            foreach (AssaultBird2454.VPTU.Pokedex.Pokemon.Move_Link ML in PokemonData.Moves)
+            foreach (VPTU.Pokedex.Pokemon.Move_Link ML in PokemonData.Moves)
             {
                 Moves_List.Items.Add(ML);
             }
             #endregion
+            //Load Linked Forms and Evolution Data here
+            #region Evo Forms
+            FormsAndEvos_List.Items.Clear();
 
+            if (PokemonData.Evolutions == null) { PokemonData.Evolutions = new List<VPTU.Pokedex.Pokemon.Evolution_Link>(); }
+            foreach (VPTU.Pokedex.Pokemon.Evolution_Link EL in PokemonData.Evolutions)
+            {
+                EvoLinks link = new EvoLinks();
+                link.LinkData = EL;
+                link.PokemonName = MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == EL.Pokemon_Evo).Species_Name;
+
+                FormsAndEvos_List.Items.Add(link);
+            }
+            #endregion
             #endregion
         }
         /// <summary>
@@ -486,4 +501,15 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         }
         #endregion
     }
+
+    #region Data Classes
+
+    public class EvoLinks
+    {
+        public VPTU.Pokedex.Pokemon.Evolution_Link LinkData { get; set; }
+        public string PokemonName { get; set; }
+    }
+
+    #endregion
+
 }

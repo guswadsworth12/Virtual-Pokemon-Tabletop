@@ -12,13 +12,13 @@ namespace AssaultBird2454.VPTU.Pokedex.Pokemon
         public Decimal Pokemon_Evo { get; set; }
         public Evolution_Type Evo_Type { get; set; }
 
-        public bool Evolution_LevelUP { get; set; }
-        public int Evolution_LevelUp_Level { get; set; }
+        //public bool Evolution_LevelUP { get; set; }
+        //public int Evolution_LevelUp_Level { get; set; }
 
-        [Obsolete("Not Implemented", true)]
-        public List<string> Evolution_Items { get; set; }
+        //[Obsolete("Not Implemented", true)]
+        //public List<string> Evolution_Items { get; set; }
 
-        [Obsolete("Not Implemented", true)]
-        public List<string> Evolution_Conditions { get; set; }
+        //[Obsolete("Not Implemented", true)]
+        //public List<string> Evolution_Conditions { get; set; }
     }
 }

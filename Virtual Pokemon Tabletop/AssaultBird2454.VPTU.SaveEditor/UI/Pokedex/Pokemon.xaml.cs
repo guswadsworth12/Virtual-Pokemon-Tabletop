@@ -279,6 +279,14 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 PokemonData.Moves.Add(link);
             }
             #endregion
+            //Save Linked Evolution Data
+            #region Evo Forms
+            PokemonData.Evolutions.Clear();
+            foreach (EvoLinks link in FormsAndEvos_List.Items)
+            {
+                PokemonData.Evolutions.Add(link.LinkData);
+            }
+            #endregion
             #endregion
         }
 

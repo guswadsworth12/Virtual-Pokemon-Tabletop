@@ -36,6 +36,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Link
         public void Save()
         {
             LinkData.Pokemon_Evo = MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_Name == Pokemon_Name.Text).Species_DexID;
+            //LinkData.Evo_Type = VPTU.Pokedex.Pokemon.Evolution_Type.Normal;
         }
         public void Load()
         {

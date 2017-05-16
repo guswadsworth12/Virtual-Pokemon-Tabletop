@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AssaultBird2454.VPTU.SaveEditor.UI.Pokedex"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Pokemon"
         mc:Ignorable="d"
-        Title="Pokemon" ResizeMode="NoResize" Width="1390" Height="604">
+        Title="Pokemon" ResizeMode="NoResize" Width="1438" Height="814.5">
     <Grid>
         <GroupBox x:Name="G_BasicInfo" Header="Basic Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="465">
             <Grid Margin="0">
@@ -81,7 +81,7 @@
                 <xctk:DecimalUpDown x:Name="BaseStats_Speed" Margin="67.522,140.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_Moves" Header="Moves" HorizontalAlignment="Left" Margin="0,378.68,0,0" VerticalAlignment="Top" Height="176.32" Width="465">
+        <GroupBox x:Name="G_Moves" Header="Moves" HorizontalAlignment="Left" Margin="470,216,0,0" VerticalAlignment="Top" Height="339" Width="580">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -103,7 +103,7 @@
                 </ListView>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_FormsAndEvolutions" Header="Forms and Evolutions" Margin="470,216,0,0" VerticalAlignment="Top" Height="158" HorizontalAlignment="Left" Width="368">
+        <GroupBox x:Name="G_FormsAndEvolutions" Header="Forms and Evolutions" Margin="682,0,0,0" VerticalAlignment="Top" Height="211" HorizontalAlignment="Left" Width="368">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -122,7 +122,7 @@
                 <Button x:Name="RemoveLinkEvo_Button" Content="Remove Link" Grid.Column="1" Margin="5,51,0,0" VerticalAlignment="Top" Height="20" Click="RemoveLinkEvo_Button_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_Capabilities" Header="Capabilities" Margin="682,0,0,0" HorizontalAlignment="Left" Width="368" Height="211" VerticalAlignment="Top">
+        <GroupBox x:Name="G_Capabilities" Header="Capabilities" Margin="0,560,0,0" HorizontalAlignment="Left" Width="368" Height="211" VerticalAlignment="Top">
             <Grid Margin="0">
                 <ComboBox x:Name="Capabilities_NatureWalk_2" HorizontalAlignment="Left" Margin="172,163,0,0" VerticalAlignment="Top" Width="79" KeyDown="Capabilities_NatureWalk_2_KeyDown"/>
                 <ComboBox x:Name="Capabilities_NatureWalk_1" HorizontalAlignment="Left" Margin="88,163,0,0" VerticalAlignment="Top" Width="79" KeyDown="Capabilities_NatureWalk_1_KeyDown"/>
@@ -149,7 +149,7 @@
                 <xctk:DecimalUpDown x:Name="Capabilities_ThrowingRange" HorizontalAlignment="Left" Margin="259,132,0,0" VerticalAlignment="Top" Width="80" IsReadOnly="True"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_Skills" Header="Skills" Margin="1055,0,0,0" HorizontalAlignment="Left" Width="319" Height="555" VerticalAlignment="Top">
+        <GroupBox x:Name="G_Skills" Header="Skills" Margin="1055,10,0,0" HorizontalAlignment="Left" Width="319" Height="555" VerticalAlignment="Top">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="103.104"/>
@@ -211,7 +211,7 @@
         </GroupBox>
         <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="82" Click="Cancel_Button_Click"/>
         <Button x:Name="Add_Button" Content="Add / Update" HorizontalAlignment="Right" Margin="0,0,97,10" VerticalAlignment="Bottom" Width="82" Click="Add_Button_Click" IsDefault="True"/>
-        <GroupBox x:Name="G_Moves_Copy" Header="Ability" HorizontalAlignment="Left" Margin="470,379,0,0" VerticalAlignment="Top" Height="176" Width="465" Background="Red" BorderBrush="Red" Foreground="Black">
+        <GroupBox x:Name="G_Moves_Copy" Header="Ability" HorizontalAlignment="Left" Margin="0,379,0,0" VerticalAlignment="Top" Height="176" Width="465" Background="Red" BorderBrush="Red" Foreground="Black">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -232,6 +232,9 @@
                     </ListView.View>
                 </ListView>
             </Grid>
+        </GroupBox>
+        <GroupBox x:Name="G_SpecialCapabilities" Header="Special Capabilities" Margin="373,560,0,0" VerticalAlignment="Top" Height="211" HorizontalAlignment="Left" Width="677">
+            <WrapPanel x:Name="Capabilities_Wrap" Margin="0"/>
         </GroupBox>
 
     </Grid>

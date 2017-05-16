@@ -100,6 +100,17 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Capabilities_NatureWalk_1.SelectedIndex = -1;
             Capabilities_NatureWalk_2.SelectedIndex = -1;
             #endregion
+
+            #region Populating Special Capabilities
+            foreach (VPTU.Pokedex.Pokemon.Pokemon_Capabilities cap in  Enum.GetValues(typeof(VPTU.Pokedex.Pokemon.Pokemon_Capabilities)))
+            {
+                CheckBox box = new CheckBox();
+                box.Content = cap.ToString().Replace('_', ' ');
+                box.Tag = cap;
+
+                Capabilities_Wrap.Children.Add(box);
+            }
+            #endregion
         }
 
         /// <summary>
@@ -200,6 +211,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #endregion
             #endregion
         }
+
         /// <summary>
         /// Saves Modifications or Adds a new entry to the Pokedex
         /// </summary>
@@ -292,7 +304,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         }
 
         /// <summary>
-        /// Validates settings and fixes some automaticly fixable errors. This is always run before Saving Data.
+        /// Validates settings and fixes some automatically fixable errors. This is always run before Saving Data.
         /// </summary>
         /// <returns>Validation Pass</returns>
         [Obsolete("Code is not complete, Contains Errors", true)]
@@ -523,7 +535,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
 
             if (add == true)
             {
-                FormsAndEvos_List.Items.Add(new EvoLinks(link.LinkData, MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == link.LinkData.Pokemon_Evo).Species_Name));// Add EvoLink to list if not canceled
+                string name = MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == link.LinkData.Pokemon_Evo).Species_Name;
+                FormsAndEvos_List.Items.Add(new EvoLinks(link.LinkData, name));// Add EvoLink to list if not canceled
             }
         }
         /// <summary>
@@ -555,7 +568,11 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
 
     public class EvoLinks
     {
-        public EvoLinks(VPTU.Pokedex.Pokemon.Link_Evolutions _LinkData = null, string _PokemonName = null) { }
+        public EvoLinks(VPTU.Pokedex.Pokemon.Link_Evolutions _LinkData = null, string _PokemonName = null)
+        {
+            LinkData = _LinkData;
+            PokemonName = _PokemonName;
+        }
 
         public VPTU.Pokedex.Pokemon.Link_Evolutions LinkData { get; set; }
         public string PokemonName { get; set; }

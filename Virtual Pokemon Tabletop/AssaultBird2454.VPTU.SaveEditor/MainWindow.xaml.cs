@@ -231,6 +231,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
             {
                 this.Dispatcher.Invoke(new Action(() => PokedexManager_ReloadList()));
             }));
+            PokedexSearchThread.IsBackground = true;
             PokedexSearchThread.Start();
         }
         #endregion

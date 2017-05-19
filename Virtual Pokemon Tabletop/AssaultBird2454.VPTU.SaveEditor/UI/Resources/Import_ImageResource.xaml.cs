@@ -67,6 +67,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Resources
                     {
                         ImportFile(file);
                     })));
+                    ImportThread.IsBackground = true;
                     ImportThread.Start();
                     Import_Progress.Value++; ;
                     ImportThread.Join();

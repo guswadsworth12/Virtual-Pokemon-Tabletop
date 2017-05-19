@@ -45,6 +45,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Select
             string Filter = textBox.Text;
 
             SearchThread = new Thread(new ThreadStart(new Action(() => ReloadList(Filter))));
+            SearchThread.IsBackground = true;
             SearchThread.Start();
         }
         #endregion

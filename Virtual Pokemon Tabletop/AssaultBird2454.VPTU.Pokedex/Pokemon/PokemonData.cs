@@ -12,6 +12,10 @@ namespace AssaultBird2454.VPTU.Pokedex.Pokemon
         {
             Species_Capability_Data = new BattleManager.Entity.Capability_Data();
             Species_Skill_Data = new BattleManager.Entity.Skill_Data();
+            Moves = new List<Link_Moves>();
+            Abilitys = new List<Link_Ability>();
+            Evolutions = new List<Pokemon.Link_Evolutions>();
+            Species_SpecialCapability = new List<KeyValuePair<Pokemon_Capabilities, object>>();
         }
 
         /// <summary>
@@ -27,8 +31,18 @@ namespace AssaultBird2454.VPTU.Pokedex.Pokemon
         /// </summary>
         public string Species_Desc { get; set; }
 
+        /// <summary>
+        /// Data Class for tracking Skill Data
+        /// </summary>
         public BattleManager.Entity.Skill_Data Species_Skill_Data { get; set; }
+        /// <summary>
+        /// Data Class for tracking Capability's
+        /// </summary>
         public BattleManager.Entity.Capability_Data Species_Capability_Data { get; set; }
+        /// <summary>
+        /// List for tracking Special Capabilities and their values (If no value is kept with it then the value = null)
+        /// </summary>
+        public List<KeyValuePair<Pokemon_Capabilities, object>> Species_SpecialCapability { get; set; }
 
         public BattleManager.Data.Type Species_Type1 { get; set; }
         public BattleManager.Data.Type Species_Type2 { get; set; }

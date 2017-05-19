@@ -104,7 +104,19 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Populating Special Capabilities
             foreach (VPTU.Pokedex.Pokemon.Pokemon_Capabilities cap in  Enum.GetValues(typeof(VPTU.Pokedex.Pokemon.Pokemon_Capabilities)))
             {
+                string CapName = cap.ToString();
                 CheckBox box = new CheckBox();
+
+                #region Logic for Values
+                if (cap.ToString().ToUpper().StartsWith("I_"))
+                {
+                    MessageBox.Show("There is a Capabilities that needs a 'Numeric Value'. But is not implemented yet");
+                }else if (cap.ToString().ToUpper().StartsWith("S_"))
+                {
+                    MessageBox.Show("There is a Capabilities that needs a 'String Value'. But is not implemented yet");
+                }
+                #endregion
+
                 box.Content = cap.ToString().Replace('_', ' ');
                 box.Tag = cap;
 
@@ -172,6 +184,19 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Capabilities
             Capabilities_NatureWalk_1.SelectedItem = PokemonData.Species_Capability_Data.NatureWalk_1;
             Capabilities_NatureWalk_2.SelectedItem = PokemonData.Species_Capability_Data.NatureWalk_2;
+            #endregion
+            //Load Special Capabilities Data
+            #region Special Capabilities
+            foreach(CheckBox box in Capabilities_Wrap.Children)
+            {
+                if(PokemonData.Species_SpecialCapability.FindAll(x => x.Key == (VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).Count >= 1)
+                {
+                    box.IsChecked = true;
+                }else
+                {
+                    box.IsChecked = false;
+                }
+            }
             #endregion
             //Load Pokemon Base Stat Data
             #region Base Stats

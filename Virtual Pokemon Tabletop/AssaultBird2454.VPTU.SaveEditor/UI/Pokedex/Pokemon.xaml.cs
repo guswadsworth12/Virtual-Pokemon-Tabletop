@@ -192,6 +192,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 if(PokemonData.Species_SpecialCapability.FindAll(x => x.Key == (VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).Count >= 1)
                 {
                     box.IsChecked = true;
+
+                    //Set Values (If Applicable)
                 }else
                 {
                     box.IsChecked = false;
@@ -296,6 +298,25 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Capabilities
             PokemonData.Species_Capability_Data.NatureWalk_1 = (BattleManager.Data.NatureWalk_Type)Capabilities_NatureWalk_1.SelectedItem;
             PokemonData.Species_Capability_Data.NatureWalk_2 = (BattleManager.Data.NatureWalk_Type)Capabilities_NatureWalk_2.SelectedItem;
+            #endregion
+            //Save Special Capabilities Data
+            #region Special Capabilities
+            PokemonData.Species_SpecialCapability.Clear();
+            foreach (CheckBox box in Capabilities_Wrap.Children)
+            {
+                if (box.IsChecked == true)
+                {
+                    if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("I_")){
+                        //Value needs to be added (Value is an int)
+                    }
+                    if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("S_"))
+                    {
+                        //Value needs to be added (Value is a string)
+                    }
+
+                    PokemonData.Species_SpecialCapability.Add(new KeyValuePair<VPTU.Pokedex.Pokemon.Pokemon_Capabilities, object>((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag, true));
+                }
+            }
             #endregion
             //Save Pokemon Base Stat Data
             #region Base Stats

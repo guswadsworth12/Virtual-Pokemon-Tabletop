@@ -146,7 +146,8 @@ namespace AssaultBird2454.VPTU.SaveEditor
             SaveManager = new VPTU.SaveManager.SaveManager(Path);
             SaveManager.Load_SaveData();
 
-            PokedexManager_ReloadList();//Reload List
+            PokedexManager_ReloadList();//Reload Pokedex List
+            ResourceManager_ReloadList();//Reload Resource List
         }
         #endregion
 
@@ -337,6 +338,10 @@ namespace AssaultBird2454.VPTU.SaveEditor
         #endregion
 
         #region Resource Manager Code
+        #region Resource Variables
+        Thread ResourceSearchThread;
+        #endregion
+        #region Right SideBar Events
         /// <summary>
         /// Add Audio Button
         /// </summary>
@@ -356,9 +361,10 @@ namespace AssaultBird2454.VPTU.SaveEditor
             UI.Resources.Import_ImageResource imp = new UI.Resources.Import_ImageResource();
             bool? pass = imp.ShowDialog();
 
-            if(pass == true)
+            if (pass == true)
             {
                 //Update
+                ResourceManager_ReloadList();
             }
         }
         /// <summary>
@@ -377,7 +383,74 @@ namespace AssaultBird2454.VPTU.SaveEditor
         /// <param name="e"></param>
         private void ResourceManager_ManageRes_Delete_Click(object sender, RoutedEventArgs e)
         {
+            if (ResourceManager_List.SelectedItem != null)
+            {
+                ResourceManager_List.Items.Remove(ResourceManager_List.SelectedItem);
+            }
+        }
 
+        private void ResourceManager_SearchRes_Images_Checked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+        private void ResourceManager_SearchRes_Audio_Checked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+        private void ResourceManager_SearchRes_Audio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+        private void ResourceManager_SearchRes_Images_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+
+        /// <summary>
+        /// Search for names that contain
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_SearchRes_Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ResourceSearchThread.Abort();
+                ResourceSearchThread = null;
+            }
+            catch { }
+
+            ResourceSearchThread = new Thread(new ThreadStart(new Action(() =>
+            {
+                ResourceManager_List.Dispatcher.Invoke(new Action(() => ResourceManager_ReloadList()));
+            })));
+            ResourceSearchThread.IsBackground = true;
+            ResourceSearchThread.Start();
+        }
+        #endregion
+
+        /// <summary>
+        /// Reloads the Resource List
+        /// </summary>
+        public void ResourceManager_ReloadList()
+        {
+            try
+            {
+                ResourceManager_List.Items.Clear();
+
+                if (ResourceManager_SearchRes_Images.IsChecked == true)
+                {
+                    foreach (VPTU.SaveManager.Resource_Data.Resources res in SaveManager.SaveData.ImageResources)
+                    {
+                        if (res.Name.ToLower().Contains(ResourceManager_SearchRes_Search.Text.ToLower()))
+                        {
+                            ResourceManager_List.Items.Add(res);
+                        }
+                    }
+                }
+
+            }
+            catch { }
         }
         #endregion
     }

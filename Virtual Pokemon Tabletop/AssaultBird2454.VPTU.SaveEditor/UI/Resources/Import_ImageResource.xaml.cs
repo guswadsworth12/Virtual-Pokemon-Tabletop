@@ -40,6 +40,12 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Resources
         private void Submit_Button_Click(object sender, RoutedEventArgs e)
         {
             Import();
+
+            if (Close_On_Complete.IsChecked == true)
+            {
+                DialogResult = true;
+                Close();
+            }
         }
 
         #region Resource Code
@@ -53,7 +59,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Resources
             {
                 Import_Progress.Maximum = 1;// Sets the Progress Bar to 1 File
 
-                ImportFile(Selected_FileDir.Text);
+                ImportFile(Selected_FileDir.Text, Import_Save.IsChecked);
                 Import_Progress.Dispatcher.Invoke(new Action(() => Import_Progress.Value = 1));
             }
             else if (Directory.Exists(Selected_FileDir.Text))
@@ -63,25 +69,35 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Resources
 
                 foreach (string file in Files)
                 {
+                    bool? imp = Import_Save.IsChecked;
                     ImportThread = new Thread(new ThreadStart(new Action(() =>
                     {
-                        ImportFile(file);
+                        ImportFile(file, imp);
                     })));
                     ImportThread.IsBackground = true;
                     ImportThread.Start();
-                    Import_Progress.Value++; ;
-                    ImportThread.Join();
+                    Import_Progress.Value++;
                 }
             }
             else { }
         }
 
-        private void ImportFile(string FileDir)
+        private void ImportFile(string FileDir, bool? Import = false)
         {
-            SaveManager.Resource_Data.ImageResources res = new SaveManager.Resource_Data.ImageResources();
+            SaveManager.Resource_Data.Resources res = new SaveManager.Resource_Data.Resources();
             res.Name = System.IO.Path.GetFileName(FileDir);
-            res.Path = FileDir;
+            res.Type = SaveManager.Resource_Data.Resource_Type.Image;
 
+            if (Import == true)
+            {
+                res.Path = "save:" + FileDir;
+                MainWindow.SaveManager.ImportFile(FileDir, res.Name);
+            }
+            else
+            {
+                res.Path = "path:" + FileDir;
+            }
+            
             MainWindow.SaveManager.SaveData.ImageResources.Add(res);
         }
         #endregion

@@ -248,7 +248,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Basic Info
             PokemonData.Species_Name = Basic_Name.Text;
             PokemonData.Species_Desc = Basic_Desc.Text;
-            PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Text);
+            PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Value);
             PokemonData.Species_Type1 = (BattleManager.Data.Type)Basic_Type1.SelectedItem;
             PokemonData.Species_Type2 = (BattleManager.Data.Type)Basic_Type2.SelectedItem;
             PokemonData.Species_WeightClass = (BattleManager.Entity.WeightClass)Basic_Weight.SelectedItem;

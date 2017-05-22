@@ -19,9 +19,20 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
     /// </summary>
     public partial class Moves : Window
     {
-        public Moves()
+        VPTU.Pokedex.Moves.MoveData MoveData;
+
+        public Moves(VPTU.Pokedex.Moves.MoveData _MoveData = null)
         {
             InitializeComponent();
+
+            if(MoveData == null)
+            {
+                MoveData = new VPTU.Pokedex.Moves.MoveData();
+            }else
+            {
+                MoveData = _MoveData;
+                //Load Here
+            }
         }
     }
 }

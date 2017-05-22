@@ -14,9 +14,8 @@
                     <ColumnDefinition Width="250*"/>
                     <ColumnDefinition Width="203*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="Basic_Name" Margin="90,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
+                <TextBox x:Name="Basic_Name" Margin="90,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
                 <Label Content="Species Name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="Basic_ID" Margin="90,30,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="151" VerticalAlignment="Top"/>
                 <Label Content="Species Dex#" Margin="0,26,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="Type 1" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="Basic_Type1" Margin="90,53,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
@@ -28,6 +27,7 @@
                 <ComboBox x:Name="Basic_Weight" Margin="90,134,0,0" HorizontalAlignment="Left" Width="150" VerticalAlignment="Top"/>
                 <Label x:Name="label3" Content="Pokedex Description" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="183" Grid.Column="1" HorizontalContentAlignment="Center"/>
                 <TextBox x:Name="Basic_Desc" HorizontalAlignment="Left" Height="119" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Column="1"/>
+                <xctk:DecimalUpDown x:Name="Basic_ID" HorizontalAlignment="Left" Margin="90,29,0,0" Width="150" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text=""/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="G_BreedingInfo" Header="Gender &amp; Breading Information" Margin="470,0,0,0" VerticalAlignment="Top" Height="211" HorizontalAlignment="Left" Width="207">
@@ -42,7 +42,7 @@
                 <xctk:DecimalUpDown x:Name="Breeding_MaleChance" HorizontalAlignment="Left" Margin="128.587,43.8,0,0" Width="62.413" Watermark="Chance" TextAlignment="Center" VerticalAlignment="Top" ValueChanged="Breeding_MaleChance_ValueChanged" Value="50"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="G_Resources" Header="Sprite Selection" Margin="0,187,0,0" HorizontalAlignment="Left" Height="187" VerticalAlignment="Top">
+        <GroupBox x:Name="G_Resources" Header="Sprite Selection" Margin="0,187,0,0" HorizontalAlignment="Left" Height="187" VerticalAlignment="Top" Background="Red">
             <Grid Margin="0">
                 <Border x:Name="Image_Normal" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="0,5,0,0">
                     <Border.Background>

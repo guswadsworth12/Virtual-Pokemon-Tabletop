@@ -171,52 +171,82 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Add Move" Button is clicked
         private void PokedexManager_AddDex_Move_Click(object sender, RoutedEventArgs e)
         {
+            UI.Pokedex.Moves move = new UI.Pokedex.Moves();
+            bool? OK = move.ShowDialog();
 
+            if (OK == true)
+            {
+                PokedexManager_ReloadList();
+            }
         }
         //When The "Add Ability" Button is clicked
         private void PokedexManager_AddDex_Ability_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Feature not Available for that Data Type.");
         }
         //When The "Add Item" Button is clicked
         private void PokedexManager_AddDex_Items_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Feature not Available for that Data Type.");
         }
+        bool EditAddMove = true;
         //When The "Edit" Button is clicked
         private void PokedexManager_ManageDex_Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+            try
             {
-                Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
-                UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon(Data);
-                bool? OK = pokemon.ShowDialog();
-
-                if (OK == true)
+                //Edit Pokemon Here!
+                if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
                 {
-                    PokedexManager_ReloadList();
+                    Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
+                    UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon(Data);
+                    bool? OK = pokemon.ShowDialog();
+
+                    if (OK == true)
+                    {
+                        PokedexManager_ReloadList();
+                    }
+                }
+                //Edit Moves Here!
+                else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+                {
+                    Pokedex.Moves.MoveData Data = (Pokedex.Moves.MoveData)((PokedexList_DataBind)PokedexManager_List.SelectedItem).DataTag;
+                    UI.Pokedex.Moves move = new UI.Pokedex.Moves(Data);
+                    bool? OK = move.ShowDialog();
+
+                    if(OK == true)
+                    {
+                        PokedexManager_ReloadList();
+                    }
                 }
             }
-            else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+            catch (NullReferenceException)
             {
-                MessageBox.Show("Feature not Avaliable for that Data Type.");
+                MessageBox.Show("You cant edit nothing! or can you?");
             }
         }
         //When The "Delete" Button is clicked
         private void PokedexManager_ManageDex_Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+            try
             {
-                Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
-                SaveManager.SaveData.PokedexData.Pokemon.Remove(Data);
-            }
-            else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
-            {
-                Pokedex.Moves.MoveData Data = (Pokedex.Moves.MoveData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
-                SaveManager.SaveData.PokedexData.Moves.Remove(Data);
-            }
+                if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+                {
+                    Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
+                    SaveManager.SaveData.PokedexData.Pokemon.Remove(Data);
+                }
+                else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+                {
+                    Pokedex.Moves.MoveData Data = (Pokedex.Moves.MoveData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
+                    SaveManager.SaveData.PokedexData.Moves.Remove(Data);
+                }
 
-            PokedexManager_ReloadList();
+                PokedexManager_ReloadList();
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You cant delete nothing! or can you?");
+            }
         }
         //When The Search Box has been changed
         private void PokedexManager_SearchDex_Search_TextChanged(object sender, TextChangedEventArgs e)

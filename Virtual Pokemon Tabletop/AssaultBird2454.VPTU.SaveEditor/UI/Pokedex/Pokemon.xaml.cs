@@ -20,7 +20,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
     /// </summary>
     public partial class Pokemon : Window
     {
-        VPTU.Pokedex.Pokemon.PokemonData PokemonData;
+        public VPTU.Pokedex.Pokemon.PokemonData PokemonData;
         bool Update = false;
 
         public Pokemon(VPTU.Pokedex.Pokemon.PokemonData _PokemonData = null)
@@ -97,12 +97,12 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_TechnologyEDU_Rank.SelectedIndex = 0;
 
             //Capabilities Data
-            Capabilities_NatureWalk_1.SelectedIndex = -1;
-            Capabilities_NatureWalk_2.SelectedIndex = -1;
+            Capabilities_NatureWalk_1.SelectedIndex = 0;
+            Capabilities_NatureWalk_2.SelectedIndex = 0;
             #endregion
 
             #region Populating Special Capabilities
-            foreach (VPTU.Pokedex.Pokemon.Pokemon_Capabilities cap in  Enum.GetValues(typeof(VPTU.Pokedex.Pokemon.Pokemon_Capabilities)))
+            foreach (VPTU.Pokedex.Pokemon.Pokemon_Capabilities cap in Enum.GetValues(typeof(VPTU.Pokedex.Pokemon.Pokemon_Capabilities)))
             {
                 string CapName = cap.ToString();
                 CheckBox box = new CheckBox();
@@ -111,7 +111,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 if (cap.ToString().ToUpper().StartsWith("I_"))
                 {
                     MessageBox.Show("There is a Capabilities that needs a 'Numeric Value'. But is not implemented yet");
-                }else if (cap.ToString().ToUpper().StartsWith("S_"))
+                }
+                else if (cap.ToString().ToUpper().StartsWith("S_"))
                 {
                     MessageBox.Show("There is a Capabilities that needs a 'String Value'. But is not implemented yet");
                 }
@@ -187,14 +188,15 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #endregion
             //Load Special Capabilities Data
             #region Special Capabilities
-            foreach(CheckBox box in Capabilities_Wrap.Children)
+            foreach (CheckBox box in Capabilities_Wrap.Children)
             {
-                if(PokemonData.Species_SpecialCapability.FindAll(x => x.Key == (VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).Count >= 1)
+                if (PokemonData.Species_SpecialCapability.FindAll(x => x.Key == (VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).Count >= 1)
                 {
                     box.IsChecked = true;
 
                     //Set Values (If Applicable)
-                }else
+                }
+                else
                 {
                     box.IsChecked = false;
                 }
@@ -306,7 +308,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             {
                 if (box.IsChecked == true)
                 {
-                    if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("I_")){
+                    if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("I_"))
+                    {
                         //Value needs to be added (Value is an int)
                     }
                     if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("S_"))
@@ -538,33 +541,6 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         {
             if (Moves_List.SelectedItem == null) { return; }// Returns if selection is null
             Moves_List.Items.Remove(Moves_List.SelectedItem);// Removes Link from list
-        }
-        #endregion
-
-        #region Capabilities
-        /// <summary>
-        /// Clear the Selection
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Capabilities_NatureWalk_1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Delete || e.Key == Key.Escape)
-            {
-                Capabilities_NatureWalk_1.SelectedIndex = -1;
-            }
-        }
-        /// <summary>
-        /// Clear the Selection
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Capabilities_NatureWalk_2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Delete || e.Key == Key.Escape)
-            {
-                Capabilities_NatureWalk_2.SelectedIndex = -1;
-            }
         }
         #endregion
 

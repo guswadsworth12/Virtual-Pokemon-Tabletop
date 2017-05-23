@@ -18,12 +18,12 @@
                 <TextBox x:Name="Basic_Desc" HorizontalAlignment="Left" Margin="90,27,0,0" TextWrapping="Wrap" Width="150" Height="45" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox1" Header="Contest Details" HorizontalAlignment="Left" Margin="481,10,0,0" VerticalAlignment="Top" Height="101" Width="206">
+        <GroupBox x:Name="groupBox1" Header="Contest Details" HorizontalAlignment="Left" Margin="398,10,0,0" VerticalAlignment="Top" Height="101" Width="206">
             <Grid Margin="0">
                 <Label x:Name="label" Content="Type" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="43,4,0,0" VerticalAlignment="Top" Width="120"/>
+                <ComboBox x:Name="Contest_Type" HorizontalAlignment="Left" Margin="43,4,0,0" VerticalAlignment="Top" Width="120"/>
                 <Label x:Name="label_Copy" Content="Effect" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,27,0,0"/>
-                <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="43,31,0,0" VerticalAlignment="Top" Width="120"/>
+                <ComboBox x:Name="Contest_Effect" HorizontalAlignment="Left" Margin="43,31,0,0" VerticalAlignment="Top" Width="120"/>
 
             </Grid>
         </GroupBox>
@@ -36,19 +36,24 @@
                     <Grid Margin="0"/>
                 </GroupBox>
                 <Label Content="Move Type" HorizontalAlignment="Left" Margin="169,13,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="Basic_Type1" Margin="244,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117"/>
+                <ComboBox x:Name="Battle_Type" Margin="244,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117"/>
                 <Label Content="Move Class" Margin="169,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="Basic_Type2" Margin="244,42,0,0" HorizontalAlignment="Left" Width="117" VerticalAlignment="Top"/>
+                <ComboBox x:Name="Battle_Class" Margin="244,42,0,0" HorizontalAlignment="Left" Width="117" VerticalAlignment="Top"/>
                 <Label Content="Action Type" HorizontalAlignment="Left" Margin="169,173,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="Basic_Type1_Copy" Margin="244,175,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117"/>
+                <ComboBox x:Name="Battle_ActionType" Margin="244,175,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117"/>
                 <Label Content="Frequency" Margin="169,200,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="Basic_Type2_Copy" Margin="244,202,0,0" HorizontalAlignment="Left" Width="117" VerticalAlignment="Top"/>
-                <xctk:DecimalUpDown x:Name="Basic_ID" HorizontalAlignment="Left" Margin="244,229,0,0" Width="117" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text="" Minimum="0" Maximum="10000"/>
+                <ComboBox x:Name="Battle_Frequency" Margin="244,202,0,0" HorizontalAlignment="Left" Width="117" VerticalAlignment="Top"/>
+                <xctk:DecimalUpDown x:Name="Battle_UseLimit" HorizontalAlignment="Left" Margin="244,229,0,0" Width="117" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text="" Minimum="0" Maximum="10000"/>
                 <Label Content="Freq Limit" Margin="169,226,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="DB" Margin="169,251,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Basic_ID_Copy" HorizontalAlignment="Left" Margin="244,254,0,0" Width="117" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text="" Minimum="0" Maximum="28"/>
+                <xctk:DecimalUpDown x:Name="Battle_DB" HorizontalAlignment="Left" Margin="244,254,0,0" Width="117" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text="" Minimum="0" Maximum="28"/>
                 <Label Content="AC" Margin="169,276,0,-2" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Basic_ID_Copy1" HorizontalAlignment="Left" Margin="244,279,0,0" Width="117" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text="" Minimum="0" Maximum="28"/>
+                <xctk:DecimalUpDown x:Name="Battle_AC" HorizontalAlignment="Left" Margin="244,279,0,0" Width="117" Watermark="Pokedex ID" TextAlignment="Center" VerticalAlignment="Top" Value="0" Text="" Minimum="0" Maximum="28"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBox2" Header="Battle Effects" HorizontalAlignment="Left" Margin="398,116,0,0" VerticalAlignment="Top" Height="321" Width="206">
+            <Grid Margin="0">
+                <Label x:Name="label1" Content="Feature not implemented...&#xD;&#xA;This depends on the&#xD;&#xA;Battle Effect manager lib" HorizontalAlignment="Left" VerticalAlignment="Top" Height="299" Width="194" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Grid>
         </GroupBox>
 

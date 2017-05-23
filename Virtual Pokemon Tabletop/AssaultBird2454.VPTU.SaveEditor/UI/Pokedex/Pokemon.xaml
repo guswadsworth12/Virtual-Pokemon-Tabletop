@@ -73,12 +73,12 @@
                 <Label x:Name="label_Copy2" Content="Sp. Attack" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top" FontSize="10"/>
                 <Label x:Name="label_Copy3" Content="Sp. Defence" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,112,0,0" FontSize="10"/>
                 <Label x:Name="label_Copy4" Content="Speed" VerticalAlignment="Top" Margin="0,140,0,0" HorizontalAlignment="Left" FontSize="10"/>
-                <xctk:DecimalUpDown x:Name="BaseStats_HP" Margin="67.522,0.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478"/>
-                <xctk:DecimalUpDown x:Name="BaseStats_Attack" Margin="67.522,28.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478"/>
-                <xctk:DecimalUpDown x:Name="BaseStats_Defence" Margin="67.522,56.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478"/>
-                <xctk:DecimalUpDown x:Name="BaseStats_SpAttack" Margin="67.522,84.82,0,0" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478" VerticalAlignment="Top"/>
-                <xctk:DecimalUpDown x:Name="BaseStats_SpDefence" Margin="67.213,112.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478"/>
-                <xctk:DecimalUpDown x:Name="BaseStats_Speed" Margin="67.522,140.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478"/>
+                <xctk:DecimalUpDown x:Name="BaseStats_HP" Margin="67.522,0.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478" Value="0"/>
+                <xctk:DecimalUpDown x:Name="BaseStats_Attack" Margin="67.522,28.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478" Value="0"/>
+                <xctk:DecimalUpDown x:Name="BaseStats_Defence" Margin="67.522,56.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478" Value="0"/>
+                <xctk:DecimalUpDown x:Name="BaseStats_SpAttack" Margin="67.522,84.82,0,0" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478" VerticalAlignment="Top" Value="0"/>
+                <xctk:DecimalUpDown x:Name="BaseStats_SpDefence" Margin="68,113,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73" Value="0"/>
+                <xctk:DecimalUpDown x:Name="BaseStats_Speed" Margin="67.522,140.82,0,0" VerticalAlignment="Top" DisplayDefaultValueOnEmptyText="True" Minimum="1" Maximum="100" TextAlignment="Center" HorizontalAlignment="Left" Width="73.478" Value="0"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="G_Moves" Header="Moves" HorizontalAlignment="Left" Margin="470,216,0,0" VerticalAlignment="Top" Height="339" Width="580">
@@ -124,29 +124,29 @@
         </GroupBox>
         <GroupBox x:Name="G_Capabilities" Header="Capabilities" Margin="0,560,0,0" HorizontalAlignment="Left" Width="368" Height="211" VerticalAlignment="Top">
             <Grid Margin="0">
-                <ComboBox x:Name="Capabilities_NatureWalk_2" HorizontalAlignment="Left" Margin="172,163,0,0" VerticalAlignment="Top" Width="79" KeyDown="Capabilities_NatureWalk_2_KeyDown"/>
-                <ComboBox x:Name="Capabilities_NatureWalk_1" HorizontalAlignment="Left" Margin="88,163,0,0" VerticalAlignment="Top" Width="79" KeyDown="Capabilities_NatureWalk_1_KeyDown"/>
+                <ComboBox x:Name="Capabilities_NatureWalk_2" HorizontalAlignment="Left" Margin="172,163,0,0" VerticalAlignment="Top" Width="79"/>
+                <ComboBox x:Name="Capabilities_NatureWalk_1" HorizontalAlignment="Left" Margin="88,163,0,0" VerticalAlignment="Top" Width="79"/>
                 <Label x:Name="label2" Content="Nature Walks" HorizontalAlignment="Left" Margin="2,159,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label1_Copy16" Content="Overland" VerticalAlignment="Top" Height="26" Margin="2,4,232,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Overland" HorizontalAlignment="Left" Margin="65,8,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Overland" HorizontalAlignment="Left" Margin="65,8,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy17" Content="Swim" VerticalAlignment="Top" Height="26" Margin="2,35,232,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Swim" HorizontalAlignment="Left" Margin="65,39,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Swim" HorizontalAlignment="Left" Margin="65,39,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy18" Content="Jump (L)" VerticalAlignment="Top" Height="26" Margin="2,66,232,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_LongJump" HorizontalAlignment="Left" Margin="65,70,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_LongJump" HorizontalAlignment="Left" Margin="65,70,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy19" Content="Jump (H)" VerticalAlignment="Top" Height="26" Margin="2,97,232,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_HighJump" HorizontalAlignment="Left" Margin="65,101,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_HighJump" HorizontalAlignment="Left" Margin="65,101,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy20" Content="Power" VerticalAlignment="Top" Height="26" Margin="2,128,232,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Power" HorizontalAlignment="Left" Margin="65,132,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Power" HorizontalAlignment="Left" Margin="65,132,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy21" Content="Burrow" VerticalAlignment="Top" Height="26" Margin="158,4,76,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Burrow" HorizontalAlignment="Left" Margin="259,8,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Burrow" HorizontalAlignment="Left" Margin="259,8,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy22" Content="Sky" VerticalAlignment="Top" Height="26" Margin="158,35,76,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Sky" HorizontalAlignment="Left" Margin="259,39,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Sky" HorizontalAlignment="Left" Margin="259,39,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy23" Content="Levitate" VerticalAlignment="Top" Height="26" Margin="158,66,76,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Levitate" HorizontalAlignment="Left" Margin="259,70,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Levitate" HorizontalAlignment="Left" Margin="259,70,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy24" Content="Teleport" VerticalAlignment="Top" Height="26" Margin="158,97,76,0" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_Teleport" HorizontalAlignment="Left" Margin="259,101,0,0" VerticalAlignment="Top" Width="80"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_Teleport" HorizontalAlignment="Left" Margin="259,101,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
                 <Label x:Name="label1_Copy25" Content="Throwing Range" VerticalAlignment="Top" Margin="158,128,0,0" Height="26" HorizontalAlignment="Left"/>
-                <xctk:DecimalUpDown x:Name="Capabilities_ThrowingRange" HorizontalAlignment="Left" Margin="259,132,0,0" VerticalAlignment="Top" Width="80" IsReadOnly="True"/>
+                <xctk:DecimalUpDown x:Name="Capabilities_ThrowingRange" HorizontalAlignment="Left" Margin="259,132,0,0" VerticalAlignment="Top" Width="80" IsReadOnly="True" Value="0" TextAlignment="Center"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="G_Skills" Header="Skills" Margin="1055,10,0,0" HorizontalAlignment="Left" Width="319" Height="555" VerticalAlignment="Top">
@@ -190,23 +190,23 @@
                 <ComboBox x:Name="Skill_Command_Rank" Grid.Column="1" Margin="0,437.44,0,0" VerticalAlignment="Top" Height="21.96" HorizontalAlignment="Left" Width="104.92"/>
                 <ComboBox x:Name="Skill_Focus_Rank" Grid.Column="1" Margin="0,468.4,0,0" VerticalAlignment="Top" Height="21.96" HorizontalAlignment="Left" Width="104.92"/>
                 <ComboBox x:Name="Skill_Intuition_Rank" Grid.Column="1" Margin="0,499.36,0,0" VerticalAlignment="Top" Height="21.96" HorizontalAlignment="Left" Width="104.92"/>
-                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,5.96,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Athletics_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,36.92,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Combat_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,67.88,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Intimidate_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,98.84,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Stealth_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,129.8,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Survival_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,160.76,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_GeneralEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,191.72,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_MedicineEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,222.68,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_OccultEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,253.64,0,0" Width="80" VerticalAlignment="Top"/>
-                <xctk:DecimalUpDown x:Name="Skill_PokemonEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,284.6,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_TechnologyEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,315.56,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Gulie_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,346.52,0,0" VerticalAlignment="Top" Width="80"/>
-                <xctk:DecimalUpDown x:Name="Skill_Perception_Mod" HorizontalAlignment="Left" Margin="10,377.48,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
-                <xctk:DecimalUpDown x:Name="Skill_Charm_Mod" HorizontalAlignment="Left" Margin="10,408.44,0,0" Width="80" Grid.Column="2" VerticalAlignment="Top"/>
-                <xctk:DecimalUpDown x:Name="Skill_Command_Mod" HorizontalAlignment="Left" Margin="10,439.4,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
-                <xctk:DecimalUpDown x:Name="Skill_Focus_Mod" HorizontalAlignment="Left" Margin="10,470.36,0,0" Width="80" Grid.Column="2" VerticalAlignment="Top"/>
-                <xctk:DecimalUpDown x:Name="Skill_Intuition_Mod" HorizontalAlignment="Left" Margin="10,501.32,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
+                <xctk:DecimalUpDown x:Name="Skill_Acrobatics_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,5.96,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Athletics_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,36.92,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Combat_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,67.88,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Intimidate_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,98.84,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Stealth_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,129.8,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Survival_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,160.76,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_GeneralEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,191.72,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_MedicineEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,222.68,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_OccultEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,253.64,0,0" Width="80" VerticalAlignment="Top" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_PokemonEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,284.6,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_TechnologyEDU_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,315.56,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Gulie_Mod" Grid.Column="2" HorizontalAlignment="Left" Margin="10,346.52,0,0" VerticalAlignment="Top" Width="80" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Perception_Mod" HorizontalAlignment="Left" Margin="10,377.48,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Charm_Mod" HorizontalAlignment="Left" Margin="10,408.44,0,0" Width="80" Grid.Column="2" VerticalAlignment="Top" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Command_Mod" HorizontalAlignment="Left" Margin="10,439.4,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Focus_Mod" HorizontalAlignment="Left" Margin="10,470.36,0,0" Width="80" Grid.Column="2" VerticalAlignment="Top" Value="0" TextAlignment="Center"/>
+                <xctk:DecimalUpDown x:Name="Skill_Intuition_Mod" HorizontalAlignment="Left" Margin="10,501.32,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2" Value="0" TextAlignment="Center"/>
             </Grid>
         </GroupBox>
         <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="82" Click="Cancel_Button_Click"/>

@@ -160,23 +160,25 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Add Pokemon" Button is clicked
         private void PokedexManager_AddDex_Pokemon_Click(object sender, RoutedEventArgs e)
         {
-            UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon();
-            bool? OK = pokemon.ShowDialog();
+            UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon();// Creates Pokemon Editor Page
+            bool? OK = pokemon.ShowDialog();// Shows the dialog, waits for return
 
-            if (OK == true)
+            if (OK == true)// When Return
             {
-                PokedexManager_ReloadList();
+                SaveManager.SaveData.PokedexData.Pokemon.Add(pokemon.PokemonData);// Add Pokemon to List
+                PokedexManager_ReloadList();// Reload Pokedex List
             }
         }
         //When The "Add Move" Button is clicked
         private void PokedexManager_AddDex_Move_Click(object sender, RoutedEventArgs e)
         {
-            UI.Pokedex.Moves move = new UI.Pokedex.Moves();
-            bool? OK = move.ShowDialog();
+            UI.Pokedex.Moves move = new UI.Pokedex.Moves();// Creates Move Editor Page
+            bool? OK = move.ShowDialog();// Shows the Dialog, waits for return
 
-            if (OK == true)
+            if (OK == true)// When Return
             {
-                PokedexManager_ReloadList();
+                SaveManager.SaveData.PokedexData.Moves.Add(move.MoveData);// Add Move to List
+                PokedexManager_ReloadList();// Reload Pokedex List
             }
         }
         //When The "Add Ability" Button is clicked
@@ -189,7 +191,6 @@ namespace AssaultBird2454.VPTU.SaveEditor
         {
             MessageBox.Show("Feature not Available for that Data Type.");
         }
-        bool EditAddMove = true;
         //When The "Edit" Button is clicked
         private void PokedexManager_ManageDex_Edit_Click(object sender, RoutedEventArgs e)
         {

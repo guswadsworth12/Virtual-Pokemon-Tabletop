@@ -26,13 +26,13 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             InitializeComponent();
             Setup();// Executes the setup script
 
-            if(MoveData == null)
+            if(_MoveData == null)
             {
-                MoveData = new VPTU.Pokedex.Moves.MoveData();
+                MoveData = new VPTU.Pokedex.Moves.MoveData();// If no specified data, then create a new data class
             }else
             {
-                MoveData = _MoveData;
-                Load();
+                MoveData = _MoveData;// Save the specified data class to a variable for latter
+                Load();// Load the data
             }
         }
 
@@ -66,7 +66,26 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         /// </summary>
         public void Load()
         {
+            #region Basic Info
+            Basic_Name.Text = MoveData.Name;
+            Basic_Desc.Text = MoveData.Description;
+            #endregion
 
+            #region Battle Details
+            Battle_ActionType.SelectedItem = MoveData.Move_ActionType;
+            Battle_Class.SelectedItem = MoveData.Move_Class;
+            Battle_Frequency.SelectedItem = MoveData.Move_Frequency;
+            Battle_Type.SelectedItem = MoveData.Move_Type;
+
+            Battle_AC.Value = MoveData.Move_Accuracy;
+            Battle_DB.Value = (int)MoveData.Move_DamageBase;
+            Battle_UseLimit.Value = MoveData.Move_Frequency_Limit;
+            #endregion
+
+            #region Contest Details
+            Contest_Effect.SelectedItem = MoveData.Contest_Effect;
+            Contest_Type.SelectedItem = MoveData.Contest_Type;
+            #endregion
         }
 
         /// <summary>
@@ -74,7 +93,31 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         /// </summary>
         public void Save()
         {
+            #region Basic Info
+            MoveData.Name = Basic_Name.Text;
+            MoveData.Description = Basic_Desc.Text;
+            #endregion
 
+            #region Battle Details
+            MoveData.Move_ActionType = (BattleManager.Data.Action_Type)Battle_ActionType.SelectedItem;
+            MoveData.Move_Class = (BattleManager.Data.MoveClass)Battle_Class.SelectedItem;
+            MoveData.Move_Frequency = (BattleManager.Data.Move_Frequency)Battle_Frequency.SelectedItem;
+            MoveData.Move_Type = (BattleManager.Data.Type)Battle_Type.SelectedItem;
+
+            MoveData.Move_Accuracy = (int)Battle_AC.Value;
+            MoveData.Move_DamageBase = (BattleManager.Data.DamageBase)Battle_DB.Value;
+            MoveData.Move_Frequency_Limit = (int)Battle_UseLimit.Value;
+            #endregion
+
+            #region Contest Details
+            MoveData.Contest_Effect = (ContestManager.Data.Contest_Effects)Contest_Effect.SelectedItem;
+            MoveData.Contest_Type = (ContestManager.Data.Contest_Type)Contest_Type.SelectedItem;
+            #endregion
+        }
+
+        private void Submit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Save();// Saves Data
         }
     }
 }

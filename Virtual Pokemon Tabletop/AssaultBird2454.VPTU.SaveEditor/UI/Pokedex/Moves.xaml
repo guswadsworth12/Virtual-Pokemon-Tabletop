@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:AssaultBird2454.VPTU.SaveEditor.UI.Pokedex"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Moves"
         mc:Ignorable="d"
-        Title="Moves" Height="478.151" Width="704.202">
+        Title="Moves" Height="502" Width="614">
     <Grid>
         <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="101" Width="383">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="Basic_Name" Margin="90,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+                <TextBox x:Name="Basic_Name" Margin="90,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="271"/>
                 <Label Content="Move Name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="Basic_Desc" HorizontalAlignment="Left" Margin="90,27,0,0" TextWrapping="Wrap" Width="150" Height="45" VerticalAlignment="Top"/>
+                <TextBox x:Name="Basic_Desc" HorizontalAlignment="Left" Margin="90,27,0,0" TextWrapping="Wrap" Width="271" Height="45" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBox1" Header="Contest Details" HorizontalAlignment="Left" Margin="398,10,0,0" VerticalAlignment="Top" Height="101" Width="206">
@@ -56,6 +56,8 @@
                 <Label x:Name="label1" Content="Feature not implemented...&#xD;&#xA;This depends on the&#xD;&#xA;Battle Effect manager lib" HorizontalAlignment="Left" VerticalAlignment="Top" Height="299" Width="194" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Grid>
         </GroupBox>
+        <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Left" Margin="521,442,0,0" VerticalAlignment="Top" Width="75" IsCancel="True"/>
+        <Button x:Name="Submit_Button" Content="Submit" HorizontalAlignment="Left" Margin="441,442,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Submit_Button_Click"/>
 
     </Grid>
 </Window>

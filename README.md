@@ -13,6 +13,8 @@ All help would be appreciated. and this project is done in C# Using WPF.
 ## Build Status & Platform Status
 Master Branch Build: [![Build status](https://ci.appveyor.com/api/projects/status/frd984wwfwl954dy/branch/master?svg=true)](https://ci.appveyor.com/project/TasmanLeach/virtual-pokemon-tabletop-2/branch/master)
 
+Latest Version: [![Latest version](http://github-release-version.herokuapp.com/github/AssaultBird2454/Virtual-Pokemon-Tabletop/release.png?style=flat)](https://github.com/AssaultBird2454/Virtual-Pokemon-Tabletop/releases)
+
 ### Supported Platform Status
 | Platform Type   | Server        | Save Editor   | Client        | API           |
 |-----------------|---------------|---------------|---------------|---------------|

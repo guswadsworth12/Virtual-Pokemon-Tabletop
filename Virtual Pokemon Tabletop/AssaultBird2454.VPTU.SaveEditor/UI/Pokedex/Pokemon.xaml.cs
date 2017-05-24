@@ -21,12 +21,16 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
     public partial class Pokemon : Window
     {
         public VPTU.Pokedex.Pokemon.PokemonData PokemonData;
+        private SaveManager.Data.SaveFile.PTUSaveData SaveData;
         bool Update = false;
 
-        public Pokemon(VPTU.Pokedex.Pokemon.PokemonData _PokemonData = null)
+        public Pokemon(SaveManager.Data.SaveFile.PTUSaveData _SaveData, VPTU.Pokedex.Pokemon.PokemonData _PokemonData = null)
         {
-            InitializeComponent();
-            Setup();
+            InitializeComponent();// Sets up the window
+
+            SaveData = _SaveData;// Creates Save Data Reference
+
+            Setup();// Executes Setup Code
 
             if (_PokemonData == null)
             {
@@ -233,7 +237,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             {
                 EvoLinks link = new EvoLinks();
                 link.LinkData = EL;
-                link.PokemonName = MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == EL.Pokemon_Evo).Species_Name;
+                link.PokemonName = SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == EL.Pokemon_Evo).Species_Name;
 
                 FormsAndEvos_List.Items.Add(link);
             }
@@ -370,7 +374,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                     MessageBox.Show("Name is not valid!", "Name Error", MessageBoxButton.OK, MessageBoxImage.Error);// Name is Not Valid
                     Pass = false;
                 }
-                else if (MainWindow.SaveManager.SaveData.PokedexData.Pokemon.FindAll(x => x.Species_Name.ToLower() == Basic_Name.Text.ToLower()).Count >= 1 && !Update)
+                else if (SaveData.PokedexData.Pokemon.FindAll(x => x.Species_Name.ToLower() == Basic_Name.Text.ToLower()).Count >= 1 && !Update)
                 {
                     MessageBox.Show("Name taken by another Pokemon!", "Name Error", MessageBoxButton.OK, MessageBoxImage.Error);// Name is Taken
                     Pass = false;
@@ -393,7 +397,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 {
                     Decimal ID = Convert.ToDecimal(Basic_ID.Text);
 
-                    if (MainWindow.SaveManager.SaveData.PokedexData.Pokemon.FindAll(x => x.Species_DexID == ID).Count >= 1)
+                    if (SaveData.PokedexData.Pokemon.FindAll(x => x.Species_DexID == ID).Count >= 1)
                     {
                         if (!Update || (ID != PokemonData.Species_DexID && Update))
                         {
@@ -557,7 +561,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
 
             if (add == true)
             {
-                string name = MainWindow.SaveManager.SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == link.LinkData.Pokemon_Evo).Species_Name;
+                string name = SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == link.LinkData.Pokemon_Evo).Species_Name;
                 FormsAndEvos_List.Items.Add(new EvoLinks(link.LinkData, name));// Add EvoLink to list if not canceled
             }
         }

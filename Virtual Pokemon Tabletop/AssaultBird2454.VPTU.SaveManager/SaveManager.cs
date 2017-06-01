@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AssaultBird2454.VPTU.SaveManager
 {
-    public enum SaveData_Dir { Pokedex_Pokemon, Pokedex_Moves, Pokedex_Abilitys, Pokedex_Items }
+    public enum SaveData_Dir { Pokedex_Pokemon, Pokedex_Moves, Pokedex_Abilitys, Pokedex_Items, Resource_Image }
 
     public class SaveManager
     {
@@ -55,6 +55,8 @@ namespace AssaultBird2454.VPTU.SaveManager
             SaveData.PokedexData.Abilitys = LoadData_FromSave<List<Pokedex.Abilitys.AbilityData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys));
             SaveData.PokedexData.Items = LoadData_FromSave<List<Pokedex.Items.ItemData>>(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items));
 
+            SaveData.ImageResources = LoadData_FromSave<List<Resource_Data.Resources>>(GetSaveFile_DataDir(SaveData_Dir.Resource_Image));
+
             SaveData.InitNullObjects();
         }
         /// <summary>
@@ -66,6 +68,8 @@ namespace AssaultBird2454.VPTU.SaveManager
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Moves), SaveData.PokedexData.Moves);
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Abilitys), SaveData.PokedexData.Abilitys);
             SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Pokedex_Items), SaveData.PokedexData.Items);
+
+            SaveData_ToSave(GetSaveFile_DataDir(SaveData_Dir.Resource_Image), SaveData.ImageResources);
         }
 
         #region Load and Save
@@ -84,13 +88,13 @@ namespace AssaultBird2454.VPTU.SaveManager
                 using (ZipArchive archive = new ZipArchive(Reader, ZipArchiveMode.Update))
                 {
                     ZipArchiveEntry entry = archive.GetEntry(SaveFile_DataDir);// Gets the entry to be read from
-                    if(entry == null)
+                    if (entry == null)
                     {
                         return default(T);
                     }
                     //Creates a stream to read the data from
                     using (StreamReader DataReader = new StreamReader(entry.Open()))
-                    {                       
+                    {
                         return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(DataReader.ReadToEnd());// Returns the save file data
                     }
                 }
@@ -110,7 +114,7 @@ namespace AssaultBird2454.VPTU.SaveManager
                 using (ZipArchive archive = new ZipArchive(Writer, ZipArchiveMode.Update))
                 {
                     ZipArchiveEntry entry = archive.GetEntry(SaveFile_DataDir);// Gets the specified entry if it exists ready to write to
-                    if(entry != null)
+                    if (entry != null)
                     {
                         entry.Delete();// Removes the entry. Delete then create a new entry to save
                     }
@@ -142,11 +146,54 @@ namespace AssaultBird2454.VPTU.SaveManager
                     return "Pokedex/Abilitys.json";
                 case SaveData_Dir.Pokedex_Items:
                     return "Pokedex/Items.json";
+                case SaveData_Dir.Resource_Image:
+                    return "Resource/Data.json";
 
                 default:
                     return null;
             }
         }
+        #endregion
+
+        #region Resource
+        #region Import & Export into SaveFile
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="FilePath">Path to the file</param>
+        /// <param name="Name">The name of the file inside the save file.</param>
+        public void ImportFile(string FilePath, string Name)
+        {
+            using (FileStream stream = new FileStream(SaveFileDir, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                using (ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Update))
+                {
+                    archive.CreateEntryFromFile(FilePath, Name);
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ExportFile()
+        {
+
+        }
+        #endregion
+        #region Load File
+        public FileStream LoadFile(string FilePath)
+        {
+            if (FilePath.ToLower().StartsWith("save:"))
+            {
+
+            }
+            else if (FilePath.ToLower().StartsWith("path:"))
+            {
+
+            }
+            return null;
+        }
+        #endregion
         #endregion
     }
 }

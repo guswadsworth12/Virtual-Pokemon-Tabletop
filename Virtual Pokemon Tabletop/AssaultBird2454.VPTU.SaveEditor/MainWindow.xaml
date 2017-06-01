@@ -30,33 +30,31 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="listView">
+                    <ListView x:Name="ResourceManager_List">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="150px" DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn Header="Resource Type" Width="100px" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Resource Type" Width="100px" DisplayMemberBinding="{Binding Type}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <GroupBox x:Name="ResourceManager_AddRes" Grid.Column="1" Header="Add Pokedex Entry's" Margin="10,10,10,0" VerticalAlignment="Top" Height="97">
+                    <GroupBox x:Name="ResourceManager_AddRes" Grid.Column="1" Header="Add Pokedex Entry's" Margin="10,10,10,0" VerticalAlignment="Top" Height="75">
                         <Grid Margin="0,0,-2,-12.96">
-                            <Button x:Name="ResourceManager_AddRes_Audio" Content="Add Audio" VerticalAlignment="Top" Click="PokedexManager_AddDex_Pokemon_Click"/>
-                            <Button x:Name="ResourceManager_AddRes_Images" Content="Add Image" VerticalAlignment="Top" Margin="0,24.96,0,0" Click="PokedexManager_AddDex_Move_Click"/>
-                            <Button x:Name="ResourceManager_AddRes_Sprite" Content="Add Sprite" VerticalAlignment="Top" Margin="0,49.92,0,0" Click="PokedexManager_AddDex_Ability_Click"/>
+                            <Button x:Name="ResourceManager_AddRes_Audio" Content="Add Audio" VerticalAlignment="Top" Click="ResourceManager_AddRes_Audio_Click" IsEnabled="False"/>
+                            <Button x:Name="ResourceManager_AddRes_Images" Content="Add Image" VerticalAlignment="Top" Margin="0,24.96,0,0" Click="ResourceManager_AddRes_Images_Click"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox x:Name="ResourceManager_ManageRes" Grid.Column="1" Header="Edit / Delete" Margin="10,112,10,0" VerticalAlignment="Top" Height="71">
+                    <GroupBox x:Name="ResourceManager_ManageRes" Grid.Column="1" Header="Edit / Delete" Margin="10,90,10,0" VerticalAlignment="Top" Height="71">
                         <Grid Margin="0,0,-2,-12.96">
-                            <Button x:Name="ResourceManager_ManageRes_Edit" Content="Edit" VerticalAlignment="Top" Click="PokedexManager_ManageDex_Edit_Click"/>
-                            <Button x:Name="ResourceManager_ManageRes_Delete" Content="Delete" VerticalAlignment="Top" Margin="0,24.96,0,0" Click="PokedexManager_ManageDex_Delete_Click"/>
+                            <Button x:Name="ResourceManager_ManageRes_Edit" Content="Edit" VerticalAlignment="Top" Click="ResourceManager_ManageRes_Edit_Click" IsEnabled="False"/>
+                            <Button x:Name="ResourceManager_ManageRes_Delete" Content="Delete" VerticalAlignment="Top" Margin="0,24.96,0,0" Click="ResourceManager_ManageRes_Delete_Click"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox x:Name="PokedexManager_SearchDex_Copy" Grid.Column="1" Header="Search" Margin="10,188,10,0" Height="97" VerticalAlignment="Top">
+                    <GroupBox x:Name="PokedexManager_SearchDex_Copy" Grid.Column="1" Header="Search" Margin="10,166,10,0" Height="79" VerticalAlignment="Top">
                         <Grid Margin="0,0,-2,-12.96">
-                            <TextBox x:Name="PokedexManager_SearchDex_Search1" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" UndoLimit="200" TextChanged="PokedexManager_SearchDex_Search_TextChanged"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Pokemon1" Content="Search Audio" Margin="0,22.96,0,0" VerticalAlignment="Top" IsChecked="True" Checked="PokedexManager_SearchDex_Pokemon_Checked" Unchecked="PokedexManager_SearchDex_Pokemon_Unchecked"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Moves1" Content="Search Images" Margin="0,38.058,0,0" VerticalAlignment="Top" IsChecked="True" Checked="PokedexManager_SearchDex_Moves_Checked" Unchecked="PokedexManager_SearchDex_Moves_Unchecked"/>
-                            <CheckBox x:Name="PokedexManager_SearchDex_Abilitys1" Content="Search Sprites" Margin="0,53.156,0,0" VerticalAlignment="Top" Checked="PokedexManager_SearchDex_Abilitys_Checked" Unchecked="PokedexManager_SearchDex_Abilitys_Unchecked" IsChecked="True"/>
+                            <TextBox x:Name="ResourceManager_SearchRes_Search" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" UndoLimit="200" TextChanged="ResourceManager_SearchRes_Search_TextChanged"/>
+                            <CheckBox x:Name="ResourceManager_SearchRes_Audio" Content="Search Audio" Margin="0,22.96,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ResourceManager_SearchRes_Audio_Checked" Unchecked="ResourceManager_SearchRes_Audio_Unchecked"/>
+                            <CheckBox x:Name="ResourceManager_SearchRes_Images" Content="Search Images" Margin="0,38.058,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ResourceManager_SearchRes_Images_Checked" Unchecked="ResourceManager_SearchRes_Images_Unchecked"/>
                         </Grid>
                     </GroupBox>
                 </Grid>

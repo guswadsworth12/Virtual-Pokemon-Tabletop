@@ -28,6 +28,9 @@ namespace AssaultBird2454.VPTU.BattleManager.Data
     /// Defines the possible frequency that a move can be used at
     /// </summary>
     public enum Move_Frequency { At_Will, EOT, Scene, Daily, Static }
+    /// <summary>
+    /// Defines 
+    /// </summary>
     public enum Move_KeyWords
     {
         Aura = 1, Berry, Blessing, Coat, Dash, DubleStrike, Environ, Execute, Exhaust, Fling, Friendly, Illusion, FiveStrike, Interupt, Pass,
@@ -44,4 +47,6 @@ namespace AssaultBird2454.VPTU.BattleManager.Data
         Mind_GeneralEducation, Mind_MedicineEducation, Mind_OccultEducation, Mind_PokémonEducation, Mind_TechnologyEducation, Mind_Guile, Mind_Perception,
         Spirit_Charm, Spirit_Command, Spirit_Focus, Spirit_Intuition, Spirit_Edges
     }
+
+    public enum NatureWalk_Type { Grassland, Forest, Wetlands, Ocean, Tundra, Mountain, Cave, Urban, Desert }
 }

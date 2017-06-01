@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Link;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,17 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
     /// </summary>
     public partial class Pokemon : Window
     {
-        VPTU.Pokedex.Pokemon.PokemonData PokemonData;
+        public VPTU.Pokedex.Pokemon.PokemonData PokemonData;
+        private SaveManager.Data.SaveFile.PTUSaveData SaveData;
         bool Update = false;
 
-        public Pokemon(VPTU.Pokedex.Pokemon.PokemonData _PokemonData = null)
+        public Pokemon(SaveManager.Data.SaveFile.PTUSaveData _SaveData, VPTU.Pokedex.Pokemon.PokemonData _PokemonData = null)
         {
-            InitializeComponent();
-            Setup();
+            InitializeComponent();// Sets up the window
+
+            SaveData = _SaveData;// Creates Save Data Reference
+
+            Setup();// Executes Setup Code
 
             if (_PokemonData == null)
             {
@@ -46,10 +51,13 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         private void Setup()
         {
             #region Populating Fields
+            //Basic Data
             Basic_Type1.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.Type));
             Basic_Type2.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.Type));
             Basic_Weight.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.WeightClass));
             Basic_Size.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SizeClass));
+
+            //Skill Data
             Skill_Acrobatics_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_Athletics_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_Charm_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
@@ -67,25 +75,58 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_Stealth_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_Survival_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
             Skill_TechnologyEDU_Rank.ItemsSource = Enum.GetValues(typeof(BattleManager.Entity.SkillRank));
+
+            //Capabilities Data
+            Capabilities_NatureWalk_1.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.NatureWalk_Type));
+            Capabilities_NatureWalk_2.ItemsSource = Enum.GetValues(typeof(BattleManager.Data.NatureWalk_Type));
             #endregion
             #region Defaulting
-            Skill_Acrobatics_Rank.SelectedIndex = 1;
-            Skill_Athletics_Rank.SelectedIndex = 1;
-            Skill_Charm_Rank.SelectedIndex = 1;
-            Skill_Combat_Rank.SelectedIndex = 1;
-            Skill_Command_Rank.SelectedIndex = 1;
-            Skill_Focus_Rank.SelectedIndex = 1;
-            Skill_GeneralEDU_Rank.SelectedIndex = 1;
-            Skill_Gulie_Rank.SelectedIndex = 1;
-            Skill_Intimidate_Rank.SelectedIndex = 1;
-            Skill_Intuition_Rank.SelectedIndex = 1;
-            Skill_MedicineEDU_Rank.SelectedIndex = 1;
-            Skill_OccultEDU_Rank.SelectedIndex = 1;
-            Skill_Perception_Rank.SelectedIndex = 1;
-            Skill_PokemonEDU_Rank.SelectedIndex = 1;
-            Skill_Stealth_Rank.SelectedIndex = 1;
-            Skill_Survival_Rank.SelectedIndex = 1;
-            Skill_TechnologyEDU_Rank.SelectedIndex = 1;
+            //Skill Data
+            Skill_Acrobatics_Rank.SelectedIndex = 0;
+            Skill_Athletics_Rank.SelectedIndex = 0;
+            Skill_Charm_Rank.SelectedIndex = 0;
+            Skill_Combat_Rank.SelectedIndex = 0;
+            Skill_Command_Rank.SelectedIndex = 0;
+            Skill_Focus_Rank.SelectedIndex = 0;
+            Skill_GeneralEDU_Rank.SelectedIndex = 0;
+            Skill_Gulie_Rank.SelectedIndex = 0;
+            Skill_Intimidate_Rank.SelectedIndex = 0;
+            Skill_Intuition_Rank.SelectedIndex = 0;
+            Skill_MedicineEDU_Rank.SelectedIndex = 0;
+            Skill_OccultEDU_Rank.SelectedIndex = 0;
+            Skill_Perception_Rank.SelectedIndex = 0;
+            Skill_PokemonEDU_Rank.SelectedIndex = 0;
+            Skill_Stealth_Rank.SelectedIndex = 0;
+            Skill_Survival_Rank.SelectedIndex = 0;
+            Skill_TechnologyEDU_Rank.SelectedIndex = 0;
+
+            //Capabilities Data
+            Capabilities_NatureWalk_1.SelectedIndex = 0;
+            Capabilities_NatureWalk_2.SelectedIndex = 0;
+            #endregion
+
+            #region Populating Special Capabilities
+            foreach (VPTU.Pokedex.Pokemon.Pokemon_Capabilities cap in Enum.GetValues(typeof(VPTU.Pokedex.Pokemon.Pokemon_Capabilities)))
+            {
+                string CapName = cap.ToString();
+                CheckBox box = new CheckBox();
+
+                #region Logic for Values
+                if (cap.ToString().ToUpper().StartsWith("I_"))
+                {
+                    MessageBox.Show("There is a Capabilities that needs a 'Numeric Value'. But is not implemented yet");
+                }
+                else if (cap.ToString().ToUpper().StartsWith("S_"))
+                {
+                    MessageBox.Show("There is a Capabilities that needs a 'String Value'. But is not implemented yet");
+                }
+                #endregion
+
+                box.Content = cap.ToString().Replace('_', ' ');
+                box.Tag = cap;
+
+                Capabilities_Wrap.Children.Add(box);
+            }
             #endregion
         }
 
@@ -97,6 +138,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             //Save Basic Pokemon Data
             #region Basic Info
             Basic_Name.Text = PokemonData.Species_Name;
+            try { Basic_Desc.Text = PokemonData.Species_Desc; } catch { } // Try and catch this as old versions of the save will not be able to read this?
             Basic_ID.Text = PokemonData.Species_DexID.ToString();
             Basic_Type1.SelectedItem = PokemonData.Species_Type1;
             Basic_Type2.SelectedItem = PokemonData.Species_Type2;
@@ -143,6 +185,27 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Skill_Survival_Mod.Value = PokemonData.Species_Skill_Data.Survival_Mod;
             Skill_TechnologyEDU_Mod.Value = PokemonData.Species_Skill_Data.Technology_Mod;
             #endregion
+            //Load Pokemon Capabilities Data
+            #region Capabilities
+            Capabilities_NatureWalk_1.SelectedItem = PokemonData.Species_Capability_Data.NatureWalk_1;
+            Capabilities_NatureWalk_2.SelectedItem = PokemonData.Species_Capability_Data.NatureWalk_2;
+            #endregion
+            //Load Special Capabilities Data
+            #region Special Capabilities
+            foreach (CheckBox box in Capabilities_Wrap.Children)
+            {
+                if (PokemonData.Species_SpecialCapability.FindAll(x => x.Key == (VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).Count >= 1)
+                {
+                    box.IsChecked = true;
+
+                    //Set Values (If Applicable)
+                }
+                else
+                {
+                    box.IsChecked = false;
+                }
+            }
+            #endregion
             //Load Pokemon Base Stat Data
             #region Base Stats
             BaseStats_HP.Value = PokemonData.Species_BaseStats_HP;
@@ -157,15 +220,31 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             #region Links
             //Load Linked Move Data
             #region Moves
-            if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Move_Link>(); }
-            foreach (AssaultBird2454.VPTU.Pokedex.Pokemon.Move_Link ML in PokemonData.Moves)
+            Moves_List.Items.Clear();
+
+            if (PokemonData.Moves == null) { PokemonData.Moves = new List<VPTU.Pokedex.Pokemon.Link_Moves>(); }
+            foreach (VPTU.Pokedex.Pokemon.Link_Moves ML in PokemonData.Moves)
             {
                 Moves_List.Items.Add(ML);
             }
             #endregion
+            //Load Linked Forms and Evolution Data here
+            #region Evo Forms
+            FormsAndEvos_List.Items.Clear();
 
+            if (PokemonData.Evolutions == null) { PokemonData.Evolutions = new List<VPTU.Pokedex.Pokemon.Link_Evolutions>(); }
+            foreach (VPTU.Pokedex.Pokemon.Link_Evolutions EL in PokemonData.Evolutions)
+            {
+                EvoLinks link = new EvoLinks();
+                link.LinkData = EL;
+                link.PokemonName = SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == EL.Pokemon_Evo).Species_Name;
+
+                FormsAndEvos_List.Items.Add(link);
+            }
+            #endregion
             #endregion
         }
+
         /// <summary>
         /// Saves Modifications or Adds a new entry to the Pokedex
         /// </summary>
@@ -174,7 +253,8 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             //Save Basic Pokemon Data
             #region Basic Info
             PokemonData.Species_Name = Basic_Name.Text;
-            PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Text);
+            PokemonData.Species_Desc = Basic_Desc.Text;
+            PokemonData.Species_DexID = Convert.ToDecimal(Basic_ID.Value);
             PokemonData.Species_Type1 = (BattleManager.Data.Type)Basic_Type1.SelectedItem;
             PokemonData.Species_Type2 = (BattleManager.Data.Type)Basic_Type2.SelectedItem;
             PokemonData.Species_WeightClass = (BattleManager.Entity.WeightClass)Basic_Weight.SelectedItem;
@@ -220,6 +300,31 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             PokemonData.Species_Skill_Data.Survival_Mod = (int)Skill_Survival_Mod.Value;
             PokemonData.Species_Skill_Data.Technology_Mod = (int)Skill_TechnologyEDU_Mod.Value;
             #endregion
+            //Load Pokemon Capabilities Data
+            #region Capabilities
+            PokemonData.Species_Capability_Data.NatureWalk_1 = (BattleManager.Data.NatureWalk_Type)Capabilities_NatureWalk_1.SelectedItem;
+            PokemonData.Species_Capability_Data.NatureWalk_2 = (BattleManager.Data.NatureWalk_Type)Capabilities_NatureWalk_2.SelectedItem;
+            #endregion
+            //Save Special Capabilities Data
+            #region Special Capabilities
+            PokemonData.Species_SpecialCapability.Clear();
+            foreach (CheckBox box in Capabilities_Wrap.Children)
+            {
+                if (box.IsChecked == true)
+                {
+                    if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("I_"))
+                    {
+                        //Value needs to be added (Value is an int)
+                    }
+                    if (((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag).ToString().ToUpper().StartsWith("S_"))
+                    {
+                        //Value needs to be added (Value is a string)
+                    }
+
+                    PokemonData.Species_SpecialCapability.Add(new KeyValuePair<VPTU.Pokedex.Pokemon.Pokemon_Capabilities, object>((VPTU.Pokedex.Pokemon.Pokemon_Capabilities)box.Tag, true));
+                }
+            }
+            #endregion
             //Save Pokemon Base Stat Data
             #region Base Stats
             PokemonData.Species_BaseStats_HP = (int)BaseStats_HP.Value;
@@ -235,16 +340,24 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             //Save Linked Move Data
             #region Moves
             PokemonData.Moves.Clear();
-            foreach (VPTU.Pokedex.Pokemon.Move_Link link in Moves_List.Items)
+            foreach (VPTU.Pokedex.Pokemon.Link_Moves link in Moves_List.Items)
             {
                 PokemonData.Moves.Add(link);
+            }
+            #endregion
+            //Save Linked Evolution Data
+            #region Evo Forms
+            PokemonData.Evolutions.Clear();
+            foreach (EvoLinks link in FormsAndEvos_List.Items)
+            {
+                PokemonData.Evolutions.Add(link.LinkData);
             }
             #endregion
             #endregion
         }
 
         /// <summary>
-        /// Validates settings and fixes some automaticly fixable errors. This is always run before Saving Data.
+        /// Validates settings and fixes some automatically fixable errors. This is always run before Saving Data.
         /// </summary>
         /// <returns>Validation Pass</returns>
         [Obsolete("Code is not complete, Contains Errors", true)]
@@ -261,7 +374,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                     MessageBox.Show("Name is not valid!", "Name Error", MessageBoxButton.OK, MessageBoxImage.Error);// Name is Not Valid
                     Pass = false;
                 }
-                else if (MainWindow.SaveManager.SaveData.PokedexData.Pokemon.FindAll(x => x.Species_Name.ToLower() == Basic_Name.Text.ToLower()).Count >= 1 && !Update)
+                else if (SaveData.PokedexData.Pokemon.FindAll(x => x.Species_Name.ToLower() == Basic_Name.Text.ToLower()).Count >= 1 && !Update)
                 {
                     MessageBox.Show("Name taken by another Pokemon!", "Name Error", MessageBoxButton.OK, MessageBoxImage.Error);// Name is Taken
                     Pass = false;
@@ -284,7 +397,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 {
                     Decimal ID = Convert.ToDecimal(Basic_ID.Text);
 
-                    if (MainWindow.SaveManager.SaveData.PokedexData.Pokemon.FindAll(x => x.Species_DexID == ID).Count >= 1)
+                    if (SaveData.PokedexData.Pokemon.FindAll(x => x.Species_DexID == ID).Count >= 1)
                     {
                         if (!Update || (ID != PokemonData.Species_DexID && Update))
                         {
@@ -420,7 +533,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         {
             if (Moves_List.SelectedItem == null) { return; }// Returns if selection is null
 
-            Move_Link link = new Move_Link((VPTU.Pokedex.Pokemon.Move_Link)Moves_List.SelectedItem);// Creates a new MoveLink Window to modify link with
+            Move_Link link = new Move_Link((VPTU.Pokedex.Pokemon.Link_Moves)Moves_List.SelectedItem);// Creates a new MoveLink Window to modify link with
             link.ShowDialog();// Shows the Link Window
         }
         /// <summary>
@@ -434,5 +547,63 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
             Moves_List.Items.Remove(Moves_List.SelectedItem);// Removes Link from list
         }
         #endregion
+
+        #region Link Evolution's and Forms
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LinkEvo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Link_Evolution link = new Link_Evolution();// Create a new EvoLink Window to create a link with
+            bool? add = link.ShowDialog();// Shows the Link Window, Creates a Dialog to return true if it added successfully
+
+            if (add == true)
+            {
+                string name = SaveData.PokedexData.Pokemon.Find(x => x.Species_DexID == link.LinkData.Pokemon_Evo).Species_Name;
+                FormsAndEvos_List.Items.Add(new EvoLinks(link.LinkData, name));// Add EvoLink to list if not canceled
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditLinkEvo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (FormsAndEvos_List.SelectedItem == null) { return; }// Returns if selection is null
+
+            Link_Evolution link = new Link_Evolution(((EvoLinks)FormsAndEvos_List.SelectedItem).LinkData);// Creates a new EvoLink Window to modify link with
+            link.ShowDialog();// Shows the Link Window
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveLinkEvo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (FormsAndEvos_List.SelectedItem == null) { return; }// Returns if selection is null
+            FormsAndEvos_List.Items.Remove(FormsAndEvos_List.SelectedItem);// Removes Link from list
+        }
+        #endregion
     }
+
+    #region Data Classes
+
+    public class EvoLinks
+    {
+        public EvoLinks(VPTU.Pokedex.Pokemon.Link_Evolutions _LinkData = null, string _PokemonName = null)
+        {
+            LinkData = _LinkData;
+            PokemonName = _PokemonName;
+        }
+
+        public VPTU.Pokedex.Pokemon.Link_Evolutions LinkData { get; set; }
+        public string PokemonName { get; set; }
+    }
+
+    #endregion
+
 }

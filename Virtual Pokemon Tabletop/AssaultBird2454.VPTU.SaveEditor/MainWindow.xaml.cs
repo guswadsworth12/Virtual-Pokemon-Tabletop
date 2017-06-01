@@ -14,6 +14,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Form Code
         public static SaveManager.SaveManager SaveManager;
         public ProjectInfo VersioningInfo;
         /// <summary>
@@ -30,7 +31,6 @@ namespace AssaultBird2454.VPTU.SaveEditor
             }
         }
 
-        #region Form Code
         public MainWindow()
         {
             InitializeComponent();
@@ -84,13 +84,13 @@ namespace AssaultBird2454.VPTU.SaveEditor
                 MessageBox.Show("The \"LEGAL NOTICE\" File was not found when trying to read it! The \"LEGAL NOTICE\" file is avalable on GitHub.", "License File Missing");
             }
         }
-        #endregion
 
         #region Setup Code
         private void Setup()
         {
 
         }
+        #endregion
         #endregion
 
         #region Save Manager Related Code
@@ -146,7 +146,8 @@ namespace AssaultBird2454.VPTU.SaveEditor
             SaveManager = new VPTU.SaveManager.SaveManager(Path);
             SaveManager.Load_SaveData();
 
-            PokedexManager_ReloadList();//Reload List
+            PokedexManager_ReloadList();//Reload Pokedex List
+            ResourceManager_ReloadList();//Reload Resource List
         }
         #endregion
 
@@ -159,63 +160,88 @@ namespace AssaultBird2454.VPTU.SaveEditor
         //When The "Add Pokemon" Button is clicked
         private void PokedexManager_AddDex_Pokemon_Click(object sender, RoutedEventArgs e)
         {
-            UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon();
-            bool? OK = pokemon.ShowDialog();
+            UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon(SaveManager.SaveData);// Creates Pokemon Editor Page
+            bool? OK = pokemon.ShowDialog();// Shows the dialog, waits for return
 
-            if (OK == true)
+            if (OK == true)// When Return
             {
-                PokedexManager_ReloadList();
+                SaveManager.SaveData.PokedexData.Pokemon.Add(pokemon.PokemonData);// Add Pokemon to List
+                PokedexManager_ReloadList();// Reload Pokedex List
             }
         }
         //When The "Add Move" Button is clicked
         private void PokedexManager_AddDex_Move_Click(object sender, RoutedEventArgs e)
         {
+            UI.Pokedex.Moves move = new UI.Pokedex.Moves(SaveManager.SaveData);// Creates Move Editor Page
+            bool? OK = move.ShowDialog();// Shows the Dialog, waits for return
 
+            if (OK == true)// When Return
+            {
+                SaveManager.SaveData.PokedexData.Moves.Add(move.MoveData);// Add Move to List
+                PokedexManager_ReloadList();// Reload Pokedex List
+            }
         }
         //When The "Add Ability" Button is clicked
         private void PokedexManager_AddDex_Ability_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Feature not Available for that Data Type.");
         }
         //When The "Add Item" Button is clicked
         private void PokedexManager_AddDex_Items_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Feature not Available for that Data Type.");
         }
         //When The "Edit" Button is clicked
         private void PokedexManager_ManageDex_Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+            try
             {
-                Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
-                UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon(Data);
-                bool? OK = pokemon.ShowDialog();
-
-                if (OK == true)
+                //Edit Pokemon Here!
+                if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
                 {
-                    PokedexManager_ReloadList();
+                    Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;// Gets the Data
+                    UI.Pokedex.Pokemon pokemon = new UI.Pokedex.Pokemon(SaveManager.SaveData, Data);// Creates a new window
+                    pokemon.ShowDialog();// Shows the window
+
+                    PokedexManager_ReloadList();// Updates the list
+                }
+                //Edit Moves Here!
+                else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+                {
+                    Pokedex.Moves.MoveData Data = (Pokedex.Moves.MoveData)((PokedexList_DataBind)PokedexManager_List.SelectedItem).DataTag;// Gets the Data
+                    UI.Pokedex.Moves move = new UI.Pokedex.Moves(SaveManager.SaveData, Data);// Creates a new window
+                    move.ShowDialog();// Shows the window
+
+                    PokedexManager_ReloadList();// Updates the list
                 }
             }
-            else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+            catch (NullReferenceException)
             {
-                MessageBox.Show("Feature not Avaliable for that Data Type.");
+                MessageBox.Show("You cant edit nothing! or can you?");
             }
         }
         //When The "Delete" Button is clicked
         private void PokedexManager_ManageDex_Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+            try
             {
-                Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
-                SaveManager.SaveData.PokedexData.Pokemon.Remove(Data);
-            }
-            else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
-            {
-                Pokedex.Moves.MoveData Data = (Pokedex.Moves.MoveData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
-                SaveManager.SaveData.PokedexData.Moves.Remove(Data);
-            }
+                if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Pokemon)
+                {
+                    Pokedex.Pokemon.PokemonData Data = (Pokedex.Pokemon.PokemonData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
+                    SaveManager.SaveData.PokedexData.Pokemon.Remove(Data);
+                }
+                else if (((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataType == PokedexList_DataType.Move)
+                {
+                    Pokedex.Moves.MoveData Data = (Pokedex.Moves.MoveData)((PokedexList_DataBind)PokedexManager_List.SelectedValue).DataTag;
+                    SaveManager.SaveData.PokedexData.Moves.Remove(Data);
+                }
 
-            PokedexManager_ReloadList();
+                PokedexManager_ReloadList();
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You cant delete nothing! or can you?");
+            }
         }
         //When The Search Box has been changed
         private void PokedexManager_SearchDex_Search_TextChanged(object sender, TextChangedEventArgs e)
@@ -231,6 +257,7 @@ namespace AssaultBird2454.VPTU.SaveEditor
             {
                 this.Dispatcher.Invoke(new Action(() => PokedexManager_ReloadList()));
             }));
+            PokedexSearchThread.IsBackground = true;
             PokedexSearchThread.Start();
         }
         #endregion
@@ -330,6 +357,123 @@ namespace AssaultBird2454.VPTU.SaveEditor
                         }
                     }
                 }
+            }
+            catch { }
+        }
+        #endregion
+
+        #region Resource Manager Code
+        #region Resource Variables
+        Thread ResourceSearchThread;
+        #endregion
+        #region Right SideBar Events
+        /// <summary>
+        /// Add Audio Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_AddRes_Audio_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Add Image Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_AddRes_Images_Click(object sender, RoutedEventArgs e)
+        {
+            UI.Resources.Import_ImageResource imp = new UI.Resources.Import_ImageResource();
+            bool? pass = imp.ShowDialog();
+
+            if (pass == true)
+            {
+                //Update
+                ResourceManager_ReloadList();
+            }
+        }
+        /// <summary>
+        /// Edit Resource Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_ManageRes_Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Delete Resource
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_ManageRes_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ResourceManager_List.SelectedItem != null)
+            {
+                ResourceManager_List.Items.Remove(ResourceManager_List.SelectedItem);
+            }
+        }
+
+        private void ResourceManager_SearchRes_Images_Checked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+        private void ResourceManager_SearchRes_Audio_Checked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+        private void ResourceManager_SearchRes_Audio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+        private void ResourceManager_SearchRes_Images_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ResourceManager_ReloadList();
+        }
+
+        /// <summary>
+        /// Search for names that contain
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResourceManager_SearchRes_Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ResourceSearchThread.Abort();
+                ResourceSearchThread = null;
+            }
+            catch { }
+
+            ResourceSearchThread = new Thread(new ThreadStart(new Action(() =>
+            {
+                ResourceManager_List.Dispatcher.Invoke(new Action(() => ResourceManager_ReloadList()));
+            })));
+            ResourceSearchThread.IsBackground = true;
+            ResourceSearchThread.Start();
+        }
+        #endregion
+
+        /// <summary>
+        /// Reloads the Resource List
+        /// </summary>
+        public void ResourceManager_ReloadList()
+        {
+            try
+            {
+                ResourceManager_List.Items.Clear();
+
+                if (ResourceManager_SearchRes_Images.IsChecked == true)
+                {
+                    foreach (VPTU.SaveManager.Resource_Data.Resources res in SaveManager.SaveData.ImageResources)
+                    {
+                        if (res.Name.ToLower().Contains(ResourceManager_SearchRes_Search.Text.ToLower()))
+                        {
+                            ResourceManager_List.Items.Add(res);
+                        }
+                    }
+                }
+
             }
             catch { }
         }

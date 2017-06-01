@@ -12,16 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
+namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex.Link
 {
     /// <summary>
     /// Interaction logic for Move_Link.xaml
     /// </summary>
     public partial class Move_Link : Window
     {
-        public VPTU.Pokedex.Pokemon.Move_Link LinkData;
+        public VPTU.Pokedex.Pokemon.Link_Moves LinkData;
 
-        public Move_Link(VPTU.Pokedex.Pokemon.Move_Link _LinkData = null)
+        public Move_Link(VPTU.Pokedex.Pokemon.Link_Moves _LinkData = null)
         {
             InitializeComponent();
 
@@ -30,7 +30,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
                 LinkData = _LinkData;
                 Load();
             }
-            else { LinkData = new VPTU.Pokedex.Pokemon.Move_Link(); }
+            else { LinkData = new VPTU.Pokedex.Pokemon.Link_Moves(); }
         }
 
         public void Save()
@@ -73,7 +73,7 @@ namespace AssaultBird2454.VPTU.SaveEditor.UI.Pokedex
         #region Search For Move
         private void Move_Name_Select_Click(object sender, RoutedEventArgs e)
         {
-            Select_Move sm = new Select_Move();
+            Select.Select_Move sm = new Select.Select_Move();
             bool? pass = sm.ShowDialog();
 
             if(pass == true && sm.Selected_Move != null)

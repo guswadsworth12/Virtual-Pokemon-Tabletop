@@ -44,7 +44,7 @@ namespace AssaultBird2454.VPTU.SaveManager.Data.SaveFile
                 //Maps = new List<Resources.MapData>();
 
                 AudioResources = new List<SoundSystem.SaveData.AudioData>();
-                //ImageResources = new List<Data.Image.Image_Data>();
+                ImageResources = new List<Resource_Data.Resources>();
 
                 PokedexData = new Pokedex.Save_Data.Pokedex(true);
             }
@@ -75,7 +75,7 @@ namespace AssaultBird2454.VPTU.SaveManager.Data.SaveFile
             {
                 AudioResources = new List<SoundSystem.SaveData.AudioData>();
             }
-            //ImageResources = new List<Data.Image.Image_Data>();
+            ImageResources = new List<Resource_Data.Resources>();
 
             PokedexData.InitNullObjects();
         }
@@ -97,7 +97,7 @@ namespace AssaultBird2454.VPTU.SaveManager.Data.SaveFile
         #endregion
         #region Resources
         public List<SoundSystem.SaveData.AudioData> AudioResources;
-        //public List<Data.Image.Image_Data> ImageResources;
+        public List<Resource_Data.Resources> ImageResources;
         #endregion
     }
 }
